@@ -20,6 +20,8 @@ public class FightAO extends ActionOption {
 
     @Override
     public void interact() {
+        super.interact();
+
         // open attack menu
     }
 }

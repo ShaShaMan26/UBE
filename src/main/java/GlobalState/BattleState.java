@@ -9,7 +9,7 @@ import java.awt.event.KeyEvent;
 
 public class BattleState extends GlobalState {
     @Override
-    public void run(GameWindow gw) {
+    public GlobalState run(GameWindow gw) {
         gw.addComponent(new TextBox());
 
         ActionOption[] actionOptions = new ActionOption[]{

@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
+import Window.GameWindow;
 
 public class ActionOption extends JComponent {
     public int X, Y;
@@ -38,11 +39,16 @@ public class ActionOption extends JComponent {
     }
 
     public void interact() {
-        // play sound
+        GameWindow gw = (GameWindow)this.getRootPane().getContentPane().getParent().getParent().getParent();
+        gw.AUDIOPLAYER.playClip(1);
     }
 
     public void toggleSelected() {
+        GameWindow gw = (GameWindow)this.getRootPane().getContentPane().getParent().getParent().getParent();
         this.selected = !this.selected;
+        if (this.selected) {
+            gw.AUDIOPLAYER.playClip(0);
+        }
     }
 
     public void paint(Graphics g) {

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class SelectBattleState extends GlobalState {
     @Override
-    public void run(GameWindow gw) {
+    public GlobalState run(GameWindow gw) {
 
         String[] battleNames = new File(System.getenv("APPDATA") + "\\UTB\\battles").list();
         final int XOFFSET = 20, YOFFSET = 45;
@@ -56,8 +56,11 @@ public class SelectBattleState extends GlobalState {
                 if (gw.getPressedKeys().contains(KeyEvent.VK_Z)) {
                     battleSelectAOS.get(index).interact();
                     gw.invalidateKey(KeyEvent.VK_Z);
+
+                    return new BattleState();
                 }
             }
         }
+        return new SelectBattleState();
     }
 }

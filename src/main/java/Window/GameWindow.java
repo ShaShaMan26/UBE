@@ -1,5 +1,7 @@
 package Window;
 
+import audio.AudioPlayer;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -8,9 +10,13 @@ import java.util.ArrayList;
 
 public class GameWindow extends JFrame implements KeyListener {
     private final BGPanel PANEL;
-    private ArrayList<Integer> pressedKeys = new ArrayList<>();
+    public final AudioPlayer AUDIOPLAYER;
+    private final ArrayList<Integer> pressedKeys = new ArrayList<>();
+    private final ArrayList<Integer> invalidKeys = new ArrayList<>();
     public GameWindow() {
         this.PANEL = new BGPanel();
+        this.AUDIOPLAYER = new AudioPlayer();
+        AUDIOPLAYER.loadAll();
 
         this.getContentPane().add(PANEL);
         this.pack();
@@ -28,6 +34,10 @@ public class GameWindow extends JFrame implements KeyListener {
         PANEL.add(c);
     }
 
+    public BGPanel getPanel() {
+        return this.PANEL;
+    }
+
     @Override
     public void keyTyped(KeyEvent e) {
 
@@ -35,7 +45,7 @@ public class GameWindow extends JFrame implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (!pressedKeys.contains(e.getKeyCode())) {
+        if (!pressedKeys.contains(e.getKeyCode()) && !invalidKeys.contains(e.getKeyCode())) {
             pressedKeys.add(e.getKeyCode());
         }
     }
@@ -43,6 +53,7 @@ public class GameWindow extends JFrame implements KeyListener {
     @Override
     public void keyReleased(KeyEvent e) {
         pressedKeys.remove((Integer) e.getKeyCode());
+        invalidKeys.remove((Integer) e.getKeyCode());
     }
 
     public ArrayList<Integer> getPressedKeys() {
@@ -51,5 +62,6 @@ public class GameWindow extends JFrame implements KeyListener {
 
     public void invalidateKey(Integer key) {
         pressedKeys.remove(key);
+        invalidKeys.add(key);
     }
 }

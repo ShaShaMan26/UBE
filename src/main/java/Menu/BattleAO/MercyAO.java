@@ -20,6 +20,8 @@ public class MercyAO extends ActionOption {
 
     @Override
     public void interact() {
+        super.interact();
+
         // open item menu
     }
 }

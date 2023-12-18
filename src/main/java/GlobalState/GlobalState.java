@@ -2,7 +2,13 @@ package GlobalState;
 
 import Window.GameWindow;
 
-public abstract class GlobalState {
+import java.awt.*;
 
-    public abstract void run(GameWindow gw);
+public abstract class GlobalState {
+    public abstract GlobalState run(GameWindow gw);
+    public void clear(GameWindow gw) {
+        for (Component c : gw.getPanel().getComponents()) {
+            gw.getPanel().remove(c);
+        }
+    }
 }

@@ -20,6 +20,8 @@ public class ItemAO extends ActionOption {
 
     @Override
     public void interact() {
+        super.interact();
+
         // open item menu
     }
 }
