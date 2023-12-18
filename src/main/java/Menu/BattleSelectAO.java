@@ -5,10 +5,10 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Objects;
 
-public class BattleOT extends OptionText {
+public class BattleSelectAO extends ActionOption {
     private BufferedImage playerSoul;
 
-    public BattleOT(String title, int x, int y) {
+    public BattleSelectAO(String title, int x, int y) {
         super(title, x, y);
 
         try {

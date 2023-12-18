@@ -3,13 +3,11 @@ import Window.GameWindow;
 
 public class Main {
     public static void main(String[] args) {
-        GlobalState[] globalStates = {new InitializeGameState(), new SelectBattleState()};
+        GlobalState[] globalStates = {new InitializeGameState(), new SelectBattleState(), new BattleState()};
 
         GameWindow gw = new GameWindow();
 
-        GlobalState globalState = globalStates[0];
-        globalState.run(gw);
-        globalState = globalStates[1];
+        GlobalState globalState = globalStates[2];
         globalState.run(gw);
     }
 

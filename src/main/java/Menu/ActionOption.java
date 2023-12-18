@@ -3,18 +3,20 @@ package Menu;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.font.TextAttribute;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-public class OptionText extends JComponent {
-    public final int X, Y;
-    public final String TITLE;
+public class ActionOption extends JComponent {
+    public int X, Y;
+    public String TITLE = null;
+    public BufferedImage ICON = null, SELECTEDICON = null;
     public boolean selected;
-    public final Font FONT;
+    public Font FONT = null;
 
-    public OptionText(String title, int x, int y) {
+    public ActionOption(String title, int x, int y) {
         this.TITLE = title;
         this.X = x;
         this.Y = y;
@@ -32,6 +34,9 @@ public class OptionText extends JComponent {
         }
     }
 
+    public ActionOption() {
+    }
+
     public void interact() {
         // play sound
     }
@@ -41,8 +46,16 @@ public class OptionText extends JComponent {
     }
 
     public void paint(Graphics g) {
-        g.setColor(Color.WHITE);
-        g.setFont(FONT);
-        g.drawString(TITLE, X, Y);
+        if (TITLE != null) {
+            g.setColor(Color.WHITE);
+            g.setFont(FONT);
+            g.drawString(TITLE, X, Y);
+        } else {
+            if (selected) {
+                g.drawImage(SELECTEDICON, X, Y, null);
+            } else {
+                g.drawImage(ICON, X, Y, null);
+            }
+        }
     }
 }
