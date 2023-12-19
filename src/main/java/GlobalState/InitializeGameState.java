@@ -7,9 +7,13 @@ import java.io.File;
 public class InitializeGameState extends GlobalState {
 
     @Override
-    public GlobalState run(GameWindow gw) {
+    public void run(GameWindow gw) {
         new File(System.getenv("APPDATA")+"\\UTB").mkdir();
         new File(System.getenv("APPDATA")+"\\UTB\\battles").mkdir();
+    }
+
+    @Override
+    public  GlobalState update(GameWindow gw) {
         return new SelectBattleState();
     }
 }

@@ -1,5 +1,6 @@
 package GlobalState;
 
+import GlobalState.BattleState.BattleState;
 import Menu.BattleSelectAO;
 import Menu.ActionOption;
 import Window.GameWindow;
@@ -9,13 +10,14 @@ import java.io.File;
 import java.util.ArrayList;
 
 public class SelectBattleState extends GlobalState {
+    ArrayList<BattleSelectAO> battleSelectAOS = new ArrayList<>();
+    final int XOFFSET = 20, YOFFSET = 45;
+    int index = 0;
+
     @Override
-    public GlobalState run(GameWindow gw) {
-
+    public void run(GameWindow gw) {
         String[] battleNames = new File(System.getenv("APPDATA") + "\\UTB\\battles").list();
-        final int XOFFSET = 20, YOFFSET = 45;
 
-        ArrayList<BattleSelectAO> battleSelectAOS = new ArrayList<>();
         if (battleNames.length > 0) {
             for (int i = 0; i < battleNames.length; i++) {
                 BattleSelectAO battleSelectAO = new BattleSelectAO(battleNames[i], XOFFSET, YOFFSET+(i*42));
@@ -28,41 +30,41 @@ public class SelectBattleState extends GlobalState {
         }
 
         if (battleSelectAOS.size() > 0) {
-            int index = 0;
             battleSelectAOS.get(index).toggleSelected();
-            while (true) {
-                gw.PLAYER.setPos(XOFFSET, (index*42) + YOFFSET-16);
-                gw.repaint();
-
-                if (gw.getPressedKeys().contains(KeyEvent.VK_UP)) {
-                    battleSelectAOS.get(index).toggleSelected();
-                    index--;
-                    if (index < 0) {
-                        index = battleSelectAOS.size()-1;
-                    }
-                    battleSelectAOS.get(index).toggleSelected();
-                    gw.invalidateKey(KeyEvent.VK_UP);
-                }
-
-                if (gw.getPressedKeys().contains(KeyEvent.VK_DOWN)) {
-                    battleSelectAOS.get(index).toggleSelected();
-                    index++;
-                    if (index > battleSelectAOS.size()-1) {
-                        index = 0;
-                    }
-                    gw.PLAYER.moveDown();
-                    battleSelectAOS.get(index).toggleSelected();
-                    gw.invalidateKey(KeyEvent.VK_DOWN);
-                }
-
-                if (gw.getPressedKeys().contains(KeyEvent.VK_Z)) {
-                    battleSelectAOS.get(index).interact();
-                    gw.invalidateKey(KeyEvent.VK_Z);
-
-                    return new BattleState();
-                }
-            }
         }
+    }
+
+    @Override
+    public GlobalState update(GameWindow gw) {
+        if (gw.getPressedKeys().contains(KeyEvent.VK_UP)) {
+            battleSelectAOS.get(index).toggleSelected();
+            index--;
+            if (index < 0) {
+                index = battleSelectAOS.size()-1;
+            }
+            battleSelectAOS.get(index).toggleSelected();
+            gw.invalidateKey(KeyEvent.VK_UP);
+        }
+
+        if (gw.getPressedKeys().contains(KeyEvent.VK_DOWN)) {
+            battleSelectAOS.get(index).toggleSelected();
+            index++;
+            if (index > battleSelectAOS.size()-1) {
+                index = 0;
+            }
+            gw.PLAYER.moveDown();
+            battleSelectAOS.get(index).toggleSelected();
+            gw.invalidateKey(KeyEvent.VK_DOWN);
+        }
+
+        if (gw.getPressedKeys().contains(KeyEvent.VK_Z)) {
+            battleSelectAOS.get(index).interact();
+            gw.invalidateKey(KeyEvent.VK_Z);
+
+            return new BattleState();
+        }
+
+        gw.PLAYER.setPos(XOFFSET, (index*42) + YOFFSET-16);
 
         return null;
     }
