@@ -10,7 +10,7 @@ public class BattleSelectAO extends ActionOption {
 
     @Override
     public void paint(Graphics g) {
-        g.setFont(FONT);
+        g.setFont(font);
         if (selected) {
             g.setColor(new Color(239,242,62));
         } else {

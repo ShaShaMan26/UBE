@@ -15,7 +15,7 @@ public class ActionOption extends JComponent {
     public String TITLE = null;
     public BufferedImage ICON = null, SELECTEDICON = null;
     public boolean selected;
-    public Font FONT = null;
+    public Font font = null;
 
     public ActionOption(String title, int x, int y) {
         this.TITLE = title;
@@ -29,7 +29,7 @@ public class ActionOption extends JComponent {
             Map<TextAttribute, Object> attributes = new HashMap<>();
             attributes.put(TextAttribute.TRACKING, .09F);
             attributes.put(TextAttribute.SIZE, 32F);
-            FONT = Font.createFont(Font.TRUETYPE_FONT, stream).deriveFont(attributes);
+            font = Font.createFont(Font.TRUETYPE_FONT, stream).deriveFont(attributes);
         } catch (IOException | FontFormatException e) {
             throw new RuntimeException(e);
         }
@@ -54,7 +54,7 @@ public class ActionOption extends JComponent {
     public void paint(Graphics g) {
         if (TITLE != null) {
             g.setColor(Color.WHITE);
-            g.setFont(FONT);
+            g.setFont(font);
             g.drawString(TITLE, X, Y);
         } else {
             if (selected) {

@@ -25,6 +25,7 @@ public class BattleState extends GlobalState {
 
         int index = 0;
         actionOptions[index].toggleSelected();
+        gw.PLAYER.toggleStatsDisplayed();
         while (true) {
             gw.PLAYER.setPos((155*index)+42, 445);
             gw.repaint();
