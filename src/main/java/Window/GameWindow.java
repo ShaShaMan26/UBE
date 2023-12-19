@@ -11,6 +11,7 @@ import java.util.ArrayList;
 public class GameWindow extends JFrame implements KeyListener {
     private final BGPanel PANEL;
     public final AudioPlayer AUDIOPLAYER;
+    public final Player PLAYER;
     private final ArrayList<Integer> pressedKeys = new ArrayList<>();
     private final ArrayList<Integer> invalidKeys = new ArrayList<>();
     public GameWindow() {
@@ -27,7 +28,11 @@ public class GameWindow extends JFrame implements KeyListener {
         this.setTitle("UTB");
         this.getContentPane().setBackground(Color.BLACK);
         this.addKeyListener(this);
+
         this.setVisible(true);
+
+        this.PLAYER = new Player();
+        this.addComponent(PLAYER);
     }
 
     public void addComponent(Component c) {

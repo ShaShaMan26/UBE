@@ -26,6 +26,7 @@ public class BattleState extends GlobalState {
         int index = 0;
         actionOptions[index].toggleSelected();
         while (true) {
+            gw.PLAYER.setPos((155*index)+42, 445);
             gw.repaint();
 
             if (gw.getPressedKeys().contains(KeyEvent.VK_LEFT)) {

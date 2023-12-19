@@ -31,6 +31,7 @@ public class SelectBattleState extends GlobalState {
             int index = 0;
             battleSelectAOS.get(index).toggleSelected();
             while (true) {
+                gw.PLAYER.setPos(XOFFSET, (index*42) + YOFFSET-16);
                 gw.repaint();
 
                 if (gw.getPressedKeys().contains(KeyEvent.VK_UP)) {
@@ -49,6 +50,7 @@ public class SelectBattleState extends GlobalState {
                     if (index > battleSelectAOS.size()-1) {
                         index = 0;
                     }
+                    gw.PLAYER.moveDown();
                     battleSelectAOS.get(index).toggleSelected();
                     gw.invalidateKey(KeyEvent.VK_DOWN);
                 }
@@ -61,6 +63,7 @@ public class SelectBattleState extends GlobalState {
                 }
             }
         }
-        return new SelectBattleState();
+
+        return null;
     }
 }

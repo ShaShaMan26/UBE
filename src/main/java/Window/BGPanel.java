@@ -12,8 +12,17 @@ public class BGPanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
+        Component player = null;
         for (Component c : this.getComponents()) {
-            c.paint(g);
+            if (!(c instanceof Player)) {
+                c.paint(g);
+            } else {
+                player = c;
+            }
+        }
+
+        if (player != null) {
+            player.paint(g);
         }
     }
 }
