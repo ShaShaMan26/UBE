@@ -1,11 +1,20 @@
 package Menu;
 
+import GlobalState.BattleState.InBattleState;
+import GlobalState.GlobalState;
+
 import java.awt.*;
 
 public class BattleSelectAO extends ActionOption {
 
     public BattleSelectAO(String title, int x, int y) {
         super(title, x, y);
+    }
+
+    @Override
+    public GlobalState interact() {
+        super.interact();
+        return new InBattleState();
     }
 
     @Override

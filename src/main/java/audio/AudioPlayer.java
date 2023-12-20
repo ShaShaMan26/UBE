@@ -9,13 +9,14 @@ public class AudioPlayer {
     private Clip clip;
     private Clip bgm;
     private final ArrayList<Clip> clips = new ArrayList<>();
-    private final URL[] soundURL = new URL[2];
+    private final URL[] soundURL = new URL[3];
     private float volume;
     private FloatControl fc;
 
     public AudioPlayer() {
         soundURL[0] = getClass().getResource("/audio/menu_navigate.wav");
         soundURL[1] = getClass().getResource("/audio/menu_select.wav");
+        soundURL[2] = getClass().getResource("/audio/heal.wav");
     }
 
     public void setBGM (int i) {

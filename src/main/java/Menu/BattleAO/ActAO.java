@@ -1,5 +1,6 @@
 package Menu.BattleAO;
 
+import GlobalState.GlobalState;
 import Menu.ActionOption;
 
 import javax.imageio.ImageIO;
@@ -19,9 +20,9 @@ public class ActAO extends ActionOption {
     }
 
     @Override
-    public void interact() {
+    public GlobalState interact() {
         super.interact();
 
-        // open item menu
+        return null;
     }
 }

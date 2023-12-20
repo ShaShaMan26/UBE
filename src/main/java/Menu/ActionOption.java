@@ -8,6 +8,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
+
+import GlobalState.GlobalState;
 import Window.GameWindow;
 
 public class ActionOption extends JComponent {
@@ -38,9 +40,11 @@ public class ActionOption extends JComponent {
     public ActionOption() {
     }
 
-    public void interact() {
+    public GlobalState interact() {
         GameWindow gw = (GameWindow)this.getRootPane().getContentPane().getParent().getParent().getParent();
         gw.AUDIOPLAYER.playClip(1);
+
+        return null;
     }
 
     public void toggleSelected() {
@@ -55,7 +59,7 @@ public class ActionOption extends JComponent {
         if (TITLE != null) {
             g.setColor(Color.WHITE);
             g.setFont(font);
-            g.drawString(TITLE, X, Y);
+            g.drawString("* " + TITLE, X, Y);
         } else {
             if (selected) {
                 g.drawImage(SELECTEDICON, X, Y, null);

@@ -1,5 +1,7 @@
 package Menu.BattleAO;
 
+import GlobalState.BattleState.PlayerTurnState.ItemSelectState;
+import GlobalState.GlobalState;
 import Menu.ActionOption;
 
 import javax.imageio.ImageIO;
@@ -19,9 +21,9 @@ public class ItemAO extends ActionOption {
     }
 
     @Override
-    public void interact() {
+    public GlobalState interact() {
         super.interact();
 
-        // open item menu
+        return new ItemSelectState();
     }
 }

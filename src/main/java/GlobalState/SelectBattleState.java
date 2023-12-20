@@ -1,6 +1,6 @@
 package GlobalState;
 
-import GlobalState.BattleState.BattleState;
+import GlobalState.BattleState.InBattleState;
 import Menu.BattleSelectAO;
 import Menu.ActionOption;
 import Window.GameWindow;
@@ -58,10 +58,8 @@ public class SelectBattleState extends GlobalState {
         }
 
         if (gw.getPressedKeys().contains(KeyEvent.VK_Z)) {
-            battleSelectAOS.get(index).interact();
             gw.invalidateKey(KeyEvent.VK_Z);
-
-            return new BattleState();
+            return battleSelectAOS.get(index).interact();
         }
 
         gw.PLAYER.setPos(XOFFSET, (index*42) + YOFFSET-16);

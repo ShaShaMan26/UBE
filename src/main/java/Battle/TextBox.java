@@ -37,6 +37,6 @@ public class TextBox extends Component {
         // draw text
         g.setColor(Color.WHITE);
         g.setFont(FONT);
-        g.drawString("* You encountered the Dummy.", X+20, Y+45);
+        //g.drawString("* You encountered the Dummy.", X+20, Y+45);
     }
 }

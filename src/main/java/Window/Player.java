@@ -17,7 +17,7 @@ public class Player extends Component {
     public Player() {
         this.x = 0;
         this.y = 0;
-        health = 20;
+        health = 3;
         speed = 4;
 
 
@@ -67,6 +67,12 @@ public class Player extends Component {
     }
     public void damage(int amount) {
         health -= amount;
+
+        if (health > 20) {
+            health = 20;
+        } else if (health < 0) {
+            health = 0;
+        }
     }
 
     public void paint(Graphics g) {
@@ -74,6 +80,7 @@ public class Player extends Component {
 
         if (statsDisplayed) {
             g.setFont(font);
+            g.setColor(Color.WHITE);
             g.drawString("LV 1", 122, 417);
             g.drawString(health+" / 20", 320, 417);
 
