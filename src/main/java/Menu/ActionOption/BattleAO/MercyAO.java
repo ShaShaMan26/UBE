@@ -1,5 +1,6 @@
 package Menu.ActionOption.BattleAO;
 
+import GlobalState.BattleState.PlayerTurnState.MercySelectState;
 import GlobalState.GlobalState;
 import Menu.ActionOption.ActionOption;
 
@@ -23,6 +24,6 @@ public class MercyAO extends ActionOption {
     public GlobalState interact() {
         super.interact();
 
-        return null;
+        return new MercySelectState();
     }
 }

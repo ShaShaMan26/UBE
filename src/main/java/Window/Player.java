@@ -17,7 +17,7 @@ public class Player extends Component {
     public Player() {
         this.x = 0;
         this.y = 0;
-        health = 3;
+        health = 20;
         speed = 4;
 
 

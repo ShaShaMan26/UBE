@@ -47,6 +47,11 @@ public class InBattleState extends GlobalState {
                 battleState.clear(gw);
             }
 
+            if (tempBattleState instanceof SelectBattleState) {
+                gw.PLAYER.toggleStatsDisplayed();
+                return tempBattleState;
+            }
+
             if (!(tempBattleState instanceof InitializeGameState)) {
                 battleState = (BattleState) tempBattleState;
             }

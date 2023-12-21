@@ -2,7 +2,6 @@ package GlobalState;
 
 import Menu.ActionOption.BattleSelectAO;
 import Menu.ActionOption.ActionOption;
-import Menu.FancyText;
 import Window.GameWindow;
 
 import java.awt.event.KeyEvent;
@@ -16,6 +15,8 @@ public class SelectBattleState extends GlobalState {
 
     @Override
     public void run(GameWindow gw) {
+        gw.PLAYER.damage(-20);
+
         String[] battleNames = new File(System.getenv("APPDATA") + "\\UTB\\battles").list();
 
         if (battleNames.length > 0) {
