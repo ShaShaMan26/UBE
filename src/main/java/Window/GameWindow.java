@@ -38,6 +38,9 @@ public class GameWindow extends JFrame implements KeyListener {
     public void addComponent(Component c) {
         PANEL.add(c);
     }
+    public void removeComponent(Component c) {
+        PANEL.remove(c);
+    }
 
     public BGPanel getPanel() {
         return this.PANEL;

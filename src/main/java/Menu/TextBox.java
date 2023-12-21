@@ -1,4 +1,4 @@
-package Battle;
+package Menu;
 
 import java.awt.*;
 import java.awt.font.TextAttribute;
@@ -33,10 +33,5 @@ public class TextBox extends Component {
         g.fillRect(X, Y, 574, 139);
         g.setColor(Color.BLACK);
         g.fillRect(X+5, Y+5, 564, 129);
-
-        // draw text
-        g.setColor(Color.WHITE);
-        g.setFont(FONT);
-        //g.drawString("* You encountered the Dummy.", X+20, Y+45);
     }
 }

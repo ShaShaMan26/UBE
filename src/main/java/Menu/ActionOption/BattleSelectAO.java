@@ -1,4 +1,4 @@
-package Menu;
+package Menu.ActionOption;
 
 import GlobalState.BattleState.InBattleState;
 import GlobalState.GlobalState;

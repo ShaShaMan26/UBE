@@ -1,8 +1,8 @@
 package GlobalState;
 
-import GlobalState.BattleState.InBattleState;
-import Menu.BattleSelectAO;
-import Menu.ActionOption;
+import Menu.ActionOption.BattleSelectAO;
+import Menu.ActionOption.ActionOption;
+import Menu.FancyText;
 import Window.GameWindow;
 
 import java.awt.event.KeyEvent;

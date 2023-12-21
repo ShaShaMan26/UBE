@@ -9,7 +9,7 @@ public class AudioPlayer {
     private Clip clip;
     private Clip bgm;
     private final ArrayList<Clip> clips = new ArrayList<>();
-    private final URL[] soundURL = new URL[3];
+    private final URL[] soundURL = new URL[4];
     private float volume;
     private FloatControl fc;
 
@@ -17,6 +17,7 @@ public class AudioPlayer {
         soundURL[0] = getClass().getResource("/audio/menu_navigate.wav");
         soundURL[1] = getClass().getResource("/audio/menu_select.wav");
         soundURL[2] = getClass().getResource("/audio/heal.wav");
+        soundURL[3] = getClass().getResource("/audio/menu_text.wav");
     }
 
     public void setBGM (int i) {
@@ -38,6 +39,29 @@ public class AudioPlayer {
     public void playClip(int i) {
         try {
             AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundURL[i]);
+            clip = AudioSystem.getClip();
+            clip.open(audioInputStream);
+            FloatControl fc = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+            fc.setValue(volume);
+            clips.add(clip);
+            audioInputStream.close();
+        } catch (UnsupportedAudioFileException | LineUnavailableException | IOException e) {
+            throw new RuntimeException(e);
+        }
+        clip.start();
+    }
+    public void playClip(int i, int pitch) {
+        try {
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundURL[i]);
+            AudioFormat inFormat = audioInputStream.getFormat();
+
+            int ch = inFormat.getChannels();
+            float rate = inFormat.getSampleRate();
+            AudioFormat audioFormat = new AudioFormat(AudioFormat.Encoding.PCM_SIGNED, pitch, 16, ch,
+                    ch * 2, rate, inFormat.isBigEndian());
+
+            audioInputStream = AudioSystem.getAudioInputStream(audioFormat, audioInputStream);
+
             clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             FloatControl fc = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);

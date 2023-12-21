@@ -3,7 +3,8 @@ package GlobalState.BattleState.PlayerTurnState;
 import GlobalState.BattleState.BattleState;
 import GlobalState.BattleState.InBattleState;
 import GlobalState.GlobalState;
-import Menu.ActionOption;
+import Menu.ActionOption.ActionOption;
+import Menu.FancyText;
 import Window.GameWindow;
 
 import java.awt.event.KeyEvent;
@@ -11,6 +12,7 @@ import java.awt.event.KeyEvent;
 public class SelectActionState extends BattleState {
     private ActionOption[] actionOptions;
     private int index;
+    private final FancyText text = new FancyText("Smells like team spirit.*Oh wait, you're just on fire...*You should put that out.", 1);
 
     public SelectActionState(InBattleState inBattleState) {
         super(inBattleState);
@@ -26,6 +28,8 @@ public class SelectActionState extends BattleState {
         }
 
         gw.PLAYER.setPos((155*index)+42, 445);
+
+        gw.addComponent(text);
     }
 
     @Override
@@ -52,7 +56,13 @@ public class SelectActionState extends BattleState {
 
         if (gw.getPressedKeys().contains(KeyEvent.VK_Z)) {
             gw.invalidateKey(KeyEvent.VK_Z);
+            gw.removeComponent(text);
+            text.reset();
             return actionOptions[index].interact();
+        }
+        if (gw.getPressedKeys().contains(KeyEvent.VK_X)) {
+            gw.invalidateKey(KeyEvent.VK_X);
+            text.complete();
         }
 
         gw.PLAYER.setPos((155*index)+42, 445);

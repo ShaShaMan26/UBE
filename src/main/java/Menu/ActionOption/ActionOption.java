@@ -1,4 +1,4 @@
-package Menu;
+package Menu.ActionOption;
 
 import javax.swing.*;
 import java.awt.*;

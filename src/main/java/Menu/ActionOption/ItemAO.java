@@ -1,8 +1,8 @@
-package Menu.BattleAO;
+package Menu.ActionOption.BattleAO;
 
 import GlobalState.BattleState.PlayerTurnState.ItemSelectState;
 import GlobalState.GlobalState;
-import Menu.ActionOption;
+import Menu.ActionOption.ActionOption;
 
 import javax.imageio.ImageIO;
 import java.util.Objects;

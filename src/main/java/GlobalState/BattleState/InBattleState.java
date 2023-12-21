@@ -1,10 +1,13 @@
 package GlobalState.BattleState;
 
-import Battle.TextBox;
+import Menu.ActionOption.*;
+import Menu.ActionOption.BattleAO.ActAO;
+import Menu.ActionOption.BattleAO.FightAO;
+import Menu.ActionOption.BattleAO.ItemAO;
+import Menu.ActionOption.BattleAO.MercyAO;
+import Menu.TextBox;
 import GlobalState.BattleState.PlayerTurnState.SelectActionState;
 import GlobalState.*;
-import Menu.ActionOption;
-import Menu.BattleAO.*;
 import Window.GameWindow;
 
 public class InBattleState extends GlobalState {

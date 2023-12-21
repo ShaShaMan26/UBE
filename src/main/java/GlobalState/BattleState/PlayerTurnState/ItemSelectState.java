@@ -2,7 +2,7 @@ package GlobalState.BattleState.PlayerTurnState;
 
 import GlobalState.BattleState.BattleState;
 import GlobalState.*;
-import Menu.BattleAO.ItemSelectAO;
+import Menu.ActionOption.BattleAO.ItemSelectAO;
 import Window.GameWindow;
 
 import java.awt.event.KeyEvent;
@@ -83,7 +83,7 @@ public class ItemSelectState extends BattleState {
             gw.invalidateKey(KeyEvent.VK_X);
 
             for (ItemSelectAO ao : actionOptions) {
-                gw.getPanel().remove(ao);
+                gw.removeComponent(ao);
             }
 
             return new InitializeGameState();

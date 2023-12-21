@@ -1,7 +1,7 @@
-package Menu.BattleAO;
+package Menu.ActionOption.BattleAO;
 
 import GlobalState.GlobalState;
-import Menu.ActionOption;
+import Menu.ActionOption.ActionOption;
 import Window.GameWindow;
 
 public class ItemSelectAO extends ActionOption {
