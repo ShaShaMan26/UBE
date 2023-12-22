@@ -2,6 +2,7 @@ package Menu.ActionOption;
 
 import GlobalState.BattleState.InBattleState;
 import GlobalState.GlobalState;
+import Window.*;
 
 import java.awt.*;
 
@@ -14,6 +15,8 @@ public class BattleSelectAO extends ActionOption {
     @Override
     public GlobalState interact() {
         super.interact();
+        GameWindow gw = (GameWindow)this.getRootPane().getContentPane().getParent().getParent().getParent();
+        gw.battle = new Battle();
         return new InBattleState();
     }
 

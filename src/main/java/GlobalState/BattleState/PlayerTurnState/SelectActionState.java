@@ -12,16 +12,21 @@ import java.awt.event.KeyEvent;
 public class SelectActionState extends BattleState {
     private ActionOption[] actionOptions;
     private int index;
-    private final FancyText text = new FancyText("Smells like team spirit.*Oh wait, you're just on fire...*You should put that out.", 1);
+    private FancyText text = new FancyText("No text data found.", 1);
 
     public SelectActionState(InBattleState inBattleState) {
         super(inBattleState);
+    }
+
+    public void setText(String text) {
+        this.text = new FancyText(text, 1);
     }
 
     @Override
     public void run(GameWindow gw) {
         this.actionOptions = inBattleState.actionOptions;
         this.index = inBattleState.index;
+        setText(gw.battle.enterTxt);
 
         if (!actionOptions[index].selected) {
             actionOptions[index].toggleSelected();

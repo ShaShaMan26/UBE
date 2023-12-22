@@ -53,7 +53,6 @@ public class SelectBattleState extends GlobalState {
             if (index > battleSelectAOS.size()-1) {
                 index = 0;
             }
-            gw.PLAYER.moveDown();
             battleSelectAOS.get(index).toggleSelected();
             gw.invalidateKey(KeyEvent.VK_DOWN);
         }

@@ -15,11 +15,11 @@ public class FancyText extends JComponent {
     private final int X = 53, Y = 296, SPEED;
     private double realIndex = -1, ticks = 0;
     private int index = 0, numOfR = 1;
-    private ArrayList<Integer> astPos = new ArrayList<>();
-    private ArrayList<Character> invChars = new ArrayList<>();
+    private final ArrayList<Integer> astPos = new ArrayList<>();
+    private final ArrayList<Character> invChars = new ArrayList<>();
     private final Font FONT;
     private final String TEXT;
-    private StringBuilder DISPLAYEDTEXT = new StringBuilder();
+    private final StringBuilder DISPLAYEDTEXT = new StringBuilder();
 
     public FancyText(String text, int speed) {
         this.TEXT = text;

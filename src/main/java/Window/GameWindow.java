@@ -12,6 +12,7 @@ public class GameWindow extends JFrame implements KeyListener {
     private final BGPanel PANEL;
     public final AudioPlayer AUDIOPLAYER;
     public final Player PLAYER;
+    public Battle battle = null;
     private final ArrayList<Integer> pressedKeys = new ArrayList<>();
     private final ArrayList<Integer> invalidKeys = new ArrayList<>();
     public GameWindow() {

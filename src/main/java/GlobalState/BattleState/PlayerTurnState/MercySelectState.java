@@ -24,6 +24,10 @@ public class MercySelectState extends BattleState {
         }
         actionOptions[index].toggleSelected();
 
+        if (gw.battle.mercyHP == 0) {
+            ((SpareAO) actionOptions[0]).toggleActive();
+        }
+
         gw.PLAYER.setPos(65, 277);
     }
 
