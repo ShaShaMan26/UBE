@@ -11,7 +11,7 @@ import java.util.Objects;
 
 public class Player extends Component {
     private int health, x, y, speed;
-    private boolean statsDisplayed = false;
+    private boolean statsDisplayed = false, visible = true;
     private BufferedImage sprite;
     public Font font = null, font2 = null;
     public Player() {
@@ -52,6 +52,9 @@ public class Player extends Component {
     public void toggleStatsDisplayed() {
         this.statsDisplayed = !statsDisplayed;
     }
+    public void toggleVisible() {
+        visible = !visible;
+    }
 
     public void moveUp() {
         y -= speed;
@@ -65,6 +68,7 @@ public class Player extends Component {
     public void moveRight() {
         x += speed;
     }
+
     public void damage(int amount) {
         health -= amount;
 
@@ -74,9 +78,14 @@ public class Player extends Component {
             health = 0;
         }
     }
+    public int getHealth() {
+        return health;
+    }
 
     public void paint(Graphics g) {
-        g.drawImage(sprite, x, y, null);
+        if (visible) {
+            g.drawImage(sprite, x, y, null);
+        }
 
         if (statsDisplayed) {
             g.setFont(font);

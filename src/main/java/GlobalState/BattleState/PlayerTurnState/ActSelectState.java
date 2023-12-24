@@ -3,6 +3,7 @@ package GlobalState.BattleState.PlayerTurnState;
 import GlobalState.BattleState.BattleState;
 import GlobalState.*;
 import Menu.ActionOption.ActSelectAO;
+import Menu.ActionOption.ActionOption;
 import Window.GameWindow;
 
 import java.awt.event.KeyEvent;
@@ -78,6 +79,7 @@ public class ActSelectState extends BattleState {
 
         if (gw.getPressedKeys().contains(KeyEvent.VK_Z)) {
             gw.invalidateKey(KeyEvent.VK_Z);
+
             return actionOptions[index].interact();
         }
         if (gw.getPressedKeys().contains(KeyEvent.VK_X)) {

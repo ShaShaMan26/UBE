@@ -1,6 +1,7 @@
 package Menu.ActionOption;
 
-import GlobalState.GlobalState;
+import GlobalState.BattleState.FancyTextTime;
+import GlobalState.*;
 import Window.GameWindow;
 
 public class ActSelectAO extends ActionOption {
@@ -19,10 +20,14 @@ public class ActSelectAO extends ActionOption {
     public GlobalState interact() {
         super.interact();
         GameWindow gw = (GameWindow)this.getRootPane().getContentPane().getParent().getParent().getParent();
-        if (gw.battle.mercyHP - mercyVal == 0) {
+        if (mercyVal > 0 && gw.battle.mercyHP - mercyVal == 0) {
             gw.battle.mercyHP--;
         }
 
-        return null;
+        for (ActionOption ao : gw.battle.actionOptions) {
+            gw.removeComponent(ao);
+        }
+
+        return new FancyTextTime(postText, 1, new InitializeGameState());
     }
 }

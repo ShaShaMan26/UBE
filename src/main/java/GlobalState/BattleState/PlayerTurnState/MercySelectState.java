@@ -4,7 +4,6 @@ import GlobalState.BattleState.BattleState;
 import GlobalState.*;
 import Menu.ActionOption.ActionOption;
 import Menu.ActionOption.FleeAO;
-import Menu.ActionOption.ItemSelectAO;
 import Menu.ActionOption.SpareAO;
 import Window.GameWindow;
 
@@ -25,7 +24,7 @@ public class MercySelectState extends BattleState {
         actionOptions[index].toggleSelected();
 
         if (gw.battle.mercyHP == 0) {
-            ((SpareAO) actionOptions[0]).toggleActive();
+            ((SpareAO) actionOptions[0]).active = true;
         }
 
         gw.PLAYER.setPos(65, 277);
@@ -60,7 +59,15 @@ public class MercySelectState extends BattleState {
 
         if (gw.getPressedKeys().contains(KeyEvent.VK_Z)) {
             gw.invalidateKey(KeyEvent.VK_Z);
-            return actionOptions[index].interact();
+
+            ActionOption selectedAO = actionOptions[index];
+            for (ActionOption ao : actionOptions) {
+                if (ao != selectedAO) {
+                    gw.removeComponent(ao);
+                }
+            }
+
+            return selectedAO.interact();
         }
         if (gw.getPressedKeys().contains(KeyEvent.VK_X)) {
             gw.invalidateKey(KeyEvent.VK_X);

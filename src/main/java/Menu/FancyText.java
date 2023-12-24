@@ -40,6 +40,10 @@ public class FancyText extends JComponent {
         }
     }
 
+    public boolean isFullyWritten() {
+        return index >= TEXT.length();
+    }
+
     public void reset() {
         DISPLAYEDTEXT.setLength(0);
         index = 0;
@@ -58,9 +62,13 @@ public class FancyText extends JComponent {
     public void write() {
         char currentChar = TEXT.charAt(index);
 
-        if (currentChar == '.') {
+        if (currentChar == '.'
+                || currentChar == '!'
+                || currentChar == '?') {
             realIndex += 0.1F;
-        } else if (currentChar == ',') {
+        } else if (currentChar == ','
+                || currentChar == ':'
+                || currentChar == ';') {
             realIndex += 0.2F;
         } else {
             realIndex++;
@@ -72,10 +80,11 @@ public class FancyText extends JComponent {
             currentChar = TEXT.charAt(index);
 
             if (realIndex % index > 0.1) {
-                realIndex += Math.subtractExact((long) realIndex, (long) index);
+                realIndex += Math.subtractExact((long) realIndex, index);
             } else {
-                if (DISPLAYEDTEXT.length()*14 > 415*numOfR) {
-                    if (DISPLAYEDTEXT.toString().split("/r")[DISPLAYEDTEXT.toString().split("/r").length-1].length() > 20) {
+                String s = DISPLAYEDTEXT.toString().split("/r")[DISPLAYEDTEXT.toString().split("/r").length-1];
+                if (s.length()*14 > 435) {
+                    if (s.split(" ")[s.split(" ").length-1].length() > 20) {
                         DISPLAYEDTEXT.append("/r");
                     } else {
                         for (int i = 1; i < DISPLAYEDTEXT.length(); i++) {

@@ -19,7 +19,7 @@ public class InBattleState extends GlobalState {
     };
     public int index = 0;
     private BattleState battleState = new SelectActionState(this);
-    private GlobalState prevState = null;
+    public GlobalState prevState = null;
 
     @Override
     public void run(GameWindow gw) {
@@ -41,7 +41,12 @@ public class InBattleState extends GlobalState {
             if (tempBattleState instanceof InitializeGameState) {
                 battleState = (BattleState) prevState;
             }
-            prevState = battleState;
+
+            if (!(tempBattleState instanceof FancyTextTime)) {
+                prevState = battleState;
+            } else {
+                actionOptions[index].toggleSelected();
+            }
 
             if (!(tempBattleState instanceof BattleState) && !(tempBattleState instanceof InitializeGameState)) {
                 battleState.clear(gw);

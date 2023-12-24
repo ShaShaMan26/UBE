@@ -1,18 +1,16 @@
 package Menu.ActionOption;
 
+import Window.GameWindow;
 import GlobalState.*;
+import GlobalState.BattleState.FancyTextTime;
 
 import java.awt.*;
 
 public class SpareAO extends ActionOption {
-    private boolean active = false;
+    public boolean active = false;
 
     public SpareAO(String title, int x, int y) {
         super(title, x, y);
-    }
-
-    public void toggleActive() {
-        active = !active;
     }
 
     @Override
@@ -20,6 +18,9 @@ public class SpareAO extends ActionOption {
         super.interact();
 
         if (active) {
+            GameWindow gw = (GameWindow)this.getRootPane().getContentPane().getParent().getParent().getParent();
+            gw.removeComponent(this);
+
             return new SelectBattleState();
         }
 

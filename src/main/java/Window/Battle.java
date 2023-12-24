@@ -24,6 +24,7 @@ public class Battle extends Component {
     // Battle(File battleData) throws FileNotFoundException
     // Scanner fileReader = new Scanner(new FileReader(battleData));
     public Battle() {
+        this.name = "Froggit";
         this.HP = 30;
         this.atk = 4;
         this.def = 4;
@@ -32,11 +33,14 @@ public class Battle extends Component {
         this.mercyHP = 1;
 
         this.enterTxt = "Froggit attacks you!";
+        this.checkTxt = "Life is difficult for this enemy.";
 
         actionOptions = new ActSelectAO[]{
-                new ActSelectAO("Check", 101, 295, 0, "", ""),
-                new ActSelectAO("Compliment", 357, 295, 1, "", ""),
-                new ActSelectAO("Threaten", 101, 327, 1, "", ""),
+                new ActSelectAO("Check", 101, 295, 0,
+                        name+" - ATK " + atk + " DEF " + (def+1) + "*"+checkTxt,
+                        ""),
+                new ActSelectAO("Compliment", 357, 295, 1, "Froggit didn't understand what you said, but was flattered anyway.", ""),
+                new ActSelectAO("Threaten", 101, 327, 1, "Froggit didn't understand what you said, but was scared anyway.", ""),
                 // new ActSelectAO("", 357, 327, 0, "", "")
         };
     }
