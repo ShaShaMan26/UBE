@@ -5,7 +5,7 @@ import Menu.ActionOption.BattleAO.ActAO;
 import Menu.ActionOption.BattleAO.FightAO;
 import Menu.ActionOption.BattleAO.ItemAO;
 import Menu.ActionOption.BattleAO.MercyAO;
-import Menu.TextBox;
+import Menu.BattleBG;
 import GlobalState.BattleState.PlayerTurnState.SelectActionState;
 import GlobalState.*;
 import Window.GameWindow;
@@ -23,7 +23,7 @@ public class InBattleState extends GlobalState {
 
     @Override
     public void run(GameWindow gw) {
-        gw.addComponent(new TextBox());
+        gw.addComponent(new BattleBG(2, gw.battle.sprite));
 
         for (ActionOption ao : actionOptions) {
             gw.addComponent(ao);

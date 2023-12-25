@@ -1,16 +1,14 @@
 package Window;
 
 import Menu.ActionOption.ActSelectAO;
-import Menu.ActionOption.ActionOption;
-import Menu.ActionOption.ItemSelectAO;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.net.URL;
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.Objects;
 
 public class Battle extends Component {
     public int HP, mercyHP, atk, def, XPReward, goldReward;
@@ -19,7 +17,7 @@ public class Battle extends Component {
     public ArrayList<String> dialogue, mercyDialogue, flavorTxt;
     // private ArrayList<Attack> attacks;
     public ActSelectAO[] actionOptions;
-    private BufferedImage sprite;
+    public BufferedImage sprite;
 
     // Battle(File battleData) throws FileNotFoundException
     // Scanner fileReader = new Scanner(new FileReader(battleData));
@@ -31,6 +29,12 @@ public class Battle extends Component {
         this.XPReward = 3;
         this.goldReward = 2;
         this.mercyHP = 1;
+
+        try {
+            this.sprite = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/art/froggit.png")));
+        } catch (Exception e) {
+
+        }
 
         this.enterTxt = "Froggit attacks you!";
         this.checkTxt = "Life is difficult for this enemy.";

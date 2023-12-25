@@ -13,10 +13,9 @@ import javax.swing.*;
 
 public class FancyText extends JComponent {
     private final int X = 53, Y = 296, SPEED;
-    private double realIndex = -1, ticks = 0;
-    private int index = 0, numOfR = 1;
+    private double realIndex = -1;
+    private int index = 0, numOfR = 1, ticks = 0, sfxTick = 0;
     private final ArrayList<Integer> astPos = new ArrayList<>();
-    private final ArrayList<Character> invChars = new ArrayList<>();
     private final Font FONT;
     private final String TEXT;
     private final StringBuilder DISPLAYEDTEXT = new StringBuilder();
@@ -25,8 +24,6 @@ public class FancyText extends JComponent {
         this.TEXT = text;
         this.SPEED = speed;
         astPos.add(0);
-
-        invChars.add(' ');
 
         InputStream stream = getClass().getResourceAsStream("/fonts/8bitoperator_jve.ttf");
         try {
@@ -111,11 +108,14 @@ public class FancyText extends JComponent {
         if (index < TEXT.length()) {
             write();
 
-            if (realIndex < (long) TEXT.length()
-                    && realIndex % index < 0.1
-                    && !invChars.contains(TEXT.charAt(index))) {
+            if (index < TEXT.length()-1 && sfxTick < 1) {
                 playSFX();
+                sfxTick = 4;
             }
+        }
+
+        if (realIndex % index < 0.1) {
+            sfxTick--;
         }
     }
 
