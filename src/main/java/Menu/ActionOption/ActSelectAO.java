@@ -13,7 +13,6 @@ public class ActSelectAO extends ActionOption {
         this.mercyVal = mercyVal;
         this.postText = postText;
         this.reactText = reactText;
-
     }
 
     @Override

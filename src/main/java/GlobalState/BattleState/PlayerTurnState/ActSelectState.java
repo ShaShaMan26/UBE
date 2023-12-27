@@ -30,6 +30,7 @@ public class ActSelectState extends BattleState {
 
         try {
             if (gw.getPressedKeys().contains(KeyEvent.VK_LEFT)) {
+                gw.invalidateKey(KeyEvent.VK_LEFT);
                 actionOptions[index].toggleSelected();
                 index--;
                 if (previousIndex == 0 && index < 0) {
@@ -38,9 +39,9 @@ public class ActSelectState extends BattleState {
                     index = 3;
                 }
                 actionOptions[index].toggleSelected();
-                gw.invalidateKey(KeyEvent.VK_LEFT);
             }
             if (gw.getPressedKeys().contains(KeyEvent.VK_RIGHT)) {
+                gw.invalidateKey(KeyEvent.VK_RIGHT);
                 actionOptions[index].toggleSelected();
                 index++;
                 if (previousIndex == 1 && index > 1) {
@@ -49,9 +50,9 @@ public class ActSelectState extends BattleState {
                     index = 2;
                 }
                 actionOptions[index].toggleSelected();
-                gw.invalidateKey(KeyEvent.VK_RIGHT);
             }
             if (gw.getPressedKeys().contains(KeyEvent.VK_UP)) {
+                gw.invalidateKey(KeyEvent.VK_UP);
                 actionOptions[index].toggleSelected();
                 index-=2;
                 if (previousIndex == 0 && index < 0) {
@@ -60,9 +61,9 @@ public class ActSelectState extends BattleState {
                     index = 3;
                 }
                 actionOptions[index].toggleSelected();
-                gw.invalidateKey(KeyEvent.VK_UP);
             }
             if (gw.getPressedKeys().contains(KeyEvent.VK_DOWN)) {
+                gw.invalidateKey(KeyEvent.VK_DOWN);
                 actionOptions[index].toggleSelected();
                 index+=2;
                 if (previousIndex == 2 && index > 2) {
@@ -71,7 +72,6 @@ public class ActSelectState extends BattleState {
                     index = 1;
                 }
                 actionOptions[index].toggleSelected();
-                gw.invalidateKey(KeyEvent.VK_DOWN);
             }
         } catch (Exception e) {
 
