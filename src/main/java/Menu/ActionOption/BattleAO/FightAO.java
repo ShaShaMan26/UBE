@@ -24,6 +24,6 @@ public class FightAO extends ActionOption {
     public GlobalState interact() {
         super.interact();
 
-        return new FancyDialogueTime("Should be burning in hell.", 1, new InitializeGameState());
+        return new FancyDialogueTime("umm... you do know you cant kill ghosts, right?", 1, new InitializeGameState());
     }
 }

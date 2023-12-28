@@ -1,15 +1,8 @@
 package Menu;
 
 import java.awt.*;
-import java.awt.font.TextAttribute;
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public abstract class FancyText extends JComponent {
@@ -69,8 +62,11 @@ public abstract class FancyText extends JComponent {
                 realIndex += Math.subtractExact((long) realIndex, index);
             } else {
                 String s = DISPLAYEDTEXT.toString().split("/r")[DISPLAYEDTEXT.toString().split("/r").length-1];
-                if (s.length()*14 > width*14) {
+                if (s.length() > width) {
                     if (s.split(" ")[s.split(" ").length-1].length() > width) {
+                        DISPLAYEDTEXT.append("/r");
+                    } else if (DISPLAYEDTEXT.lastIndexOf(" ") == index+1) {
+                        DISPLAYEDTEXT.deleteCharAt(index+1);
                         DISPLAYEDTEXT.append("/r");
                     } else {
                         for (int i = 1; i < DISPLAYEDTEXT.length(); i++) {

@@ -39,7 +39,7 @@ public class FancyDialouge extends FancyText {
     public void playSFX() {
         GameWindow gw = (GameWindow)this.getRootPane().getContentPane().getParent().getParent().getParent();
         int pitch = (int) ((Math.random() * (88200 - 44100)) + 44100);
-        gw.AUDIOPLAYER.playClip(3, pitch);
+        gw.AUDIOPLAYER.playClip(4, pitch);
     }
 
     @Override
@@ -53,7 +53,7 @@ public class FancyDialouge extends FancyText {
         g.setColor(Color.BLACK);
         String[] splitText = DISPLAYEDTEXT.toString().split("/r");
         for (int i = 0; i < splitText.length; i++) {
-            g.drawString(splitText[i], x+22, y+22+(14*i));
+            g.drawString(splitText[i], x+40, y+22+(20*i));
         }
 
         if (ticks == SPEED) {
