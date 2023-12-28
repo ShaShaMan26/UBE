@@ -1,5 +1,6 @@
 package GlobalState.BattleState;
 
+import GlobalState.BattleState.PlayerTurnState.FancyTextBoxTime;
 import Menu.ActionOption.*;
 import Menu.ActionOption.BattleAO.ActAO;
 import Menu.ActionOption.BattleAO.FightAO;
@@ -11,15 +12,15 @@ import GlobalState.*;
 import Window.GameWindow;
 
 public class InBattleState extends GlobalState {
-    public ActionOption[] actionOptions = new ActionOption[]{
+    public ActionOption[] actionOptions = new ActionOption[] {
         new FightAO(),
         new ActAO(),
         new ItemAO(),
         new MercyAO()
     };
     public int index = 0;
-    private BattleState battleState = new SelectActionState(this);
-    public GlobalState prevState = null;
+    public SelectActionState selectActionState = new SelectActionState(this);
+    private BattleState battleState = selectActionState;
 
     @Override
     public void run(GameWindow gw) {
@@ -39,17 +40,13 @@ public class InBattleState extends GlobalState {
 
         if (tempBattleState != null) {
             if (tempBattleState instanceof InitializeGameState) {
-                battleState = (BattleState) prevState;
+                battleState = selectActionState;
             }
 
-            if (!(tempBattleState instanceof FancyTextTime)) {
-                prevState = battleState;
-            } else {
+            // this will need to be changed to enemyTurnState or smth
+            if (tempBattleState instanceof FancyTextBoxTime) {
                 actionOptions[index].toggleSelected();
-            }
-
-            if (!(tempBattleState instanceof BattleState) && !(tempBattleState instanceof InitializeGameState)) {
-                battleState.clear(gw);
+                // gw.PLAYER.toggleVisible();
             }
 
             if (tempBattleState instanceof SelectBattleState) {
@@ -58,7 +55,11 @@ public class InBattleState extends GlobalState {
             }
 
             if (!(tempBattleState instanceof InitializeGameState)) {
-                battleState = (BattleState) tempBattleState;
+                if (tempBattleState instanceof BattleState) {
+                    battleState = (BattleState) tempBattleState;
+                } else {
+                    battleState.clear(gw);
+                }
             }
 
             battleState.run(gw);

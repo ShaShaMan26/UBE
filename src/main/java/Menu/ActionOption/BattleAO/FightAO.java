@@ -1,6 +1,7 @@
 package Menu.ActionOption.BattleAO;
 
-import GlobalState.GlobalState;
+import GlobalState.BattleState.EnemyTurnState.FancyDialogueTime;
+import GlobalState.*;
 import Menu.ActionOption.ActionOption;
 
 import javax.imageio.ImageIO;
@@ -23,6 +24,6 @@ public class FightAO extends ActionOption {
     public GlobalState interact() {
         super.interact();
 
-        return null;
+        return new FancyDialogueTime("Should be burning in hell.", 1, new InitializeGameState());
     }
 }

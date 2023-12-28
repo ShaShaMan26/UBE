@@ -1,35 +1,25 @@
 package Menu;
 
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.font.TextAttribute;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
+
 import Window.GameWindow;
 
-public class FancyDialouge extends FancyText {
-    private BufferedImage txtbox;
-    public FancyDialouge(String text, int speed) {
-        super(text, speed, 326, 125, 7);
+public class FancyTextBox extends FancyText {
+    public FancyTextBox(String text, int speed) {
+        super(text, speed, 53, 296, 29);
 
-        InputStream stream = getClass().getResourceAsStream("/fonts/greater_determination.ttf");
+        InputStream stream = getClass().getResourceAsStream("/fonts/8bitoperator_jve.ttf");
         try {
             assert stream != null;
             Map<TextAttribute, Object> attributes = new HashMap<>();
-            attributes.put(TextAttribute.TRACKING, 0);
-            attributes.put(TextAttribute.SIZE, 12F);
+            attributes.put(TextAttribute.TRACKING, .09F);
+            attributes.put(TextAttribute.SIZE, 32F);
             FONT = Font.createFont(Font.TRUETYPE_FONT, stream).deriveFont(attributes);
-
-            if (TEXT.length() < 6*7) {
-                txtbox = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/art/sm_txtbox.png")));
-            } else {
-                txtbox = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/art/med_txtbox.png")));
-                width = 21;
-            }
         } catch (IOException | FontFormatException e) {
             throw new RuntimeException(e);
         }
@@ -42,18 +32,18 @@ public class FancyDialouge extends FancyText {
         gw.AUDIOPLAYER.playClip(3, pitch);
     }
 
-    @Override
     public void paint(Graphics g) {
+        super.paint(g);
+
+        g.setColor(Color.WHITE);
         g.setFont(FONT);
 
-        // draw speech bubble
-        g.drawImage(txtbox, x, y, null);
-
-        // draw text
-        g.setColor(Color.BLACK);
+        for (int pos : astPos) {
+            g.drawString("*", x, 32*pos+y);
+        }
         String[] splitText = DISPLAYEDTEXT.toString().split("/r");
         for (int i = 0; i < splitText.length; i++) {
-            g.drawString(splitText[i], x+22, y+22+(14*i));
+            g.drawString(splitText[i], x+30, 32*i+y);
         }
 
         if (ticks == SPEED) {

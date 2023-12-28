@@ -1,24 +1,19 @@
 package GlobalState.BattleState;
 
-import GlobalState.*;
-import GlobalState.BattleState.EnemyTurnState.FancyDialogueTime;
+import GlobalState.GlobalState;
 import Menu.FancyText;
+import Menu.FancyTextBox;
 import Window.GameWindow;
 
 import java.awt.event.KeyEvent;
 
-public class FancyTextTime extends BattleState {
+public abstract class FancyTextTime extends BattleState {
     public FancyText text;
-    private final GlobalState postState;
-    public FancyTextTime(String title, int speed, GlobalState postState) {
-        this.text = new FancyText(title, speed);
-        this.postState = postState;
-    }
+    public GlobalState postState;
 
     @Override
     public void run(GameWindow gw) {
         gw.addComponent(text);
-        gw.PLAYER.toggleVisible();
     }
 
     @Override
@@ -28,7 +23,7 @@ public class FancyTextTime extends BattleState {
 
             if (text.isFullyWritten()) {
                 gw.removeComponent(text);
-                return new FancyDialogueTime("umm... you do know can't actually kill ghosts, right?", text.SPEED, postState);
+                return postState;
             }
         }
         if (gw.getPressedKeys().contains(KeyEvent.VK_X)) {

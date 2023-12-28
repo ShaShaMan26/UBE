@@ -1,6 +1,7 @@
 package Menu.ActionOption;
 
-import GlobalState.BattleState.FancyTextTime;
+import GlobalState.BattleState.EnemyTurnState.FancyDialogueTime;
+import GlobalState.BattleState.PlayerTurnState.FancyTextBoxTime;
 import GlobalState.*;
 import Window.GameWindow;
 
@@ -27,6 +28,7 @@ public class ActSelectAO extends ActionOption {
             gw.removeComponent(ao);
         }
 
-        return new FancyTextTime(postText, 1, new InitializeGameState());
+        return new FancyTextBoxTime(postText, 1,
+                new FancyDialogueTime(reactText, 1, new InitializeGameState()));
     }
 }

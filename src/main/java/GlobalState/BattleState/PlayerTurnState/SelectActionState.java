@@ -4,7 +4,7 @@ import GlobalState.BattleState.BattleState;
 import GlobalState.BattleState.InBattleState;
 import GlobalState.GlobalState;
 import Menu.ActionOption.ActionOption;
-import Menu.FancyText;
+import Menu.FancyTextBox;
 import Window.GameWindow;
 
 import java.awt.event.KeyEvent;
@@ -12,14 +12,14 @@ import java.awt.event.KeyEvent;
 public class SelectActionState extends BattleState {
     private ActionOption[] actionOptions;
     private int index;
-    private FancyText text = new FancyText("No text data found.", 1);
+    private FancyTextBox text = new FancyTextBox("No text data found.", 1);
 
     public SelectActionState(InBattleState inBattleState) {
         super(inBattleState);
     }
 
     public void setText(String text) {
-        this.text = new FancyText(text, 1);
+        this.text = new FancyTextBox(text, 1);
     }
 
     @Override

@@ -1,7 +1,7 @@
 package Menu.ActionOption;
 
 import GlobalState.*;
-import GlobalState.BattleState.FancyTextTime;
+import GlobalState.BattleState.PlayerTurnState.FancyTextBoxTime;
 import Window.GameWindow;
 
 public class FleeAO extends ActionOption {
@@ -17,6 +17,6 @@ public class FleeAO extends ActionOption {
         gw.removeComponent(this);
 
         // flee animation plz <3
-        return new FancyTextTime("Escaped...", 1, new SelectBattleState());
+        return new FancyTextBoxTime("Escaped...", 1, new SelectBattleState());
     }
 }

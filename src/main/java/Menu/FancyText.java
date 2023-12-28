@@ -7,11 +7,12 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import Window.GameWindow;
+import java.util.Objects;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
-public class FancyText extends JComponent {
+public abstract class FancyText extends JComponent {
     public int x, y, width, SPEED;
     private double realIndex = -1;
     public int index = 0, numOfR = 1, ticks = 0, sfxTick = 0;
@@ -20,26 +21,16 @@ public class FancyText extends JComponent {
     public String TEXT;
     public final StringBuilder DISPLAYEDTEXT = new StringBuilder();
 
-    public FancyText(String text, int speed) {
+    public FancyText(String text, int speed, int x, int y, int width) {
         this.TEXT = text;
         this.SPEED = speed;
-        x = 53;
-        y = 296;
-        width = 29;
+        this.x = x;
+        this.y = y;
+        this.width = width;
         astPos.add(0);
-
-        InputStream stream = getClass().getResourceAsStream("/fonts/8bitoperator_jve.ttf");
-        try {
-            assert stream != null;
-            Map<TextAttribute, Object> attributes = new HashMap<>();
-            attributes.put(TextAttribute.TRACKING, .09F);
-            attributes.put(TextAttribute.SIZE, 32F);
-            FONT = Font.createFont(Font.TRUETYPE_FONT, stream).deriveFont(attributes);
-        } catch (IOException | FontFormatException e) {
-            throw new RuntimeException(e);
-        }
     }
-    public FancyText(){}
+
+    public abstract void playSFX();
 
     public boolean isFullyWritten() {
         return index >= TEXT.length();
@@ -52,12 +43,6 @@ public class FancyText extends JComponent {
         numOfR = 1;
         astPos.clear();
         astPos.add(0);
-    }
-
-    public void playSFX() {
-        GameWindow gw = (GameWindow)this.getRootPane().getContentPane().getParent().getParent().getParent();
-        int pitch = (int) ((Math.random() * (88200 - 44100)) + 44100);
-        gw.AUDIOPLAYER.playClip(3, pitch);
     }
 
     public void write() {
@@ -128,26 +113,5 @@ public class FancyText extends JComponent {
         while (index < TEXT.length()) {
             write();
         }
-    }
-
-    public void paint(Graphics g) {
-        super.paint(g);
-
-        g.setColor(Color.WHITE);
-        g.setFont(FONT);
-
-        for (int pos : astPos) {
-            g.drawString("*", x, 32*pos+y);
-        }
-        String[] splitText = DISPLAYEDTEXT.toString().split("/r");
-        for (int i = 0; i < splitText.length; i++) {
-            g.drawString(splitText[i], x+30, 32*i+y);
-        }
-
-        if (ticks == SPEED) {
-            update();
-            ticks = 0;
-        }
-        ticks += 1;
     }
 }

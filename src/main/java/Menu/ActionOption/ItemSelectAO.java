@@ -1,10 +1,9 @@
 package Menu.ActionOption;
 
-import GlobalState.BattleState.FancyTextTime;
+import GlobalState.BattleState.EnemyTurnState.FancyDialogueTime;
+import GlobalState.BattleState.PlayerTurnState.FancyTextBoxTime;
 import GlobalState.*;
 import Window.GameWindow;
-
-import java.awt.*;
 
 public class ItemSelectAO extends ActionOption {
     private final int healVal;
@@ -21,9 +20,10 @@ public class ItemSelectAO extends ActionOption {
 
         gw.removeComponent(this);
 
+        String text = "You recovered " + healVal + " HP!";
         if (gw.PLAYER.getHealth() + healVal > 19) {
-            return new FancyTextTime("Your HP was maxed out.", 1, new InitializeGameState());
+            text = "Your HP was maxed out.";
         }
-        return new FancyTextTime("You recovered " + healVal + " HP!", 1, new InitializeGameState());
+        return new FancyTextBoxTime(text, 1, new InitializeGameState());
     }
 }
