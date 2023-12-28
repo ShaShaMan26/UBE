@@ -26,7 +26,6 @@ public class SelectActionState extends BattleState {
     public void run(GameWindow gw) {
         this.actionOptions = inBattleState.actionOptions;
         this.index = inBattleState.index;
-        setText(gw.battle.enterTxt);
 
         if (!actionOptions[index].selected) {
             actionOptions[index].toggleSelected();

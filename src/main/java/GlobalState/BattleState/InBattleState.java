@@ -20,10 +20,13 @@ public class InBattleState extends GlobalState {
     };
     public int index = 0;
     public SelectActionState selectActionState = new SelectActionState(this);
-    private BattleState battleState = selectActionState;
+    private BattleState battleState;
 
     @Override
     public void run(GameWindow gw) {
+        selectActionState.setText(gw.battle.enterTxt);
+        battleState = selectActionState;
+
         gw.addComponent(new BattleBG(2, gw.battle.sprite));
 
         for (ActionOption ao : actionOptions) {
@@ -45,6 +48,11 @@ public class InBattleState extends GlobalState {
 
             // this will need to be changed to enemyTurnState or smth
             if (tempBattleState instanceof FancyTextBoxTime) {
+                if (gw.battle.mercyHP == 0) {
+                    selectActionState.setText(gw.battle.spareableTxt);
+                } else {
+                    selectActionState.setText(gw.battle.getRandFT());
+                }
                 actionOptions[index].toggleSelected();
                 // gw.PLAYER.toggleVisible();
             }

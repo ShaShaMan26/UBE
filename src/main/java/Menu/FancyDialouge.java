@@ -44,6 +44,11 @@ public class FancyDialouge extends FancyText {
 
     @Override
     public void paint(Graphics g) {
+        GameWindow gw = (GameWindow)this.getRootPane().getContentPane().getParent().getParent().getParent();
+        if (TEXT.equals("")) {
+            this.TEXT = gw.battle.getRandD();
+        }
+
         g.setFont(FONT);
 
         // draw speech bubble
@@ -53,7 +58,11 @@ public class FancyDialouge extends FancyText {
         g.setColor(Color.BLACK);
         String[] splitText = DISPLAYEDTEXT.toString().split("/r");
         for (int i = 0; i < splitText.length; i++) {
-            g.drawString(splitText[i], x+40, y+22+(20*i));
+            if (width < 20) {
+                g.drawString(splitText[i], x+22, y+22+(20*i));
+            } else {
+                g.drawString(splitText[i], x+40, y+22+(20*i));
+            }
         }
 
         if (ticks == SPEED) {

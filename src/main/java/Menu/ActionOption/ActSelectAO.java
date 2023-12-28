@@ -19,6 +19,7 @@ public class ActSelectAO extends ActionOption {
     @Override
     public GlobalState interact() {
         super.interact();
+
         GameWindow gw = (GameWindow)this.getRootPane().getContentPane().getParent().getParent().getParent();
         if (mercyVal > 0 && gw.battle.mercyHP - mercyVal == 0) {
             gw.battle.mercyHP--;

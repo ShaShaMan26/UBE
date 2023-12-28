@@ -85,6 +85,10 @@ public abstract class FancyText extends JComponent {
                 } else {
                     DISPLAYEDTEXT.append(currentChar);
                 }
+
+                if (DISPLAYEDTEXT.indexOf("/r ") > -1) {
+                    DISPLAYEDTEXT.delete(DISPLAYEDTEXT.indexOf("/r "), DISPLAYEDTEXT.indexOf("/r ")+3);
+                }
             }
         }
     }

@@ -3,10 +3,8 @@ package Window;
 import Menu.ActionOption.ActSelectAO;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -14,7 +12,7 @@ public class Battle extends Component {
     public int HP, mercyHP, atk, def, XPReward, goldReward;
     private Boolean isBossMonster;
     public String name, checkTxt, enterTxt, spareableTxt;
-    public ArrayList<String> dialogue, mercyDialogue, flavorTxt;
+    public ArrayList<String> dialogue = new ArrayList<>(), flavorTxt = new ArrayList<>();
     // private ArrayList<Attack> attacks;
     public ActSelectAO[] actionOptions;
     public BufferedImage sprite;
@@ -36,16 +34,36 @@ public class Battle extends Component {
 
         }
 
-        this.enterTxt = "Froggit attacks you!";
+        this.enterTxt = "Froggit hopped close!";
         this.checkTxt = "Life is difficult for this enemy.";
+        this.spareableTxt = "Froggit seems reluctant to fight you.";
+
+        this.flavorTxt.add("Froggit doesn't seem to know why it's here.");
+        this.flavorTxt.add("Froggit hops to and fro.");
+        this.flavorTxt.add("The battlefield is filled with the smell of mustard seed.");
+        this.flavorTxt.add("You are intimidated by Froggit's raw strength.*Only kidding.");
+
+        this.dialogue.add("Ribbit, ribbit.");
+        this.dialogue.add("Croak, croak.");
+        this.dialogue.add("Hop, hop.");
+        this.dialogue.add("Meow.");
 
         actionOptions = new ActSelectAO[]{
                 new ActSelectAO("Check", 101, 295, 0,
                         name+" - ATK " + atk + " DEF " + (def+1) + "*"+checkTxt,
                         ""),
-                new ActSelectAO("Compliment", 357, 295, 1, "Froggit didn't understand what you said, but was flattered anyway.", ""),
-                new ActSelectAO("Threaten", 101, 327, 1, "Froggit didn't understand what you said, but was scared anyway.", ""),
+                new ActSelectAO("Compliment", 357, 295, 1, "Froggit didn't understand what you said, but was flattered anyway.", "(Blushes deeply.) Ribbit.."),
+                new ActSelectAO("Threaten", 101, 327, 1, "Froggit didn't understand what you said, but was scared anyway.", "Shiver, shiver."),
                 // new ActSelectAO("", 357, 327, 0, "", "")
         };
+    }
+
+    public String getRandFT() {
+        int index = (int) ((Math.random() * flavorTxt.size()));
+        return flavorTxt.get(index);
+    }
+    public String getRandD() {
+        int index = (int) ((Math.random() * dialogue.size()));
+        return dialogue.get(index);
     }
 }
