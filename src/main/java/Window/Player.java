@@ -10,9 +10,9 @@ import java.util.Map;
 import java.util.Objects;
 
 public class Player extends Component {
-    private int health, x, y, speed;
-    public int atk, def;
-    private boolean statsDisplayed = false, visible = true;
+    private int health, speed;
+    public int atk, def, x, y;
+    private boolean statsDisplayed = false, visible = true, slow = false, diagonal = false;
     private BufferedImage sprite;
     public Font font = null, font2 = null;
     public Player() {
@@ -49,8 +49,24 @@ public class Player extends Component {
         this.x = x;
         this.y = y;
     }
-    public void setSpeed(int speed) {
-        this.speed = speed;
+    public void toggleSlow() {
+        slow = !slow;
+        if (slow) {
+            speed /= 2;
+        } else {
+            speed *= 2;
+        }
+    }
+    public boolean isSlow() {
+        return slow;
+    }
+    public void toggleDiagonal() {
+        diagonal = !diagonal;
+        if (diagonal) {
+            speed -= 1;
+        } else {
+            speed += 1;
+        }
     }
     public void toggleStatsDisplayed() {
         this.statsDisplayed = !statsDisplayed;
@@ -83,6 +99,12 @@ public class Player extends Component {
     }
     public int getHealth() {
         return health;
+    }
+    /**
+     x, y, size
+     **/
+    public int[] getHitbox() {
+        return new int[]{x, y, 4};
     }
 
     public void paint(Graphics g) {

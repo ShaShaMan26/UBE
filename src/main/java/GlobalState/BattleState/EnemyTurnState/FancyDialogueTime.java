@@ -5,6 +5,8 @@ import GlobalState.GlobalState;
 import Menu.Assets.FancyDialouge;
 import Window.GameWindow;
 
+import java.awt.event.KeyEvent;
+
 public class FancyDialogueTime extends FancyTextTime {
     private boolean isBBAdded = false;
     public FancyDialogueTime(String title, int speed, GlobalState postState) {
@@ -23,6 +25,10 @@ public class FancyDialogueTime extends FancyTextTime {
 
         if (gw.battleBox.isTransitioning) {
             gw.battleBox.progressTransition(18);
+        }
+
+        if (gw.getPressedKeys().contains(KeyEvent.VK_X)) {
+            gw.battleBox.progressTransition(500);
         }
         return super.update(gw);
     }
