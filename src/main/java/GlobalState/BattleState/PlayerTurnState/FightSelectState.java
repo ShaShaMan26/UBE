@@ -4,7 +4,7 @@ import GlobalState.BattleState.BattleState;
 import GlobalState.BattleState.EnemyTurnState.EnemyAttackState;
 import GlobalState.BattleState.EnemyTurnState.FancyDialogueTime;
 import GlobalState.BattleState.FightBox;
-import GlobalState.GlobalState;
+import GlobalState.*;
 import Window.GameWindow;
 
 import java.awt.event.KeyEvent;
@@ -22,6 +22,10 @@ public class FightSelectState extends BattleState {
     public GlobalState update(GameWindow gw) {
         if (fightBox.isAttackCompleted()) {
             gw.removeComponent(fightBox);
+            if (fightBox.slideIndex == -1 && gw.battle.HP == 0) {
+                gw.PLAYER.toggleVisible();
+                return new SelectBattleState();
+            }
             return new FancyDialogueTime(gw.battle.getRandD(), 1, new EnemyAttackState());
         }
 

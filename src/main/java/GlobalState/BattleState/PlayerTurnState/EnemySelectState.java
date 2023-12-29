@@ -4,20 +4,27 @@ import GlobalState.BattleState.BattleState;
 import GlobalState.BattleState.ReturnState;
 import GlobalState.GlobalState;
 import Menu.ActionOption.ActionOption;
+import Menu.ActionOption.FightEnemySelectAO;
 import Window.GameWindow;
 
 import java.awt.event.KeyEvent;
 
 public class EnemySelectState extends BattleState {
-    GlobalState postState;
-    ActionOption actionOption;
-    public EnemySelectState(GlobalState postState) {
+    private final GlobalState postState;
+    private ActionOption actionOption;
+    private boolean isFightSelect;
+    public EnemySelectState(GlobalState postState, boolean isFightSelect) {
         this.postState = postState;
+        this.isFightSelect = isFightSelect;
     }
 
     @Override
     public void run(GameWindow gw) {
-        actionOption = new ActionOption(gw.battle.name, 101, 295);
+        if (isFightSelect) {
+            actionOption = new FightEnemySelectAO(gw.battle.name, 101, 295);
+        } else {
+            actionOption = new ActionOption(gw.battle.name, 101, 295);
+        }
         gw.addComponent(actionOption);
         gw.PLAYER.setPos(65, 277);
     }

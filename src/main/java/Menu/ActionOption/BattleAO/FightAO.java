@@ -24,6 +24,6 @@ public class FightAO extends ActionOption {
     @Override
     public GlobalState interact() {
         super.interact();
-        return new EnemySelectState(new FightSelectState());
+        return new EnemySelectState(new FightSelectState(), true);
     }
 }

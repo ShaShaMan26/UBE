@@ -25,6 +25,6 @@ public class ActAO extends ActionOption {
     public GlobalState interact() {
         super.interact();
 
-        return new EnemySelectState(new ActSelectState());
+        return new EnemySelectState(new ActSelectState(), false);
     }
 }

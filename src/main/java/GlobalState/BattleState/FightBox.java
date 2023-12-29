@@ -68,8 +68,8 @@ public class FightBox extends Component {
         g.drawImage(eye, 48, 263, null);
 
         // draw slash
-        if (ticks / 6 > 0 && !isSlashOver()) {
-            g.drawImage(slashFrames[ticks / 6], spriteX, 128, null);
+        if (!isSlashOver() && ticks / 5 > 0 && ticks / 5 < 6) {
+            g.drawImage(slashFrames[ticks / 5], spriteX, 128, null);
         }
 
         // draw damage fx
@@ -95,13 +95,13 @@ public class FightBox extends Component {
         }
 
         // draw needle
-        if (ticks / 2 % 2 == 0) {
+        if (ticks / 2 % 3 == 0) {
             g.setColor(Color.BLACK);
         } else {
             g.setColor(Color.WHITE);
         }
         g.fillRect(x-6, 255, 11, 129);
-        if (ticks / 2 % 2 == 0) {
+        if (ticks / 2 % 3 == 0) {
             g.setColor(Color.WHITE);
         } else {
             g.setColor(Color.BLACK);

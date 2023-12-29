@@ -21,7 +21,7 @@ public class InBattleState extends GlobalState {
         new MercyAO()
     };
     public int index = 0;
-    public SelectActionState selectActionState = new SelectActionState(this);
+    public SelectActionState selectActionState = new SelectActionState();
     public BattleBG battleBG;
     private BattleState battleState;
 

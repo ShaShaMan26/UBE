@@ -14,8 +14,7 @@ public class SelectActionState extends BattleState {
     private int index;
     private FancyTextBox text = new FancyTextBox("No text data found.", 1);
 
-    public SelectActionState(InBattleState inBattleState) {
-        super(inBattleState);
+    public SelectActionState() {
     }
 
     public void setText(String text) {
@@ -24,11 +23,11 @@ public class SelectActionState extends BattleState {
 
     @Override
     public void run(GameWindow gw) {
-        this.actionOptions = inBattleState.actionOptions;
-        this.index = inBattleState.index;
+        this.actionOptions = gw.inBattleState.actionOptions;
+        this.index = gw.inBattleState.index;
 
         if (!actionOptions[index].selected) {
-            actionOptions[index].toggleSelected();
+            actionOptions[index].selected = true;
         }
 
         gw.PLAYER.setPos((155*index)+42, 445);
@@ -71,7 +70,7 @@ public class SelectActionState extends BattleState {
 
         gw.PLAYER.setPos((155*index)+42, 445);
 
-        inBattleState.index = this.index;
+        gw.inBattleState.index = this.index;
 
         return null;
     }
