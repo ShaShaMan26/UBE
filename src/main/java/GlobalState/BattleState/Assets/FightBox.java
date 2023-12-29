@@ -1,4 +1,4 @@
-package GlobalState.BattleState;
+package GlobalState.BattleState.Assets;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

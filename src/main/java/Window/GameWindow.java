@@ -1,5 +1,6 @@
 package Window;
 
+import GlobalState.BattleState.Assets.BattleBox;
 import GlobalState.BattleState.InBattleState;
 import audio.AudioPlayer;
 
@@ -14,6 +15,7 @@ public class GameWindow extends JFrame implements KeyListener {
     public final AudioPlayer AUDIOPLAYER;
     public final Player PLAYER;
     public Battle battle = null;
+    public BattleBox battleBox = new BattleBox(33, 251, 574, 139);
     public InBattleState inBattleState = null;
     private final ArrayList<Integer> pressedKeys = new ArrayList<>();
     private final ArrayList<Integer> invalidKeys = new ArrayList<>();

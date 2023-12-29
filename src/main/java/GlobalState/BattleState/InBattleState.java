@@ -32,6 +32,8 @@ public class InBattleState extends GlobalState {
         selectActionState.setText(gw.battle.enterTxt);
         battleState = selectActionState;
 
+        gw.addComponent(gw.battleBox);
+
         battleBG = new BattleBG(gw.battle.col, gw.battle.sprite);
         gw.addComponent(battleBG);
 

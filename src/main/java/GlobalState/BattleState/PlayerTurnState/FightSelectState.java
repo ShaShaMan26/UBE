@@ -3,7 +3,7 @@ package GlobalState.BattleState.PlayerTurnState;
 import GlobalState.BattleState.BattleState;
 import GlobalState.BattleState.EnemyTurnState.EnemyAttackState;
 import GlobalState.BattleState.EnemyTurnState.FancyDialogueTime;
-import GlobalState.BattleState.FightBox;
+import GlobalState.BattleState.Assets.FightBox;
 import GlobalState.*;
 import Window.GameWindow;
 

@@ -8,13 +8,19 @@ import Window.GameWindow;
 public class EnemyAttackState extends BattleState {
     @Override
     public void run(GameWindow gw) {
-        gw.PLAYER.toggleVisible();
         gw.PLAYER.damage(2);
         gw.AUDIOPLAYER.playClip(7);
+        gw.battleBox.transitionTo(33, 251, 574, 139);
+        gw.PLAYER.toggleVisible();
     }
 
     @Override
     public GlobalState update(GameWindow gw) {
-        return new ReturnState();
+        gw.battleBox.progressTransition(18);
+        if (!gw.battleBox.isTransitioning) {
+            gw.PLAYER.toggleVisible();
+            return new ReturnState();
+        }
+        return null;
     }
 }
