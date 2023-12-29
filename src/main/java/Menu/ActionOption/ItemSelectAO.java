@@ -22,7 +22,7 @@ public class ItemSelectAO extends ActionOption {
         gw.removeComponent(this);
 
         String text = "You recovered " + healVal + " HP!";
-        if (gw.PLAYER.getHealth() + healVal > 19) {
+        if (gw.PLAYER.getHealth() > 19) {
             text = "Your HP was maxed out.";
         }
 

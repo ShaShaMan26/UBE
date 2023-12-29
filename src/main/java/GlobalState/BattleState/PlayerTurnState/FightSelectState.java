@@ -10,9 +10,10 @@ import Window.GameWindow;
 import java.awt.event.KeyEvent;
 
 public class FightSelectState extends BattleState {
-    private FightBox fightBox = new FightBox();
+    private FightBox fightBox;
     @Override
     public void run(GameWindow gw) {
+        fightBox = new FightBox(gw.battle.totalHP, gw.battle.HP, gw.battle.col);
         gw.addComponent(fightBox);
         gw.PLAYER.toggleVisible();
         gw.inBattleState.toggleCommandSelect();
@@ -34,7 +35,9 @@ public class FightSelectState extends BattleState {
             if (fightBox.isSlashOver() && fightBox.slideIndex == fightBox.damage) {
                 gw.AUDIOPLAYER.playClip(5);
             }
-        } else{
+        } else if (fightBox.attackMissed) {
+            fightBox.progressAttack();
+        } else {
             if (gw.getPressedKeys().contains(KeyEvent.VK_Z)) {
                 gw.invalidateKey(KeyEvent.VK_Z);
 
@@ -46,11 +49,15 @@ public class FightSelectState extends BattleState {
                 }
                 int damage = (int) ((gw.PLAYER.atk - gw.battle.def + ((int) (Math.random()*3))) * b);
 
-                fightBox.startAttack(gw.battle.totalHP, gw.battle.HP, damage, gw.battle.col);
+                fightBox.startAttack(damage);
                 gw.battle.dealDamage(damage);
                 gw.AUDIOPLAYER.playClip(6);
             } else {
-                fightBox.moveNeedle();
+                if (fightBox.getNeedlePos() > 544) {
+                    fightBox.missAttack();
+                } else {
+                    fightBox.moveNeedle();
+                }
             }
         }
 

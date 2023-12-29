@@ -9,6 +9,8 @@ public class EnemyAttackState extends BattleState {
     @Override
     public void run(GameWindow gw) {
         gw.PLAYER.toggleVisible();
+        gw.PLAYER.damage(2);
+        gw.AUDIOPLAYER.playClip(7);
     }
 
     @Override

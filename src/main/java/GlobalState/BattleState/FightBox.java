@@ -14,9 +14,13 @@ public class FightBox extends Component {
     private BufferedImage[] slashFrames = new BufferedImage[6];
     private int spriteX = 0, ticks = 0, hp, totalHP;
     public int damage, slideIndex, x = 47;
-    public boolean attackTriggered = false;
+    public boolean attackTriggered = false, attackMissed = false;
     private Font font;
-    public FightBox() {
+    public FightBox(int totalHP, int hp, int spriteX) {
+        this.totalHP = totalHP;
+        this.hp = hp;
+        this.spriteX = 102*spriteX+14;
+
         InputStream stream = getClass().getResourceAsStream("/fonts/hachicro.ttf");
         try {
             assert stream != null;
@@ -42,17 +46,21 @@ public class FightBox extends Component {
         return x - 48;
     }
 
-    public void startAttack(int totalHP, int hp, int damage, int spriteX) {
-        this.totalHP = totalHP;
-        this.hp = hp - damage;
+    public void startAttack(int damage) {
         this.damage = damage;
+        this.hp -= damage;
         this.slideIndex = damage;
-        this.spriteX = 102*spriteX+14;
         attackTriggered = true;
     }
 
     public void progressAttack() {
         ticks++;
+    }
+
+    public void missAttack() {
+        ticks = slashFrames.length*6;
+        slideIndex = 3;
+        attackMissed = true;
     }
 
     public boolean isAttackCompleted() {
@@ -74,15 +82,22 @@ public class FightBox extends Component {
 
         // draw damage fx
         if (isSlashOver()) {
-            g.setColor(Color.BLACK);
-            g.fillRect(spriteX+2, 115, 104, 17);
-            g.setColor(Color.DARK_GRAY);
-            g.fillRect(spriteX+4, 117, 102, 15);
-            g.setColor(new Color(0, 254, 12));
-            g.fillRect(spriteX+4, 117, (int) ((102F/totalHP) * (hp + slideIndex)), 15);
-            g.setColor(new Color(244, 1, 5));
             g.setFont(font);
-            String s = ""+damage;
+            String s;
+            if (attackTriggered) {
+                g.setColor(Color.BLACK);
+                g.fillRect(spriteX+2, 115, 104, 17);
+                g.setColor(Color.DARK_GRAY);
+                g.fillRect(spriteX+4, 117, 102, 15);
+                g.setColor(new Color(0, 254, 12));
+                g.fillRect(spriteX+4, 117, (int) ((102F/totalHP) * (hp + slideIndex)), 15);
+                g.setColor(new Color(244, 1, 5));
+                s = ""+damage;
+            } else {
+                g.setColor(Color.LIGHT_GRAY);
+                s = "MISS";
+            }
+
             g.drawString(s, 104/2 - (s.length()*28 / 2) + spriteX+2, 115);
 
             if (ticks % 3 == 0) {
@@ -95,17 +110,19 @@ public class FightBox extends Component {
         }
 
         // draw needle
-        if (ticks / 2 % 3 == 0) {
-            g.setColor(Color.BLACK);
-        } else {
-            g.setColor(Color.WHITE);
+        if (!attackMissed) {
+            if (ticks / 2 % 3 == 0) {
+                g.setColor(Color.BLACK);
+            } else {
+                g.setColor(Color.WHITE);
+            }
+            g.fillRect(x-6, 255, 11, 129);
+            if (ticks / 2 % 3 == 0) {
+                g.setColor(Color.WHITE);
+            } else {
+                g.setColor(Color.BLACK);
+            }
+            g.fillRect(x-3, 258, 5, 123);
         }
-        g.fillRect(x-6, 255, 11, 129);
-        if (ticks / 2 % 3 == 0) {
-            g.setColor(Color.WHITE);
-        } else {
-            g.setColor(Color.BLACK);
-        }
-        g.fillRect(x-3, 258, 5, 123);
     }
 }
