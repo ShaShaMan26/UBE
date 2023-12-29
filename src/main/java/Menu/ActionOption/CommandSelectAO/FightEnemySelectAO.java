@@ -1,6 +1,8 @@
-package Menu.ActionOption;
+package Menu.ActionOption.CommandSelectAO;
 
 import java.awt.*;
+
+import Menu.ActionOption.ActionOption;
 import Window.GameWindow;
 
 public class FightEnemySelectAO extends ActionOption {

@@ -4,7 +4,7 @@ import GlobalState.BattleState.BattleState;
 import GlobalState.*;
 import GlobalState.BattleState.ReturnState;
 import Menu.ActionOption.ActionOption;
-import Menu.ActionOption.ItemSelectAO;
+import Menu.ActionOption.CommandSelectAO.ItemSelectAO;
 import Window.GameWindow;
 
 import java.awt.event.KeyEvent;

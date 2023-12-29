@@ -1,6 +1,6 @@
 package Window;
 
-import Menu.ActionOption.ActSelectAO;
+import Menu.ActionOption.CommandSelectAO.ActSelectAO;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

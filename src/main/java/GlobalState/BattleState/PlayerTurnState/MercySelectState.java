@@ -4,8 +4,8 @@ import GlobalState.BattleState.BattleState;
 import GlobalState.*;
 import GlobalState.BattleState.ReturnState;
 import Menu.ActionOption.ActionOption;
-import Menu.ActionOption.FleeAO;
-import Menu.ActionOption.SpareAO;
+import Menu.ActionOption.CommandSelectAO.FleeAO;
+import Menu.ActionOption.CommandSelectAO.SpareAO;
 import Window.GameWindow;
 
 import java.awt.event.KeyEvent;

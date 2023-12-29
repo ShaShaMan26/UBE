@@ -1,4 +1,4 @@
-package Menu.ActionOption.BattleAO;
+package Menu.ActionOption.CommandAO;
 
 import GlobalState.BattleState.PlayerTurnState.ItemSelectState;
 import GlobalState.GlobalState;

@@ -1,10 +1,9 @@
 package GlobalState.BattleState.PlayerTurnState;
 
 import GlobalState.BattleState.BattleState;
-import GlobalState.BattleState.InBattleState;
 import GlobalState.GlobalState;
 import Menu.ActionOption.ActionOption;
-import Menu.FancyTextBox;
+import Menu.Assets.FancyTextBox;
 import Window.GameWindow;
 
 import java.awt.event.KeyEvent;

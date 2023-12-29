@@ -4,7 +4,7 @@ import GlobalState.BattleState.BattleState;
 import GlobalState.BattleState.ReturnState;
 import GlobalState.GlobalState;
 import Menu.ActionOption.ActionOption;
-import Menu.ActionOption.FightEnemySelectAO;
+import Menu.ActionOption.CommandSelectAO.FightEnemySelectAO;
 import Window.GameWindow;
 
 import java.awt.event.KeyEvent;

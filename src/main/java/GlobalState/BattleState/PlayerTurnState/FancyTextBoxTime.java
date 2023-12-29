@@ -2,7 +2,7 @@ package GlobalState.BattleState.PlayerTurnState;
 
 import GlobalState.BattleState.FancyTextTime;
 import GlobalState.GlobalState;
-import Menu.FancyTextBox;
+import Menu.Assets.FancyTextBox;
 
 public class FancyTextBoxTime extends FancyTextTime {
     public FancyTextBoxTime(String title, int speed, GlobalState postState) {

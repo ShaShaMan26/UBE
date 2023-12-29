@@ -1,8 +1,7 @@
 package GlobalState.BattleState;
 
 import GlobalState.GlobalState;
-import Menu.FancyText;
-import Menu.FancyTextBox;
+import Menu.Assets.FancyText;
 import Window.GameWindow;
 
 import java.awt.event.KeyEvent;

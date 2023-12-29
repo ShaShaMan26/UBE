@@ -1,14 +1,12 @@
 package GlobalState.BattleState;
 
 import GlobalState.BattleState.EnemyTurnState.EnemyAttackState;
-import GlobalState.BattleState.EnemyTurnState.FancyDialogueTime;
-import GlobalState.BattleState.PlayerTurnState.FancyTextBoxTime;
 import Menu.ActionOption.*;
-import Menu.ActionOption.BattleAO.ActAO;
-import Menu.ActionOption.BattleAO.FightAO;
-import Menu.ActionOption.BattleAO.ItemAO;
-import Menu.ActionOption.BattleAO.MercyAO;
-import Menu.BattleBG;
+import Menu.ActionOption.CommandAO.ActAO;
+import Menu.ActionOption.CommandAO.FightAO;
+import Menu.ActionOption.CommandAO.ItemAO;
+import Menu.ActionOption.CommandAO.MercyAO;
+import Menu.Assets.BattleBG;
 import GlobalState.BattleState.PlayerTurnState.SelectActionState;
 import GlobalState.*;
 import Window.GameWindow;

@@ -2,7 +2,7 @@ package GlobalState.BattleState.EnemyTurnState;
 
 import GlobalState.BattleState.FancyTextTime;
 import GlobalState.GlobalState;
-import Menu.FancyDialouge;
+import Menu.Assets.FancyDialouge;
 
 public class FancyDialogueTime extends FancyTextTime {
     public FancyDialogueTime(String title, int speed, GlobalState postState) {

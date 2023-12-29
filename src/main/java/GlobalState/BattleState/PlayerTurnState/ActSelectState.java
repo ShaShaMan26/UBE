@@ -3,7 +3,7 @@ package GlobalState.BattleState.PlayerTurnState;
 import GlobalState.BattleState.BattleState;
 import GlobalState.*;
 import GlobalState.BattleState.ReturnState;
-import Menu.ActionOption.ActSelectAO;
+import Menu.ActionOption.CommandSelectAO.ActSelectAO;
 import Window.GameWindow;
 
 import java.awt.event.KeyEvent;

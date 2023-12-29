@@ -1,4 +1,4 @@
-package Menu;
+package Menu.Assets;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

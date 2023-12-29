@@ -1,7 +1,8 @@
-package Menu.ActionOption;
+package Menu.ActionOption.CommandSelectAO;
 
 import GlobalState.*;
 import GlobalState.BattleState.PlayerTurnState.FancyTextBoxTime;
+import Menu.ActionOption.ActionOption;
 import Window.GameWindow;
 
 public class FleeAO extends ActionOption {

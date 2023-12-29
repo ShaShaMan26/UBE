@@ -1,9 +1,10 @@
-package Menu.ActionOption;
+package Menu.ActionOption.CommandSelectAO;
 
 import GlobalState.BattleState.EnemyTurnState.EnemyAttackState;
 import GlobalState.BattleState.EnemyTurnState.FancyDialogueTime;
 import GlobalState.BattleState.PlayerTurnState.FancyTextBoxTime;
 import GlobalState.*;
+import Menu.ActionOption.ActionOption;
 import Window.GameWindow;
 
 public class ActSelectAO extends ActionOption {
