@@ -19,7 +19,7 @@ public class ActSelectState extends BattleState {
         for (ActSelectAO ao : actionOptions) {
             gw.addComponent(ao);
         }
-        actionOptions[index].toggleSelected();
+        actionOptions[index].selected = true;
 
         gw.PLAYER.setPos(65, 277);
     }

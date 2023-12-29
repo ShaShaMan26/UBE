@@ -22,7 +22,7 @@ public class MercySelectState extends BattleState {
         for (ActionOption ao : actionOptions) {
             gw.addComponent(ao);
         }
-        actionOptions[index].toggleSelected();
+        actionOptions[index].selected = true;
 
         if (gw.battle.mercyHP == 0) {
             ((SpareAO) actionOptions[0]).active = true;

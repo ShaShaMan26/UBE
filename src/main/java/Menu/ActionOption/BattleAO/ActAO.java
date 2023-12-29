@@ -1,6 +1,7 @@
 package Menu.ActionOption.BattleAO;
 
 import GlobalState.BattleState.PlayerTurnState.ActSelectState;
+import GlobalState.BattleState.PlayerTurnState.EnemySelectState;
 import GlobalState.GlobalState;
 import Menu.ActionOption.ActionOption;
 
@@ -24,6 +25,6 @@ public class ActAO extends ActionOption {
     public GlobalState interact() {
         super.interact();
 
-        return new ActSelectState();
+        return new EnemySelectState(new ActSelectState());
     }
 }

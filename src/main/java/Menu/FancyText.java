@@ -99,7 +99,7 @@ public abstract class FancyText extends JComponent {
 
             if (index < TEXT.length()-1 && sfxTick < 1) {
                 playSFX();
-                sfxTick = 3;
+                sfxTick = 2;
             }
         }
 

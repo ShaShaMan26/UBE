@@ -23,7 +23,7 @@ public class ItemSelectState extends BattleState {
         for (ItemSelectAO ao : actionOptions) {
             gw.addComponent(ao);
         }
-        actionOptions[index].toggleSelected();
+        actionOptions[index].selected = true;
 
         gw.PLAYER.setPos(65, 277);
     }

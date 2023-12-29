@@ -60,7 +60,7 @@ public class FightBox extends Component {
     }
 
     public boolean isSlashOver() {
-        return ticks >= slashFrames.length*4;
+        return ticks >= slashFrames.length*6;
     }
 
     public void paint(Graphics g) {
@@ -68,8 +68,8 @@ public class FightBox extends Component {
         g.drawImage(eye, 48, 263, null);
 
         // draw slash
-        if (ticks / 4 > 0 && !isSlashOver()) {
-            g.drawImage(slashFrames[ticks / 4], spriteX, 128, null);
+        if (ticks / 6 > 0 && !isSlashOver()) {
+            g.drawImage(slashFrames[ticks / 6], spriteX, 128, null);
         }
 
         // draw damage fx
