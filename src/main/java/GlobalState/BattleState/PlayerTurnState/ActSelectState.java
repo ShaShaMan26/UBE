@@ -2,8 +2,8 @@ package GlobalState.BattleState.PlayerTurnState;
 
 import GlobalState.BattleState.BattleState;
 import GlobalState.*;
+import GlobalState.BattleState.ReturnState;
 import Menu.ActionOption.ActSelectAO;
-import Menu.ActionOption.ActionOption;
 import Window.GameWindow;
 
 import java.awt.event.KeyEvent;
@@ -79,6 +79,7 @@ public class ActSelectState extends BattleState {
 
         if (gw.getPressedKeys().contains(KeyEvent.VK_Z)) {
             gw.invalidateKey(KeyEvent.VK_Z);
+            gw.inBattleState.toggleCommandSelect();
 
             return actionOptions[index].interact();
         }
@@ -89,7 +90,7 @@ public class ActSelectState extends BattleState {
                 gw.removeComponent(ao);
             }
 
-            return new InitializeGameState();
+            return new ReturnState();
         }
 
         if (index >= actionOptions.length) {

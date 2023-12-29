@@ -2,6 +2,7 @@ package GlobalState.BattleState.PlayerTurnState;
 
 import GlobalState.BattleState.BattleState;
 import GlobalState.*;
+import GlobalState.BattleState.ReturnState;
 import Menu.ActionOption.ActionOption;
 import Menu.ActionOption.ItemSelectAO;
 import Window.GameWindow;
@@ -78,6 +79,7 @@ public class ItemSelectState extends BattleState {
 
         if (gw.getPressedKeys().contains(KeyEvent.VK_Z)) {
             gw.invalidateKey(KeyEvent.VK_Z);
+            gw.inBattleState.toggleCommandSelect();
 
             ActionOption selectedAO = actionOptions[index];
             for (ActionOption ao : actionOptions) {
@@ -95,7 +97,7 @@ public class ItemSelectState extends BattleState {
                 gw.removeComponent(ao);
             }
 
-            return new InitializeGameState();
+            return new ReturnState();
         }
 
         int x = 65, y = 277;

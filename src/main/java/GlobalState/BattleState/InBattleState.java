@@ -1,5 +1,7 @@
 package GlobalState.BattleState;
 
+import GlobalState.BattleState.EnemyTurnState.EnemyAttackState;
+import GlobalState.BattleState.EnemyTurnState.FancyDialogueTime;
 import GlobalState.BattleState.PlayerTurnState.FancyTextBoxTime;
 import Menu.ActionOption.*;
 import Menu.ActionOption.BattleAO.ActAO;
@@ -20,14 +22,20 @@ public class InBattleState extends GlobalState {
     };
     public int index = 0;
     public SelectActionState selectActionState = new SelectActionState(this);
+    public BattleBG battleBG;
     private BattleState battleState;
+
+    public void toggleCommandSelect() {
+        actionOptions[index].toggleSelected();
+    }
 
     @Override
     public void run(GameWindow gw) {
         selectActionState.setText(gw.battle.enterTxt);
         battleState = selectActionState;
 
-        gw.addComponent(new BattleBG(2, gw.battle.sprite));
+        battleBG = new BattleBG(gw.battle.col, gw.battle.sprite);
+        gw.addComponent(battleBG);
 
         for (ActionOption ao : actionOptions) {
             gw.addComponent(ao);
@@ -42,19 +50,16 @@ public class InBattleState extends GlobalState {
         GlobalState tempBattleState = battleState.update(gw);
 
         if (tempBattleState != null) {
-            if (tempBattleState instanceof InitializeGameState) {
+            if (tempBattleState instanceof ReturnState) {
                 battleState = selectActionState;
             }
 
-            // this will need to be changed to enemyTurnState or smth
-            if (tempBattleState instanceof FancyTextBoxTime) {
+            if (tempBattleState instanceof EnemyAttackState) {
                 if (gw.battle.mercyHP == 0) {
                     selectActionState.setText(gw.battle.spareableTxt);
                 } else {
                     selectActionState.setText(gw.battle.getRandFT());
                 }
-                actionOptions[index].toggleSelected();
-                // gw.PLAYER.toggleVisible();
             }
 
             if (tempBattleState instanceof SelectBattleState) {
@@ -62,7 +67,7 @@ public class InBattleState extends GlobalState {
                 return tempBattleState;
             }
 
-            if (!(tempBattleState instanceof InitializeGameState)) {
+            if (!(tempBattleState instanceof ReturnState)) {
                 if (tempBattleState instanceof BattleState) {
                     battleState = (BattleState) tempBattleState;
                 } else {

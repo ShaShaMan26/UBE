@@ -2,6 +2,7 @@ package GlobalState.BattleState.PlayerTurnState;
 
 import GlobalState.BattleState.BattleState;
 import GlobalState.*;
+import GlobalState.BattleState.ReturnState;
 import Menu.ActionOption.ActionOption;
 import Menu.ActionOption.FleeAO;
 import Menu.ActionOption.SpareAO;
@@ -59,6 +60,7 @@ public class MercySelectState extends BattleState {
 
         if (gw.getPressedKeys().contains(KeyEvent.VK_Z)) {
             gw.invalidateKey(KeyEvent.VK_Z);
+            gw.inBattleState.toggleCommandSelect();
 
             ActionOption selectedAO = actionOptions[index];
             for (ActionOption ao : actionOptions) {
@@ -76,7 +78,7 @@ public class MercySelectState extends BattleState {
                 gw.removeComponent(ao);
             }
 
-            return new InitializeGameState();
+            return new ReturnState();
         }
 
         gw.PLAYER.setPos(index*256+65, 277);

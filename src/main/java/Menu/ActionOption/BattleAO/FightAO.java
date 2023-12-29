@@ -1,7 +1,7 @@
 package Menu.ActionOption.BattleAO;
 
-import GlobalState.BattleState.EnemyTurnState.FancyDialogueTime;
 import GlobalState.*;
+import GlobalState.BattleState.PlayerTurnState.FightSelectState;
 import Menu.ActionOption.ActionOption;
 
 import javax.imageio.ImageIO;
@@ -23,7 +23,6 @@ public class FightAO extends ActionOption {
     @Override
     public GlobalState interact() {
         super.interact();
-
-        return new FancyDialogueTime("umm... you do know you cant kill ghosts, right?", 1, new InitializeGameState());
+        return new FightSelectState();
     }
 }

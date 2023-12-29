@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class Battle extends Component {
-    public int HP, mercyHP, atk, def, XPReward, goldReward;
+    public int totalHP, HP, mercyHP, atk, def, XPReward, goldReward, col;
     private Boolean isBossMonster;
     public String name, checkTxt, enterTxt, spareableTxt;
     public ArrayList<String> dialogue = new ArrayList<>(), flavorTxt = new ArrayList<>();
@@ -21,12 +21,14 @@ public class Battle extends Component {
     // Scanner fileReader = new Scanner(new FileReader(battleData));
     public Battle() {
         this.name = "Froggit";
-        this.HP = 30;
+        this.totalHP = 30;
+        this.HP = totalHP;
         this.atk = 4;
         this.def = 4;
         this.XPReward = 3;
         this.goldReward = 2;
         this.mercyHP = 1;
+        this.col = 2;
 
         try {
             this.sprite = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/art/froggit.png")));
@@ -59,11 +61,18 @@ public class Battle extends Component {
     }
 
     public String getRandFT() {
-        int index = (int) ((Math.random() * flavorTxt.size()));
+        int index = (int) (Math.random() * flavorTxt.size());
         return flavorTxt.get(index);
     }
     public String getRandD() {
-        int index = (int) ((Math.random() * dialogue.size()));
+        int index = (int) (Math.random() * dialogue.size());
         return dialogue.get(index);
+    }
+
+    public void dealDamage(int damage) {
+        HP -= damage;
+        if (HP < 0) {
+            HP = 0;
+        }
     }
 }

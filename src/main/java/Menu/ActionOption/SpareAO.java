@@ -1,5 +1,7 @@
 package Menu.ActionOption;
 
+import GlobalState.BattleState.EnemyTurnState.EnemyAttackState;
+import GlobalState.BattleState.EnemyTurnState.FancyDialogueTime;
 import Window.GameWindow;
 import GlobalState.*;
 
@@ -22,7 +24,10 @@ public class SpareAO extends ActionOption {
         if (active) {
             return new SelectBattleState();
         }
-        return new InitializeGameState();
+
+        gw.PLAYER.toggleVisible();
+        return new FancyDialogueTime(gw.battle.getRandD(), 1,
+                new EnemyAttackState());
     }
 
     @Override

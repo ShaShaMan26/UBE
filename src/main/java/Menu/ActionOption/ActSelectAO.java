@@ -1,5 +1,6 @@
 package Menu.ActionOption;
 
+import GlobalState.BattleState.EnemyTurnState.EnemyAttackState;
 import GlobalState.BattleState.EnemyTurnState.FancyDialogueTime;
 import GlobalState.BattleState.PlayerTurnState.FancyTextBoxTime;
 import GlobalState.*;
@@ -29,7 +30,8 @@ public class ActSelectAO extends ActionOption {
             gw.removeComponent(ao);
         }
 
+        gw.PLAYER.toggleVisible();
         return new FancyTextBoxTime(postText, 1,
-                new FancyDialogueTime(reactText, 1, new InitializeGameState()));
+                new FancyDialogueTime(reactText, 1, new EnemyAttackState()));
     }
 }

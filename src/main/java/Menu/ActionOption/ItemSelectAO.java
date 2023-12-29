@@ -1,5 +1,6 @@
 package Menu.ActionOption;
 
+import GlobalState.BattleState.EnemyTurnState.EnemyAttackState;
 import GlobalState.BattleState.EnemyTurnState.FancyDialogueTime;
 import GlobalState.BattleState.PlayerTurnState.FancyTextBoxTime;
 import GlobalState.*;
@@ -24,6 +25,9 @@ public class ItemSelectAO extends ActionOption {
         if (gw.PLAYER.getHealth() + healVal > 19) {
             text = "Your HP was maxed out.";
         }
-        return new FancyTextBoxTime(text, 1, new InitializeGameState());
+
+        gw.PLAYER.toggleVisible();
+        return new FancyTextBoxTime(text, 1,
+                new FancyDialogueTime(gw.battle.getRandD(), 1, new EnemyAttackState()));
     }
 }

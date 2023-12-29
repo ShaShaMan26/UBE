@@ -1,5 +1,6 @@
 package Window;
 
+import GlobalState.BattleState.InBattleState;
 import audio.AudioPlayer;
 
 import javax.swing.*;
@@ -13,6 +14,7 @@ public class GameWindow extends JFrame implements KeyListener {
     public final AudioPlayer AUDIOPLAYER;
     public final Player PLAYER;
     public Battle battle = null;
+    public InBattleState inBattleState = null;
     private final ArrayList<Integer> pressedKeys = new ArrayList<>();
     private final ArrayList<Integer> invalidKeys = new ArrayList<>();
     public GameWindow() {

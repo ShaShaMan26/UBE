@@ -9,7 +9,7 @@ public class AudioPlayer {
     private Clip clip;
     private Clip bgm;
     private final ArrayList<Clip> clips = new ArrayList<>();
-    private final URL[] soundURL = new URL[5];
+    private final URL[] soundURL = new URL[7];
     private float volume;
     private FloatControl fc;
 
@@ -19,6 +19,8 @@ public class AudioPlayer {
         soundURL[2] = getClass().getResource("/audio/heal.wav");
         soundURL[3] = getClass().getResource("/audio/menu_text.wav");
         soundURL[4] = getClass().getResource("/audio/char_text.wav");
+        soundURL[5] = getClass().getResource("/audio/enemy_hit.wav");
+        soundURL[6] = getClass().getResource("/audio/slash.wav");
     }
 
     public void setBGM (int i) {
