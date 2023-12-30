@@ -1,16 +1,22 @@
 package GlobalState.BattleState.EnemyTurnState;
 
-import GlobalState.BattleState.Assets.Bullet.Bullet;
+import GlobalState.BattleState.Assets.Bullet.*;
 import GlobalState.BattleState.BattleState;
 import GlobalState.BattleState.ReturnState;
 import GlobalState.GlobalState;
 import Window.GameWindow;
 
+import javax.imageio.ImageIO;
 import java.awt.event.KeyEvent;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.Objects;
 
 public class EnemyAttackState extends BattleState {
     private int battleTicks = 0, duration;
-    private Bullet[] bullets;
+    private ArrayList<Bullet> bullets = new ArrayList<>();
+
+    // duration, battleBox size
     public EnemyAttackState() {
         //this.duration = duration*30;
         this.duration = 15*30;
@@ -18,8 +24,21 @@ public class EnemyAttackState extends BattleState {
 
     @Override
     public void run(GameWindow gw) {
-        gw.PLAYER.damage(2);
-        gw.AUDIOPLAYER.playClip(7);
+        // add bullets from data
+        BufferedImage sprite = null;
+        try {
+            sprite = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/art/act_icon.png")));
+        } catch (Exception e) {
+
+        }
+        bullets.add(new UpMovingBullet((int) gw.battleBox.box.getCenterX(), (int) gw.battleBox.box.getCenterY(), 2, sprite));
+        bullets.add(new RightMovingBullet((int) gw.battleBox.box.getCenterX(), (int) gw.battleBox.box.getCenterY(), 2, sprite));
+        bullets.add(new LeftMovingBullet((int) gw.battleBox.box.getCenterX(), (int) gw.battleBox.box.getCenterY(), 2, sprite));
+        bullets.add(new DownMovingBullet((int) gw.battleBox.box.getCenterX(), (int) gw.battleBox.box.getCenterY(), 2, sprite));
+
+        for (Bullet bullet : bullets) {
+            gw.addComponent(bullet);
+        }
     }
 
     @Override
@@ -89,8 +108,21 @@ public class EnemyAttackState extends BattleState {
             gw.PLAYER.y = gw.battleBox.box.y+gw.battleBox.box.height-5-16;
         }
 
-        // player collision with bullets
-
+        // progress bullets and check for player collision with bullets
+        ArrayList<Bullet> removedBullets = new ArrayList<>();
+        for (Bullet bullet : bullets) {
+            bullet.progressMovement();
+            if (gw.PLAYER.collidingWith(bullet)) {
+                gw.PLAYER.damage(1);
+                gw.AUDIOPLAYER.playClip(7);
+                removedBullets.add(bullet);
+            }
+        }
+        // remove bullets
+        for (Bullet bullet : removedBullets) {
+            bullets.remove(bullet);
+            gw.removeComponent(bullet);
+        }
 
         return null;
     }

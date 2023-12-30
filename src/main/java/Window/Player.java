@@ -1,5 +1,7 @@
 package Window;
 
+import GlobalState.BattleState.Assets.Bullet.Bullet;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.font.TextAttribute;
@@ -43,6 +45,11 @@ public class Player extends Component {
         } catch (Exception e) {
 
         }
+    }
+
+    public boolean collidingWith(Bullet bullet) {
+        return x+8 >= bullet.x && bullet.x + bullet.sprite.getWidth() >= x+8
+                && y+8 >= bullet.y && bullet.y + bullet.sprite.getHeight() >= y+8;
     }
 
     public void setPos(int x, int y) {
@@ -99,12 +106,6 @@ public class Player extends Component {
     }
     public int getHealth() {
         return health;
-    }
-    /**
-     x, y, size
-     **/
-    public int[] getHitbox() {
-        return new int[]{x, y, 4};
     }
 
     public void paint(Graphics g) {
