@@ -14,7 +14,7 @@ import java.util.Objects;
 public class Player extends Component {
     private int health, speed;
     public int atk, def, x, y;
-    private boolean statsDisplayed = false, visible = true, slow = false, diagonal = false;
+    private boolean statsDisplayed = false, visible = true, slow = false, diagonal = false, invincible = false;
     private BufferedImage sprite;
     public Font font = null, font2 = null;
     public Player() {
@@ -75,6 +75,9 @@ public class Player extends Component {
             speed += 1;
         }
     }
+    public void toggleInvincible() {
+        invincible = !invincible;
+    }
     public void toggleStatsDisplayed() {
         this.statsDisplayed = !statsDisplayed;
     }
@@ -110,7 +113,11 @@ public class Player extends Component {
 
     public void paint(Graphics g) {
         if (visible) {
+                g.drawImage(sprite, x, y, null);
+        } else if (invincible) {
+            ((Graphics2D)g).setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5F));
             g.drawImage(sprite, x, y, null);
+            ((Graphics2D)g).setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
         }
 
         if (statsDisplayed) {

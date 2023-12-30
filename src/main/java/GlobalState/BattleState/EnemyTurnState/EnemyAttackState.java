@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class EnemyAttackState extends BattleState {
-    private int battleTicks = 0, duration;
+    private int battleTicks = 0, duration, invincibleDuration = 0;
     private ArrayList<Bullet> bullets = new ArrayList<>();
 
     // duration, battleBox size
@@ -27,14 +27,12 @@ public class EnemyAttackState extends BattleState {
         // add bullets from data
         BufferedImage sprite = null;
         try {
-            sprite = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/art/act_icon.png")));
+            sprite = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/art/player_soul.png")));
         } catch (Exception e) {
 
         }
-        bullets.add(new UpMovingBullet((int) gw.battleBox.box.getCenterX(), (int) gw.battleBox.box.getCenterY(), 2, sprite));
-        bullets.add(new RightMovingBullet((int) gw.battleBox.box.getCenterX(), (int) gw.battleBox.box.getCenterY(), 2, sprite));
-        bullets.add(new LeftMovingBullet((int) gw.battleBox.box.getCenterX(), (int) gw.battleBox.box.getCenterY(), 2, sprite));
-        bullets.add(new DownMovingBullet((int) gw.battleBox.box.getCenterX(), (int) gw.battleBox.box.getCenterY(), 2, sprite));
+        bullets.add(new UpMovingBullet((int) gw.battleBox.box.getCenterX(), (int) gw.battleBox.box.getCenterY(), 0, sprite));
+        bullets.add(new RightMovingBullet((int) gw.battleBox.box.getCenterX()-sprite.getHeight(), (int) gw.battleBox.box.getCenterY(), 0, sprite));
 
         for (Bullet bullet : bullets) {
             gw.addComponent(bullet);
@@ -112,12 +110,25 @@ public class EnemyAttackState extends BattleState {
         ArrayList<Bullet> removedBullets = new ArrayList<>();
         for (Bullet bullet : bullets) {
             bullet.progressMovement();
-            if (gw.PLAYER.collidingWith(bullet)) {
+            if (gw.PLAYER.collidingWith(bullet) && invincibleDuration < 1) {
+                invincibleDuration = 30;
+                gw.PLAYER.toggleInvincible();
                 gw.PLAYER.damage(1);
                 gw.AUDIOPLAYER.playClip(7);
                 removedBullets.add(bullet);
             }
         }
+
+        if (invincibleDuration > 0) {
+            if (invincibleDuration % 3== 0) {
+                gw.PLAYER.toggleVisible();
+            }
+            invincibleDuration--;
+            if (invincibleDuration == 0) {
+                gw.PLAYER.toggleInvincible();
+            }
+        }
+
         // remove bullets
         for (Bullet bullet : removedBullets) {
             bullets.remove(bullet);
