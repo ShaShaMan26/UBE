@@ -13,6 +13,10 @@ public class BattleBox extends Component {
         targetBox.setBounds(x, y, width, height);
         isTransitioning = true;
     }
+    public void transitionTo(BattleBox battleBox) {
+        targetBox.setBounds(battleBox.box.x, battleBox.box.y, battleBox.box.width, battleBox.box.height);
+        isTransitioning = true;
+    }
 
     public void progressTransition(int amount) {
         while (isTransitioning && amount > 0) {
