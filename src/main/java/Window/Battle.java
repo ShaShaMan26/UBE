@@ -1,5 +1,6 @@
 package Window;
 
+import GlobalState.BattleState.Assets.BattleBox;
 import Menu.ActionOption.CommandSelectAO.ActSelectAO;
 
 import javax.imageio.ImageIO;
@@ -15,6 +16,7 @@ public class Battle extends Component {
     public ArrayList<String> dialogue = new ArrayList<>(), flavorTxt = new ArrayList<>();
     // private ArrayList<Attack> attacks;
     public ActSelectAO[] actionOptions;
+    public BattleBox battleBox;
     public BufferedImage sprite;
 
     // Battle(File battleData) throws FileNotFoundException
@@ -29,6 +31,8 @@ public class Battle extends Component {
         this.goldReward = 2;
         this.mercyHP = 1;
         this.col = 2;
+
+        this.battleBox = new BattleBox(270, 271, 101, 100);
 
         try {
             this.sprite = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/art/froggit.png")));

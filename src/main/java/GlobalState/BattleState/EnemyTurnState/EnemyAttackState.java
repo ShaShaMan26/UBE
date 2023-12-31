@@ -1,8 +1,7 @@
 package GlobalState.BattleState.EnemyTurnState;
 
-import GlobalState.BattleState.Assets.BattleBox;
 import GlobalState.BattleState.Assets.Bullet.*;
-import GlobalState.BattleState.Assets.Bullet.Patterns.CirclePlayer;
+import GlobalState.BattleState.Assets.Bullet.Patterns.WallOfBullets;
 import GlobalState.BattleState.BattleState;
 import GlobalState.BattleState.ReturnState;
 import GlobalState.GlobalState;
@@ -15,21 +14,18 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class EnemyAttackState extends BattleState {
-    private int battleTicks = 0, duration, invincibleDuration = 0;
+    private int battleTicks = 0, duration, invincibleDuration = 0, r = 0;
     private ArrayList<Bullet> bullets = new ArrayList<>();
-    private BattleBox battleBox;
 
     // duration, battleBox size
     public EnemyAttackState() {
-        battleBox = new BattleBox(246, 271, 149, 100);
-
         //this.duration = duration*30;
         this.duration = 15*30;
     }
 
     @Override
     public void run(GameWindow gw) {
-        gw.battleBox.transitionTo(battleBox);
+        gw.battleBox.transitionTo(gw.battle.battleBox);
 
         // add bullets from data
     }
@@ -47,9 +43,15 @@ public class EnemyAttackState extends BattleState {
 
                 }
 
-                bullets.addAll(new CirclePlayer(gw.PLAYER, 40, 4, .15F, sprite).getBullets());
+                bullets.addAll(new WallOfBullets(gw, 10, 0.1F, r, sprite).getBullets());
                 for (Bullet bullet : bullets) {
                     gw.addComponent(bullet);
+                }
+
+                if (r < 4) {
+                    r++;
+                } else {
+                    r = 0;
                 }
             }
 
@@ -57,15 +59,22 @@ public class EnemyAttackState extends BattleState {
 
             if (battleTicks > duration) {
                 if (battleTicks == duration+1) {
-                    gw.PLAYER.toggleVisible();
+                    if (gw.PLAYER.isInvincible()) {
+                        gw.PLAYER.toggleInvincible();
+                        invincibleDuration = 0;
+                        gw.PLAYER.toggleVisible();
+                    }
+                    if (gw.PLAYER.isVisible()) {
+                        gw.PLAYER.toggleVisible();
+                    }
                     gw.battleBox.transitionTo(33, 251, 574, 139);
-                }
-                if (gw.battleBox.isTransitioning) {
-                    gw.battleBox.progressTransition(18);
-                } else {
                     for (Bullet bullet : bullets) {
                         gw.removeComponent(bullet);
                     }
+                }
+                if (gw.battleBox.isTransitioning) {
+                    gw.battleBox.progressTransition(24);
+                } else {
                     gw.PLAYER.toggleVisible();
                     return new ReturnState();
                 }

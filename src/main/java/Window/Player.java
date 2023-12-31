@@ -78,6 +78,9 @@ public class Player extends Component {
     public void toggleInvincible() {
         invincible = !invincible;
     }
+    public boolean isInvincible() {
+        return invincible;
+    }
     public void toggleStatsDisplayed() {
         this.statsDisplayed = !statsDisplayed;
     }
