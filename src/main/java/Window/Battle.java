@@ -6,62 +6,122 @@ import Menu.ActionOption.CommandSelectAO.ActSelectAO;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Objects;
+import java.util.Scanner;
 
 public class Battle extends Component {
-    public int totalHP, HP, mercyHP, atk, def, XPReward, goldReward, col;
-    private Boolean isBossMonster;
+    public int totalHP, HP, mercyHP, atk, playerAtk, def, XPReward, goldReward, col, dioY;
     public String name, checkTxt, enterTxt, spareableTxt;
     public ArrayList<String> dialogue = new ArrayList<>(), flavorTxt = new ArrayList<>();
     // private ArrayList<Attack> attacks;
     public ActSelectAO[] actionOptions;
     public BattleBox battleBox;
-    public BufferedImage sprite;
+    public BufferedImage sprite, defaultSprite, hitSprite, attackingSprite, killedSprite, spareableSprite, talkingSprite;
+    private File battleData;
+    private Scanner battleDataReader;
 
-    // Battle(File battleData) throws FileNotFoundException
-    // Scanner fileReader = new Scanner(new FileReader(battleData));
-    public Battle() {
-        this.name = "Froggit";
-        this.totalHP = 30;
-        this.HP = totalHP;
-        this.atk = 4;
-        this.def = 4;
-        this.XPReward = 3;
-        this.goldReward = 2;
-        this.mercyHP = 1;
-        this.col = 2;
-
+    public Battle(String path) {
+        // stuff to add
         this.battleBox = new BattleBox(220, 201, 201, 200);
+        // end
 
+        // reading sprite data
         try {
-            this.sprite = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/art/froggit.png")));
+            this.defaultSprite = ImageIO.read(new File(path+"\\enemy_sprites\\default.png"));
+            this.hitSprite = ImageIO.read(new File(path+"\\enemy_sprites\\hit.png"));
+            this.attackingSprite = ImageIO.read(new File(path+"\\enemy_sprites\\attacking.png"));
+            this.killedSprite = ImageIO.read(new File(path+"\\enemy_sprites\\killed.png"));
+            this.spareableSprite = ImageIO.read(new File(path+"\\enemy_sprites\\spareable.png"));
+            this.talkingSprite = ImageIO.read(new File(path+"\\enemy_sprites\\talking.png"));
+        } catch (Exception e) {
+        }
+        this.sprite = defaultSprite;
+
+        // reading battle data
+        battleData = new File(path+"\\battle_data.txt");
+        try {
+            battleDataReader = new Scanner(new FileReader(battleData));
         } catch (Exception e) {
 
         }
 
-        this.enterTxt = "Froggit hopped close!";
-        this.checkTxt = "Life is difficult for this enemy.";
-        this.spareableTxt = "Froggit seems reluctant to fight you.";
+        this.name = battleDataReader.nextLine().trim();
 
-        this.flavorTxt.add("Froggit doesn't seem to know why it's here.");
-        this.flavorTxt.add("Froggit hops to and fro.");
-        this.flavorTxt.add("The battlefield is filled with the smell of mustard seed.");
-        this.flavorTxt.add("You are intimidated by Froggit's raw strength.*Only kidding.");
+        this.col = Integer.parseInt(battleDataReader.nextLine().trim());
+        this.dioY = Integer.parseInt(battleDataReader.nextLine().trim());
+        this.totalHP = Integer.parseInt(battleDataReader.nextLine().trim());
+        this.HP = totalHP;
+        this.mercyHP = Integer.parseInt(battleDataReader.nextLine().trim());
+        this.atk = Integer.parseInt(battleDataReader.nextLine().trim());
+        this.def = Integer.parseInt(battleDataReader.nextLine().trim());
+        this.XPReward = Integer.parseInt(battleDataReader.nextLine().trim());
+        this.goldReward = Integer.parseInt(battleDataReader.nextLine().trim());
 
-        this.dialogue.add("Ribbit, ribbit.");
-        this.dialogue.add("Croak, croak.");
-        this.dialogue.add("Hop, hop.");
-        this.dialogue.add("Meow.");
+        this.playerAtk = Integer.parseInt(battleDataReader.nextLine().trim());
 
-        actionOptions = new ActSelectAO[]{
-                new ActSelectAO("Check", 101, 295, 0,
-                        name+" - ATK " + atk + " DEF " + (def+1) + "*"+checkTxt,
-                        ""),
-                new ActSelectAO("Compliment", 357, 295, 1, "Froggit didn't understand what you said, but was flattered anyway.", "(Blushes deeply.) Ribbit.."),
-                new ActSelectAO("Threaten", 101, 327, 1, "Froggit didn't understand what you said, but was scared anyway.", "Shiver, shiver."),
-                // new ActSelectAO("", 357, 327, 0, "", "")
-        };
+        this.enterTxt = battleDataReader.nextLine().trim();
+        this.checkTxt = battleDataReader.nextLine().trim();
+        this.spareableTxt = battleDataReader.nextLine().trim();
+
+        while (!battleDataReader.nextLine().trim().equals("<")) {
+        }
+        String s = battleDataReader.nextLine().trim();
+        while (!s.equals(">")) {
+            flavorTxt.add(s);
+            s = battleDataReader.nextLine().trim();
+        }
+
+        while (!battleDataReader.nextLine().trim().equals("<")) {
+        }
+        s = battleDataReader.nextLine().trim();
+        while (!s.equals(">")) {
+            dialogue.add(s);
+            s = battleDataReader.nextLine().trim();
+        }
+
+        ArrayList<ActSelectAO> AOD = new ArrayList<>();
+        AOD.add(new ActSelectAO("Check", 101, 295, 0,
+                name+" - ATK " + atk + " DEF " + (def) + "*"+checkTxt,
+                ""));
+
+        while (!battleDataReader.nextLine().trim().equals("<")) {
+        }
+        s = battleDataReader.nextLine().trim();
+        if (!s.equals(">")) {
+            AOD.add(new ActSelectAO(s,
+                    357,
+                    295,
+                    Integer.parseInt(battleDataReader.nextLine().trim()),
+                    battleDataReader.nextLine().trim(),
+                    battleDataReader.nextLine().trim()
+                    ));
+        }
+        s = battleDataReader.nextLine().trim();
+        if (!s.equals(">")) {
+            AOD.add(new ActSelectAO(s,
+                    101,
+                    327,
+                    Integer.parseInt(battleDataReader.nextLine().trim()),
+                    battleDataReader.nextLine().trim(),
+                    battleDataReader.nextLine().trim()
+            ));
+        }
+        s = battleDataReader.nextLine().trim();
+        if (!s.equals(">")) {
+            AOD.add(new ActSelectAO(s,
+                    357,
+                    327,
+                    Integer.parseInt(battleDataReader.nextLine().trim()),
+                    battleDataReader.nextLine().trim(),
+                    battleDataReader.nextLine().trim()
+            ));
+        }
+
+        actionOptions = AOD.toArray(new ActSelectAO[0]);
+        battleDataReader.close();
     }
 
     public String getRandFT() {

@@ -32,7 +32,7 @@ public class WallOfBullets extends BulletPattern{
         }
 
         for (int i = -1; i < j/(sprite.getWidth()+1)+1; i++) {
-            bullets.add(new Bullet(
+            Bullet bullet = new Bullet(
                     damVal,
                     xMultiplier*i+x,
                     yMultiplier*i+y,
@@ -41,9 +41,13 @@ public class WallOfBullets extends BulletPattern{
                     j/60,
                     rotation,
                     sprite
-            ));
+            );
+            bullets.add(bullet);
+            gw.addComponent(bullet);
         }
 
-        bullets.remove((int) ((Math.random() * ((gw.battleBox.box.height/sprite.getWidth())-4 - 2)) + 2));
+        int holeIndex = (int) ((Math.random() * ((gw.battleBox.box.height/sprite.getWidth())-4 - 2)) + 2);
+        gw.removeComponent(bullets.get(holeIndex));
+        bullets.remove(holeIndex);
     }
 }

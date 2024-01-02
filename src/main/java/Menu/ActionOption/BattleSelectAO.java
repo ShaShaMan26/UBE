@@ -7,16 +7,19 @@ import Window.*;
 import java.awt.*;
 
 public class BattleSelectAO extends ActionOption {
+    private Battle battle;
 
-    public BattleSelectAO(String title, int x, int y) {
+    public BattleSelectAO(String title, int x, int y, Battle battle) {
         super(title, x, y);
+        this.battle = battle;
     }
 
     @Override
     public GlobalState interact() {
         super.interact();
         GameWindow gw = (GameWindow)this.getRootPane().getContentPane().getParent().getParent().getParent();
-        gw.battle = new Battle();
+        gw.PLAYER.atk = battle.playerAtk;
+        gw.battle = battle;
         gw.inBattleState = new InBattleState();
         return gw.inBattleState;
     }

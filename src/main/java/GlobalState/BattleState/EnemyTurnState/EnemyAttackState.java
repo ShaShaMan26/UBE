@@ -16,7 +16,7 @@ import java.util.Objects;
 public class EnemyAttackState extends BattleState {
     private int battleTicks = 0, duration, invincibleDuration = 0, patternIndex = 0;
     public ArrayList<Bullet> bullets = new ArrayList<>();
-    private ArrayList<BulletPattern> bulletPatterns = new ArrayList<>();
+    public ArrayList<BulletPattern> bulletPatterns = new ArrayList<>();
 
     // duration
     public EnemyAttackState() {
@@ -26,6 +26,8 @@ public class EnemyAttackState extends BattleState {
 
     @Override
     public void run(GameWindow gw) {
+        gw.inBattleState.battleBG.sprite = gw.battle.attackingSprite;
+
         gw.removeComponent(gw.battleBox);
         gw.addComponent(gw.battleBox);
 
@@ -38,10 +40,15 @@ public class EnemyAttackState extends BattleState {
         } catch (Exception e) {
 
         }
+        /*
+        bulletPatterns.add(new CirclePlayer(5, 20, 2, .1F, sprite));
         bulletPatterns.add(new RainBullets(1, 5, sprite));
         bulletPatterns.add(new WallOfBullets(gw, 2, 5, .1F, 0, sprite));
-        bulletPatterns.add(new CirclePlayer(gw.PLAYER, 5, 20, 2, .1F, sprite));
+        bulletPatterns.add(new CirclePlayer(5, 20, 2, .1F, sprite));
         bulletPatterns.add(new WallOfBullets(gw, 2, 5, .1F, 0, sprite));
+        */
+        bulletPatterns.add(new BulletTunnel(1, 10, 1, 3, sprite));
+        bulletPatterns.add(new CirclePlayer(5, 20, 2, .1F, sprite));
         bullets.addAll(bulletPatterns.get(patternIndex).getBullets());
     }
 
@@ -65,6 +72,11 @@ public class EnemyAttackState extends BattleState {
                     gw.battleBox.transitionTo(33, 251, 574, 139);
                     for (Bullet bullet : bullets) {
                         gw.removeComponent(bullet);
+                    }
+                    if (gw.battle.mercyHP == 0) {
+                        gw.inBattleState.battleBG.sprite = gw.battle.spareableSprite;
+                    } else {
+                        gw.inBattleState.battleBG.sprite = gw.battle.defaultSprite;
                     }
                 }
                 if (gw.battleBox.isTransitioning) {
@@ -132,9 +144,6 @@ public class EnemyAttackState extends BattleState {
             if (patternIndex < bulletPatterns.size()-1 && bulletPatterns.get(patternIndex).bullets.get(0).duration < 1) {
                 patternIndex++;
                 bullets.addAll(bulletPatterns.get(patternIndex).getBullets());
-                for (Bullet bullet : bulletPatterns.get(patternIndex).getBullets()) {
-                    gw.addComponent(bullet);
-                }
             }
 
             bulletPatterns.get(patternIndex).update(gw, this);

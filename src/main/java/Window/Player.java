@@ -13,7 +13,7 @@ import java.util.Objects;
 
 public class Player extends Component {
     private int health, speed;
-    public int atk, def, x, y;
+    public int atk, x, y;
     private boolean statsDisplayed = false, visible = true, slow = false, diagonal = false, invincible = false;
     private BufferedImage sprite;
     public Font font = null, font2 = null;
@@ -23,7 +23,6 @@ public class Player extends Component {
         health = 20;
         speed = 4;
         atk = 10;
-        def = 10;
 
 
         InputStream stream = getClass().getResourceAsStream("/fonts/UMNC.ttf");

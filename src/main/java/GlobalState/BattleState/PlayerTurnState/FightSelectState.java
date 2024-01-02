@@ -33,6 +33,7 @@ public class FightSelectState extends BattleState {
         if (fightBox.attackTriggered) {
             fightBox.progressAttack();
             if (fightBox.isSlashOver() && fightBox.slideIndex == fightBox.damage) {
+                gw.inBattleState.battleBG.sprite = gw.battle.hitSprite;
                 gw.AUDIOPLAYER.playClip(5);
             }
         } else if (fightBox.attackMissed) {

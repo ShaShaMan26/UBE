@@ -17,6 +17,7 @@ public class FancyDialogueTime extends FancyTextTime {
     @Override
     public GlobalState update(GameWindow gw) {
         if (!isBBAdded) {
+            gw.inBattleState.battleBG.sprite = gw.battle.talkingSprite;
             gw.battleBox.transitionTo(238, 251, 165, 140);
             isBBAdded = true;
             gw.PLAYER.setPos((int) gw.battleBox.box.getCenterX() - 9, (int) gw.battleBox.box.getCenterY() - 9);

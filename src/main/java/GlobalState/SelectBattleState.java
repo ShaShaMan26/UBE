@@ -2,6 +2,7 @@ package GlobalState;
 
 import Menu.ActionOption.BattleSelectAO;
 import Menu.ActionOption.ActionOption;
+import Window.Battle;
 import Window.GameWindow;
 
 import java.awt.event.KeyEvent;
@@ -21,7 +22,7 @@ public class SelectBattleState extends GlobalState {
 
         if (battleNames.length > 0) {
             for (int i = 0; i < battleNames.length; i++) {
-                BattleSelectAO battleSelectAO = new BattleSelectAO(battleNames[i], XOFFSET, YOFFSET+(i*42));
+                BattleSelectAO battleSelectAO = new BattleSelectAO(battleNames[i], XOFFSET, YOFFSET+(i*42), new Battle(System.getenv("APPDATA") + "\\UTB\\battles\\" + battleNames[i]));
                 gw.addComponent(battleSelectAO);
                 battleSelectAOS.add(battleSelectAO);
             }

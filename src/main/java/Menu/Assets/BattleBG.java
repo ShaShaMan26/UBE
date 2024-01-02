@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 
 public class BattleBG extends Component {
     public int x;
-    private BufferedImage sprite = null;
+    public BufferedImage sprite;
 
     public BattleBG(int x, BufferedImage sprite) {
         this.x = x;
