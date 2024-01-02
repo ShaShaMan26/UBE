@@ -38,13 +38,11 @@ public class EnemyAttackState extends BattleState {
         } catch (Exception e) {
 
         }
-        // bulletPatterns.add(new CirclePlayer(gw.PLAYER, 20, 2, .1F, sprite));
-        // bulletPatterns.add(new WallOfBullets(gw, 5, .1F, 0, sprite));
-        bulletPatterns.add(new RainBullets(sprite));
+        bulletPatterns.add(new RainBullets(1, 5, sprite));
+        bulletPatterns.add(new WallOfBullets(gw, 2, 5, .1F, 0, sprite));
+        bulletPatterns.add(new CirclePlayer(gw.PLAYER, 5, 20, 2, .1F, sprite));
+        bulletPatterns.add(new WallOfBullets(gw, 2, 5, .1F, 0, sprite));
         bullets.addAll(bulletPatterns.get(patternIndex).getBullets());
-        for (Bullet bullet : bullets) {
-            gw.addComponent(bullet);
-        }
     }
 
     @Override
@@ -147,7 +145,7 @@ public class EnemyAttackState extends BattleState {
                 if (gw.PLAYER.collidingWith(bullet) && invincibleDuration < 1) {
                     invincibleDuration = 30;
                     gw.PLAYER.toggleInvincible();
-                    gw.PLAYER.damage(1);
+                    gw.PLAYER.damage(bullet.damVal);
                     gw.AUDIOPLAYER.playClip(7);
                     removedBullets.add(bullet);
                 }

@@ -5,7 +5,8 @@ import Window.Player;
 import java.awt.image.BufferedImage;
 
 public class RelativeBullet extends Bullet {
-    public RelativeBullet(Player player, int spawnDistance, int speed, float fadeSpeed, int rotation, BufferedImage sprite) {
+    public RelativeBullet(Player player, int damVal, int spawnDistance, int speed, float fadeSpeed, int rotation, BufferedImage sprite) {
+        this.damVal = damVal;
         this.speed = speed;
         this.fadeSpeed = fadeSpeed;
         this.duration = spawnDistance/speed+sprite.getHeight();

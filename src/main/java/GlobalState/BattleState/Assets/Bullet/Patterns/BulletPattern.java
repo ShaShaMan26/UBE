@@ -11,7 +11,7 @@ public abstract class BulletPattern {
     public ArrayList<Bullet> getBullets() {
         return bullets;
     }
-    public int ticks = 0;
+    public int ticks = 0, damVal;
 
     public void update(GameWindow gw, EnemyAttackState enemyAttackState) {
         ticks++;

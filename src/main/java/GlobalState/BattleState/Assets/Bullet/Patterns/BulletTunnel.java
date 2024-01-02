@@ -6,7 +6,8 @@ import Window.GameWindow;
 import java.awt.image.BufferedImage;
 
 public class BulletTunnel extends BulletPattern {
-    public BulletTunnel(GameWindow gw, int speed, float fadeSpeed, int rotation, BufferedImage sprite) {
+    public BulletTunnel(GameWindow gw, int damVal, int speed, float fadeSpeed, int rotation, BufferedImage sprite) {
+        this.damVal = damVal;
         int x, y, xMultiplier = 0, yMultiplier = 0, iterations;
         if (rotation == 3) {
             x = sprite.getHeight()+gw.battleBox.box.x+gw.battleBox.box.width;
@@ -33,6 +34,7 @@ public class BulletTunnel extends BulletPattern {
         for (int k = 0; k < iterations/(sprite.getWidth()+1)+1; k++) {
             for (int i = -1; i < iterations/(sprite.getWidth()+1)+1; i++) {
                 bullets.add(new Bullet(
+                        damVal,
                         xMultiplier*i+(yMultiplier*k)+x,
                         yMultiplier*i+(xMultiplier*k)+y,
                         speed,
