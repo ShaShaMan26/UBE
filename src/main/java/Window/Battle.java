@@ -32,7 +32,7 @@ public class Battle extends Component {
         this.mercyHP = 1;
         this.col = 2;
 
-        this.battleBox = new BattleBox(270, 271, 101, 100);
+        this.battleBox = new BattleBox(220, 201, 201, 200);
 
         try {
             this.sprite = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/art/froggit.png")));

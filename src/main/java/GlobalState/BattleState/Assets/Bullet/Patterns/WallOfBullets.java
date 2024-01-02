@@ -9,25 +9,25 @@ public class WallOfBullets extends BulletPattern{
     public WallOfBullets(GameWindow gw, int speed, float fadeSpeed, int rotation, BufferedImage sprite) {
         int x, y, xMultiplier = 0, yMultiplier = 0, j;
         if (rotation == 3) {
-            x = sprite.getHeight()+gw.battleBox.box.x+gw.battleBox.box.width;
-            y = gw.battleBox.box.y;
+            x = sprite.getHeight()+gw.battleBox.targetBox.x+gw.battleBox.targetBox.width;
+            y = gw.battleBox.targetBox.y;
             yMultiplier = sprite.getWidth()+1;
-            j = gw.battleBox.box.height;
+            j = gw.battleBox.targetBox.height;
         } else if (rotation == 2) {
-            x = gw.battleBox.box.x;
-            y = gw.battleBox.box.y-sprite.getHeight();
+            x = gw.battleBox.targetBox.x;
+            y = gw.battleBox.targetBox.y-sprite.getHeight();
             xMultiplier = sprite.getWidth()+1;
-            j = gw.battleBox.box.width;
+            j = gw.battleBox.targetBox.width;
         } else if (rotation == 1) {
-            x = gw.battleBox.box.x-sprite.getHeight();
-            y = gw.battleBox.box.y;
+            x = gw.battleBox.targetBox.x-sprite.getHeight();
+            y = gw.battleBox.targetBox.y;
             yMultiplier = sprite.getWidth()+1;
-            j = gw.battleBox.box.height;
+            j = gw.battleBox.targetBox.height;
         } else {
-            x = gw.battleBox.box.x;
-            y = gw.battleBox.box.y+gw.battleBox.box.height+sprite.getHeight();
+            x = gw.battleBox.targetBox.x;
+            y = gw.battleBox.targetBox.y+gw.battleBox.targetBox.height+sprite.getHeight();
             xMultiplier = sprite.getWidth()+1;
-            j = gw.battleBox.box.width;
+            j = gw.battleBox.targetBox.width;
         }
 
         for (int i = -1; i < j/(sprite.getWidth()+1)+1; i++) {
@@ -36,12 +36,12 @@ public class WallOfBullets extends BulletPattern{
                     yMultiplier*i+y,
                     speed,
                     fadeSpeed,
-                    200,
+                    j/60,
                     rotation,
                     sprite
             ));
         }
 
-        bullets.remove((int) ((Math.random() * (gw.battleBox.box.height/(sprite.getWidth()+2) - 2)) + 2));
+        bullets.remove((int) ((Math.random() * ((gw.battleBox.box.height/sprite.getWidth())-4 - 2)) + 2));
     }
 }

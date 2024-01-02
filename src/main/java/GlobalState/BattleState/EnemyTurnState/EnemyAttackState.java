@@ -1,7 +1,7 @@
 package GlobalState.BattleState.EnemyTurnState;
 
 import GlobalState.BattleState.Assets.Bullet.*;
-import GlobalState.BattleState.Assets.Bullet.Patterns.WallOfBullets;
+import GlobalState.BattleState.Assets.Bullet.Patterns.*;
 import GlobalState.BattleState.BattleState;
 import GlobalState.BattleState.ReturnState;
 import GlobalState.GlobalState;
@@ -14,10 +14,11 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class EnemyAttackState extends BattleState {
-    private int battleTicks = 0, duration, invincibleDuration = 0, r = 0;
-    private ArrayList<Bullet> bullets = new ArrayList<>();
+    private int battleTicks = 0, duration, invincibleDuration = 0, patternIndex = 0;
+    public ArrayList<Bullet> bullets = new ArrayList<>();
+    private ArrayList<BulletPattern> bulletPatterns = new ArrayList<>();
 
-    // duration, battleBox size
+    // duration
     public EnemyAttackState() {
         //this.duration = duration*30;
         this.duration = 15*30;
@@ -25,9 +26,25 @@ public class EnemyAttackState extends BattleState {
 
     @Override
     public void run(GameWindow gw) {
+        gw.removeComponent(gw.battleBox);
+        gw.addComponent(gw.battleBox);
+
         gw.battleBox.transitionTo(gw.battle.battleBox);
 
         // add bullets from data
+        BufferedImage sprite = null;
+        try {
+            sprite = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/art/bullet.png")));
+        } catch (Exception e) {
+
+        }
+        // bulletPatterns.add(new CirclePlayer(gw.PLAYER, 20, 2, .1F, sprite));
+        // bulletPatterns.add(new WallOfBullets(gw, 5, .1F, 0, sprite));
+        bulletPatterns.add(new RainBullets(sprite));
+        bullets.addAll(bulletPatterns.get(patternIndex).getBullets());
+        for (Bullet bullet : bullets) {
+            gw.addComponent(bullet);
+        }
     }
 
     @Override
@@ -35,26 +52,6 @@ public class EnemyAttackState extends BattleState {
         if (gw.battleBox.isTransitioning) {
             gw.battleBox.progressTransition(6);
         } else {
-            if (bullets.size() < 1) {
-                BufferedImage sprite = null;
-                try {
-                    sprite = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/art/bullet.png")));
-                } catch (Exception e) {
-
-                }
-
-                bullets.addAll(new WallOfBullets(gw, 10, 0.1F, r, sprite).getBullets());
-                for (Bullet bullet : bullets) {
-                    gw.addComponent(bullet);
-                }
-
-                if (r < 4) {
-                    r++;
-                } else {
-                    r = 0;
-                }
-            }
-
             battleTicks++;
 
             if (battleTicks > duration) {
@@ -75,6 +72,9 @@ public class EnemyAttackState extends BattleState {
                 if (gw.battleBox.isTransitioning) {
                     gw.battleBox.progressTransition(24);
                 } else {
+                    for (Bullet bullet : bullets) {
+                        gw.removeComponent(bullet);
+                    }
                     gw.PLAYER.toggleVisible();
                     return new ReturnState();
                 }
@@ -131,17 +131,19 @@ public class EnemyAttackState extends BattleState {
             }
 
             // progress bullets and check for player collision with bullets
+            if (patternIndex < bulletPatterns.size()-1 && bulletPatterns.get(patternIndex).bullets.get(0).duration < 1) {
+                patternIndex++;
+                bullets.addAll(bulletPatterns.get(patternIndex).getBullets());
+                for (Bullet bullet : bulletPatterns.get(patternIndex).getBullets()) {
+                    gw.addComponent(bullet);
+                }
+            }
+
+            bulletPatterns.get(patternIndex).update(gw, this);
+
             ArrayList<Bullet> removedBullets = new ArrayList<>();
             for (Bullet bullet : bullets) {
                 bullet.progressMovement();
-                if (bullet.duration < 1
-                        || bullet.x < 0
-                        || bullet.x > gw.getWidth()
-                        || bullet.y < 0
-                        || bullet.y > gw.getHeight()) {
-                    removedBullets.add(bullet);
-                }
-
                 if (gw.PLAYER.collidingWith(bullet) && invincibleDuration < 1) {
                     invincibleDuration = 30;
                     gw.PLAYER.toggleInvincible();

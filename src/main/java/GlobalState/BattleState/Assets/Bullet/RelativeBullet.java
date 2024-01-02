@@ -8,7 +8,7 @@ public class RelativeBullet extends Bullet {
     public RelativeBullet(Player player, int spawnDistance, int speed, float fadeSpeed, int rotation, BufferedImage sprite) {
         this.speed = speed;
         this.fadeSpeed = fadeSpeed;
-        this.duration = spawnDistance-sprite.getHeight();
+        this.duration = spawnDistance/speed+sprite.getHeight();
         this.sprite = sprite;
         rotateSprite(rotation*90);
 
