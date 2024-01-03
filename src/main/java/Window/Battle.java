@@ -13,7 +13,7 @@ import java.util.Objects;
 import java.util.Scanner;
 
 public class Battle extends Component {
-    public int totalHP, HP, mercyHP, atk, playerAtk, def, XPReward, goldReward, col, dioY;
+    public int totalHP, HP, mercyHP, atk, playerAtk, def, XPReward, goldReward, col, dioX, dioY;
     public String name, checkTxt, enterTxt, spareableTxt;
     public ArrayList<String> dialogue = new ArrayList<>(), flavorTxt = new ArrayList<>();
     // private ArrayList<Attack> attacks;
@@ -51,7 +51,8 @@ public class Battle extends Component {
         this.name = battleDataReader.nextLine().trim();
 
         this.col = Integer.parseInt(battleDataReader.nextLine().trim());
-        this.dioY = Integer.parseInt(battleDataReader.nextLine().trim());
+        this.dioX = Integer.parseInt(battleDataReader.nextLine().trim())*102+15;
+        this.dioY = Integer.parseInt(battleDataReader.nextLine().trim())*118+16;
         this.totalHP = Integer.parseInt(battleDataReader.nextLine().trim());
         this.HP = totalHP;
         this.mercyHP = Integer.parseInt(battleDataReader.nextLine().trim());

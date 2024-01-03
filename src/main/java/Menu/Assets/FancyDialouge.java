@@ -14,7 +14,7 @@ import Window.GameWindow;
 public class FancyDialouge extends FancyText {
     private BufferedImage txtbox;
     public FancyDialouge(String text, int speed) {
-        super(text, speed, 326, 125, 7);
+        super(text, speed, 0, 0, 7);
 
         InputStream stream = getClass().getResourceAsStream("/fonts/greater_determination.ttf");
         try {
@@ -45,6 +45,8 @@ public class FancyDialouge extends FancyText {
     @Override
     public void paint(Graphics g) {
         GameWindow gw = (GameWindow)this.getRootPane().getContentPane().getParent().getParent().getParent();
+        x = gw.battle.dioX;
+        y = gw.battle.dioY;
         if (TEXT.equals("")) {
             this.TEXT = gw.battle.getRandD();
         }
