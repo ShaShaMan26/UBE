@@ -3,6 +3,7 @@ package Window;
 import GlobalState.BattleState.Assets.Attack;
 import GlobalState.BattleState.Assets.BattleBox;
 import GlobalState.BattleState.Assets.Bullet.Patterns.BulletPattern;
+import GlobalState.BattleState.Assets.Bullet.Patterns.LadderDrill;
 import GlobalState.BattleState.Assets.Bullet.Patterns.WallsOBullet;
 import Menu.ActionOption.CommandSelectAO.ActSelectAO;
 
@@ -138,9 +139,12 @@ public class Battle extends Component {
             } catch (Exception e) {
 
             }
-            switch (battleDataReader.nextLine().trim()) {
+            switch (battleDataReader.nextLine().trim().toLowerCase()) {
                 case "wallsobullet":
                     bulletPattern = new WallsOBullet(speed, damVal, rotation, fadeSpeed, bSprite);
+                    break;
+                case "ladderdrill":
+                    bulletPattern = new LadderDrill(speed, damVal, rotation, fadeSpeed, bSprite);
                     break;
                 default:
                     break;
