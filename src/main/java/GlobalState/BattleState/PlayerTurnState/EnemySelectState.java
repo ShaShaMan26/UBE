@@ -4,7 +4,7 @@ import GlobalState.BattleState.BattleState;
 import GlobalState.BattleState.ReturnState;
 import GlobalState.GlobalState;
 import Menu.ActionOption.ActionOption;
-import Menu.ActionOption.CommandSelectAO.FightEnemySelectAO;
+import Menu.ActionOption.CommandSelectAO.EnemySelectAO;
 import Window.GameWindow;
 
 import java.awt.event.KeyEvent;
@@ -20,11 +20,7 @@ public class EnemySelectState extends BattleState {
 
     @Override
     public void run(GameWindow gw) {
-        if (isFightSelect) {
-            actionOption = new FightEnemySelectAO(gw.battle.name, 101, 295);
-        } else {
-            actionOption = new ActionOption(gw.battle.name, 101, 295);
-        }
+        actionOption = new EnemySelectAO(gw.battle.name, 101, 295, isFightSelect);
         gw.addComponent(actionOption);
         gw.PLAYER.setPos(65, 277);
     }

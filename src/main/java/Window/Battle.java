@@ -11,7 +11,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Objects;
 import java.util.Scanner;
 
 public class Battle extends Component {
@@ -143,6 +142,7 @@ public class Battle extends Component {
                 case "bulletrain" -> bulletPattern = new BulletRain(speed, damVal, rotation, fadeSpeed, bSprite);
                 case "crusher" -> bulletPattern = new Crusher(speed, damVal, rotation, fadeSpeed, bSprite);
                 case "doublewallsobullet" -> bulletPattern = new DoubleWallsOBullet(speed, damVal, rotation, fadeSpeed, bSprite);
+                case "closingwalls" -> bulletPattern = new ClosingWalls(speed, damVal, rotation, fadeSpeed, bSprite);
                 default -> {
                 }
             }
