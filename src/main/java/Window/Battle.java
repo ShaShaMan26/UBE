@@ -1,6 +1,9 @@
 package Window;
 
+import GlobalState.BattleState.Assets.Attack;
 import GlobalState.BattleState.Assets.BattleBox;
+import GlobalState.BattleState.Assets.Bullet.Patterns.BulletPattern;
+import GlobalState.BattleState.Assets.Bullet.Patterns.WallsOBullet;
 import Menu.ActionOption.CommandSelectAO.ActSelectAO;
 
 import javax.imageio.ImageIO;
@@ -16,7 +19,7 @@ public class Battle extends Component {
     public int totalHP, HP, mercyHP, atk, playerAtk, def, XPReward, goldReward, col, dioX, dioY;
     public String name, checkTxt, enterTxt, spareableTxt;
     public ArrayList<String> dialogue = new ArrayList<>(), flavorTxt = new ArrayList<>();
-    // private ArrayList<Attack> attacks;
+    private ArrayList<Attack> attacks = new ArrayList<>();
     public ActSelectAO[] actionOptions;
     public BattleBox battleBox;
     public BufferedImage sprite, defaultSprite, hitSprite, attackingSprite, killedSprite, spareableSprite, talkingSprite;
@@ -25,7 +28,13 @@ public class Battle extends Component {
 
     public Battle(String path) {
         // stuff to add
-        this.battleBox = new BattleBox(220, 201, 201, 200);
+        BufferedImage bSprite = null;
+        try {
+            bSprite = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/art/bullet.png")));
+        } catch (Exception e) {
+
+        }
+        attacks.add(new Attack(new WallsOBullet(5, 1, 0, .1F, bSprite), 10, new BattleBox(0, 0, 100, 100)));
         // end
 
         // reading sprite data
@@ -132,6 +141,10 @@ public class Battle extends Component {
     public String getRandD() {
         int index = (int) (Math.random() * dialogue.size());
         return dialogue.get(index);
+    }
+    public Attack getRandA() {
+        int index = (int) (Math.random() * attacks.size());
+        return attacks.get(index);
     }
 
     public void dealDamage(int damage) {

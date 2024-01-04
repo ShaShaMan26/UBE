@@ -1,5 +1,6 @@
 package GlobalState.BattleState.EnemyTurnState;
 
+import GlobalState.BattleState.Assets.Attack;
 import GlobalState.BattleState.Assets.Bullet.*;
 import GlobalState.BattleState.Assets.Bullet.Patterns.*;
 import GlobalState.BattleState.BattleState;
@@ -7,21 +8,15 @@ import GlobalState.BattleState.ReturnState;
 import GlobalState.GlobalState;
 import Window.GameWindow;
 
-import javax.imageio.ImageIO;
 import java.awt.event.KeyEvent;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class EnemyAttackState extends BattleState {
-    private int battleTicks = 0, duration, invincibleDuration = 0, patternIndex = 0;
-    public ArrayList<Bullet> bullets = new ArrayList<>();
-    public ArrayList<BulletPattern> bulletPatterns = new ArrayList<>();
+    private int battleTicks = 0, duration, invincibleDuration = 0;
+    private BulletPattern bulletPattern;
 
-    // duration
     public EnemyAttackState() {
-        //this.duration = duration*30;
-        this.duration = 15*30;
+        this.duration = 30;
     }
 
     @Override
@@ -31,31 +26,21 @@ public class EnemyAttackState extends BattleState {
         gw.removeComponent(gw.battleBox);
         gw.addComponent(gw.battleBox);
 
-        gw.battleBox.transitionTo(gw.battle.battleBox);
-
-        // add bullets from data
-        BufferedImage sprite = null;
-        try {
-            sprite = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/art/bullet.png")));
-        } catch (Exception e) {
-
+        // add attack
+        Attack attack = gw.battle.getRandA();
+        bulletPattern = attack.bulletPattern;
+        this.duration = attack.duration;
+        gw.battleBox.transitionTo(attack.battleBox);
+        bulletPattern.generateBullets(gw.battleBox.targetBox);
+        for (Bullet bullet : bulletPattern.getBullets()) {
+            gw.addComponent(bullet);
         }
-        /*
-        bulletPatterns.add(new CirclePlayer(5, 20, 2, .1F, sprite));
-        bulletPatterns.add(new RainBullets(1, 5, sprite));
-        bulletPatterns.add(new WallOfBullets(gw, 2, 5, .1F, 0, sprite));
-        bulletPatterns.add(new CirclePlayer(5, 20, 2, .1F, sprite));
-        bulletPatterns.add(new WallOfBullets(gw, 2, 5, .1F, 0, sprite));
-        */
-        bulletPatterns.add(new BulletTunnel(1, 10, 1, 3, sprite));
-        bulletPatterns.add(new CirclePlayer(5, 20, 2, .1F, sprite));
-        bullets.addAll(bulletPatterns.get(patternIndex).getBullets());
     }
 
     @Override
     public GlobalState update(GameWindow gw) {
         if (gw.battleBox.isTransitioning) {
-            gw.battleBox.progressTransition(6);
+            gw.battleBox.progressTransition(18);
         } else {
             battleTicks++;
 
@@ -64,13 +49,12 @@ public class EnemyAttackState extends BattleState {
                     if (gw.PLAYER.isInvincible()) {
                         gw.PLAYER.toggleInvincible();
                         invincibleDuration = 0;
-                        gw.PLAYER.toggleVisible();
                     }
                     if (gw.PLAYER.isVisible()) {
                         gw.PLAYER.toggleVisible();
                     }
                     gw.battleBox.transitionTo(33, 251, 574, 139);
-                    for (Bullet bullet : bullets) {
+                    for (Bullet bullet : bulletPattern.getBullets()) {
                         gw.removeComponent(bullet);
                     }
                     if (gw.battle.mercyHP == 0) {
@@ -82,10 +66,17 @@ public class EnemyAttackState extends BattleState {
                 if (gw.battleBox.isTransitioning) {
                     gw.battleBox.progressTransition(24);
                 } else {
-                    for (Bullet bullet : bullets) {
+                    for (Bullet bullet : bulletPattern.getBullets()) {
                         gw.removeComponent(bullet);
                     }
-                    gw.PLAYER.toggleVisible();
+                    bulletPattern.bullets.clear();
+                    if (gw.PLAYER.isInvincible()) {
+                        gw.PLAYER.toggleInvincible();
+                        invincibleDuration = 0;
+                    }
+                    if (gw.PLAYER.isVisible()) {
+                        gw.PLAYER.toggleVisible();
+                    }
                     return new ReturnState();
                 }
             }
@@ -141,15 +132,9 @@ public class EnemyAttackState extends BattleState {
             }
 
             // progress bullets and check for player collision with bullets
-            if (patternIndex < bulletPatterns.size()-1 && bulletPatterns.get(patternIndex).bullets.get(0).duration < 1) {
-                patternIndex++;
-                bullets.addAll(bulletPatterns.get(patternIndex).getBullets());
-            }
-
-            bulletPatterns.get(patternIndex).update(gw, this);
 
             ArrayList<Bullet> removedBullets = new ArrayList<>();
-            for (Bullet bullet : bullets) {
+            for (Bullet bullet : bulletPattern.getBullets()) {
                 bullet.progressMovement();
                 if (gw.PLAYER.collidingWith(bullet) && invincibleDuration < 1) {
                     invincibleDuration = 30;
@@ -170,9 +155,16 @@ public class EnemyAttackState extends BattleState {
                 }
             }
 
+            if (bulletPattern.isOver()) {
+                removedBullets.addAll(bulletPattern.getBullets());
+                bulletPattern.generateBullets(gw.battleBox.targetBox);
+                for (Bullet bullet : bulletPattern.getBullets()) {
+                    gw.addComponent(bullet);
+                }
+            }
+
             // remove bullets
             for (Bullet bullet : removedBullets) {
-                bullets.remove(bullet);
                 gw.removeComponent(bullet);
             }
         }

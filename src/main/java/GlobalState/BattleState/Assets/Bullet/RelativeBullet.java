@@ -9,7 +9,6 @@ public class RelativeBullet extends Bullet {
         this.damVal = damVal;
         this.speed = speed;
         this.fadeSpeed = fadeSpeed;
-        this.duration = spawnDistance/speed+sprite.getHeight();
         this.sprite = sprite;
         rotateSprite(rotation*90);
 

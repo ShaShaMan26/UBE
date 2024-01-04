@@ -5,16 +5,15 @@ import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 
 public class Bullet extends Component {
-    public int damVal, speed, x, y, duration, rotation;
+    public int damVal, speed, x, y, rotation;
     public float fadeSpeed, fadeTick = 0;
     public BufferedImage sprite;
-    public Bullet(int damVal, int x, int y, int speed, float fadeSpeed, int duration, int rotation, BufferedImage sprite) {
+    public Bullet(int damVal, int x, int y, int speed, float fadeSpeed, int rotation, BufferedImage sprite) {
         this.damVal = damVal;
         this.x = x;
         this.y = y;
         this.speed = speed;
         this.fadeSpeed = fadeSpeed;
-        this.duration = duration*30;
         this.sprite = sprite;
         rotateSprite(rotation*90);
     }
@@ -33,8 +32,6 @@ public class Bullet extends Component {
             } else {
                 y -= speed;
             }
-
-            duration--;
         } else {
             fadeTick += fadeSpeed;
             if (fadeTick > 1) {
