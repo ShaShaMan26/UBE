@@ -17,26 +17,26 @@ public class BulletRain extends BulletPattern {
         int x, y;
         int bSpeed = (int) (Math.random()*(speed+2-speed)+speed);
         switch (rotation) {
-            case 3:
-                x = (int) (Math.random()*sprite.getHeight()*2);
-                y = (int) (Math.random()*((battleBox.y+battleBox.height)/sprite.getWidth()-1-battleBox.y/sprite.getWidth()+1)+battleBox.y/sprite.getWidth()+2);
-                bullets.add(new Bullet(damVal, battleBox.x+battleBox.width+x+sprite.getHeight(), y*sprite.getWidth(), bSpeed, fadeSpeed, rotation, sprite));
-                break;
-            case 2:
-                x = (int) (Math.random()*((battleBox.x+battleBox.width)/sprite.getWidth()-1-battleBox.x/sprite.getWidth()+1)+battleBox.x/sprite.getWidth()+2);
-                y = (int) (Math.random()*sprite.getHeight()*2);
-                bullets.add(new Bullet(damVal, x*sprite.getWidth(), battleBox.y-y-sprite.getHeight(), bSpeed, fadeSpeed, rotation, sprite));
-                break;
-            case 1:
-                x = (int) (Math.random()*sprite.getHeight()*2);
-                y = (int) (Math.random()*((battleBox.y+battleBox.height)/sprite.getWidth()-1-battleBox.y/sprite.getWidth()+1)+battleBox.y/sprite.getWidth()+2);
-                bullets.add(new Bullet(damVal, battleBox.x-x-sprite.getHeight(), y*sprite.getWidth(), bSpeed, fadeSpeed, rotation, sprite));
-                break;
-            default:
-                x = (int) (Math.random()*((battleBox.x+battleBox.width)/sprite.getWidth()-1-battleBox.x/sprite.getWidth()+1)+battleBox.x/sprite.getWidth()+2);
-                y = (int) (Math.random()*sprite.getHeight()*2);
-                bullets.add(new Bullet(damVal, x*sprite.getWidth(), battleBox.y+battleBox.height+y, bSpeed, fadeSpeed, rotation, sprite));
-                break;
+            case 3 -> {
+                x = (int) (Math.random() * sprite.getHeight() * 2);
+                y = (int) (Math.random() * ((battleBox.y + battleBox.height) / sprite.getWidth() - 1 - battleBox.y / sprite.getWidth() + 1) + battleBox.y / sprite.getWidth() + 2);
+                bullets.add(new Bullet(damVal, battleBox.x + battleBox.width + x + sprite.getHeight(), y * sprite.getWidth(), bSpeed, fadeSpeed, rotation, sprite));
+            }
+            case 2 -> {
+                x = (int) (Math.random() * ((battleBox.x + battleBox.width) / sprite.getWidth() - 1 - battleBox.x / sprite.getWidth() + 1) + battleBox.x / sprite.getWidth() + 2);
+                y = (int) (Math.random() * sprite.getHeight() * 2);
+                bullets.add(new Bullet(damVal, x * sprite.getWidth(), battleBox.y - y - sprite.getHeight(), bSpeed, fadeSpeed, rotation, sprite));
+            }
+            case 1 -> {
+                x = (int) (Math.random() * sprite.getHeight() * 2);
+                y = (int) (Math.random() * ((battleBox.y + battleBox.height) / sprite.getWidth() - 1 - battleBox.y / sprite.getWidth() + 1) + battleBox.y / sprite.getWidth() + 2);
+                bullets.add(new Bullet(damVal, battleBox.x - x - sprite.getHeight(), y * sprite.getWidth(), bSpeed, fadeSpeed, rotation, sprite));
+            }
+            default -> {
+                x = (int) (Math.random() * ((battleBox.x + battleBox.width) / sprite.getWidth() - 1 - battleBox.x / sprite.getWidth() + 1) + battleBox.x / sprite.getWidth() + 2);
+                y = (int) (Math.random() * sprite.getHeight() * 2);
+                bullets.add(new Bullet(damVal, x * sprite.getWidth(), battleBox.y + battleBox.height + y, bSpeed, fadeSpeed, rotation, sprite));
+            }
         }
     }
 

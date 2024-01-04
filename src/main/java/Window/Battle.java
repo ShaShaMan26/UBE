@@ -2,10 +2,7 @@ package Window;
 
 import GlobalState.BattleState.Assets.Attack;
 import GlobalState.BattleState.Assets.BattleBox;
-import GlobalState.BattleState.Assets.Bullet.Patterns.BulletPattern;
-import GlobalState.BattleState.Assets.Bullet.Patterns.BulletRain;
-import GlobalState.BattleState.Assets.Bullet.Patterns.LadderDrill;
-import GlobalState.BattleState.Assets.Bullet.Patterns.WallsOBullet;
+import GlobalState.BattleState.Assets.Bullet.Patterns.*;
 import Menu.ActionOption.CommandSelectAO.ActSelectAO;
 
 import javax.imageio.ImageIO;
@@ -141,17 +138,12 @@ public class Battle extends Component {
 
             }
             switch (battleDataReader.nextLine().trim().toLowerCase()) {
-                case "wallsobullet":
-                    bulletPattern = new WallsOBullet(speed, damVal, rotation, fadeSpeed, bSprite);
-                    break;
-                case "ladderdrill":
-                    bulletPattern = new LadderDrill(speed, damVal, rotation, fadeSpeed, bSprite);
-                    break;
-                case "bulletrain":
-                    bulletPattern = new BulletRain(speed, damVal, rotation, fadeSpeed, bSprite);
-                    break;
-                default:
-                    break;
+                case "wallsobullet" -> bulletPattern = new WallsOBullet(speed, damVal, rotation, fadeSpeed, bSprite);
+                case "ladderdrill" -> bulletPattern = new LadderDrill(speed, damVal, rotation, fadeSpeed, bSprite);
+                case "bulletrain" -> bulletPattern = new BulletRain(speed, damVal, rotation, fadeSpeed, bSprite);
+                case "crusher" -> bulletPattern = new Crusher(speed, damVal, rotation, fadeSpeed, bSprite);
+                default -> {
+                }
             }
             int duration = Integer.parseInt(battleDataReader.nextLine().trim());
             int x = Integer.parseInt(battleDataReader.nextLine().trim());
