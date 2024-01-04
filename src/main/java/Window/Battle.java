@@ -3,6 +3,7 @@ package Window;
 import GlobalState.BattleState.Assets.Attack;
 import GlobalState.BattleState.Assets.BattleBox;
 import GlobalState.BattleState.Assets.Bullet.Patterns.BulletPattern;
+import GlobalState.BattleState.Assets.Bullet.Patterns.BulletRain;
 import GlobalState.BattleState.Assets.Bullet.Patterns.LadderDrill;
 import GlobalState.BattleState.Assets.Bullet.Patterns.WallsOBullet;
 import Menu.ActionOption.CommandSelectAO.ActSelectAO;
@@ -145,6 +146,9 @@ public class Battle extends Component {
                     break;
                 case "ladderdrill":
                     bulletPattern = new LadderDrill(speed, damVal, rotation, fadeSpeed, bSprite);
+                    break;
+                case "bulletrain":
+                    bulletPattern = new BulletRain(speed, damVal, rotation, fadeSpeed, bSprite);
                     break;
                 default:
                     break;

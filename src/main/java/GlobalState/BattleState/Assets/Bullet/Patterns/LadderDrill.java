@@ -42,6 +42,6 @@ public class LadderDrill extends BulletPattern {
 
     @Override
     public boolean isOver() {
-        return bullets.get(0).y >= battleBox.y+battleBox.height- sprite.getHeight();
+        return bullets.get(0).y >= battleBox.y+battleBox.height-sprite.getHeight();
     }
 }

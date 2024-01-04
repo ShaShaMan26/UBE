@@ -25,7 +25,6 @@ public abstract class BulletPattern {
         return bullets;
     }
     public void generateBullets(Rectangle battleBox) {
-        bullets.clear();
         this.battleBox = battleBox;
     }
     public abstract boolean isOver();

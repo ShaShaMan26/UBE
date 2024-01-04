@@ -31,6 +31,7 @@ public class EnemyAttackState extends BattleState {
         bulletPattern = attack.bulletPattern;
         this.duration = attack.duration;
         gw.battleBox.transitionTo(attack.battleBox);
+        bulletPattern.bullets.clear();
         bulletPattern.generateBullets(gw.battleBox.targetBox);
         for (Bullet bullet : bulletPattern.getBullets()) {
             gw.addComponent(bullet);
@@ -157,6 +158,7 @@ public class EnemyAttackState extends BattleState {
 
             if (bulletPattern.isOver()) {
                 removedBullets.addAll(bulletPattern.getBullets());
+                bulletPattern.bullets.clear();
                 bulletPattern.generateBullets(gw.battleBox.targetBox);
                 for (Bullet bullet : bulletPattern.getBullets()) {
                     gw.addComponent(bullet);
