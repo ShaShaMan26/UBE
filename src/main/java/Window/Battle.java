@@ -27,16 +27,6 @@ public class Battle extends Component {
     private Scanner battleDataReader;
 
     public Battle(String path) {
-        // stuff to add
-        BufferedImage bSprite = null;
-        try {
-            bSprite = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/art/bullet.png")));
-        } catch (Exception e) {
-
-        }
-        attacks.add(new Attack(new WallsOBullet(5, 1, 0, .1F, bSprite), 10, new BattleBox(0, 0, 100, 100)));
-        // end
-
         // reading sprite data
         try {
             this.defaultSprite = ImageIO.read(new File(path+"\\enemy_sprites\\default.png"));
@@ -131,6 +121,38 @@ public class Battle extends Component {
         }
 
         actionOptions = AOD.toArray(new ActSelectAO[0]);
+
+        while (!battleDataReader.nextLine().trim().equals("<")) {
+        }
+        s = battleDataReader.nextLine().trim();
+        while (!s.equals(">")) {
+            int speed = Integer.parseInt(s);
+            int damVal = Integer.parseInt(battleDataReader.nextLine().trim());
+            int rotation = Integer.parseInt(battleDataReader.nextLine().trim());
+            float fadeSpeed = Float.parseFloat(battleDataReader.nextLine().trim());
+            String spriteName = battleDataReader.nextLine().trim();
+            BulletPattern bulletPattern = null;
+            BufferedImage bSprite = null;
+            try {
+                bSprite = ImageIO.read(new File(path+"\\bullet_sprites\\"+spriteName+".png"));
+            } catch (Exception e) {
+
+            }
+            switch (battleDataReader.nextLine().trim()) {
+                case "wallsobullet":
+                    bulletPattern = new WallsOBullet(speed, damVal, rotation, fadeSpeed, bSprite);
+                    break;
+                default:
+                    break;
+            }
+            int duration = Integer.parseInt(battleDataReader.nextLine().trim());
+            int x = Integer.parseInt(battleDataReader.nextLine().trim());
+            int y = Integer.parseInt(battleDataReader.nextLine().trim());
+            int width = Integer.parseInt(battleDataReader.nextLine().trim());
+            int height = Integer.parseInt(battleDataReader.nextLine().trim());
+            attacks.add(new Attack(bulletPattern, duration, new BattleBox(x, y, width, height)));
+            s = battleDataReader.nextLine().trim();
+        }
         battleDataReader.close();
     }
 
