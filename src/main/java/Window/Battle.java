@@ -142,6 +142,7 @@ public class Battle extends Component {
                 case "ladderdrill" -> bulletPattern = new LadderDrill(speed, damVal, rotation, fadeSpeed, bSprite);
                 case "bulletrain" -> bulletPattern = new BulletRain(speed, damVal, rotation, fadeSpeed, bSprite);
                 case "crusher" -> bulletPattern = new Crusher(speed, damVal, rotation, fadeSpeed, bSprite);
+                case "doublewallsobullet" -> bulletPattern = new DoubleWallsOBullet(speed, damVal, rotation, fadeSpeed, bSprite);
                 default -> {
                 }
             }
