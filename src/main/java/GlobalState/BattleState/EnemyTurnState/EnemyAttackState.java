@@ -3,9 +3,8 @@ package GlobalState.BattleState.EnemyTurnState;
 import GlobalState.BattleState.Assets.Attack;
 import GlobalState.BattleState.Assets.Bullet.*;
 import GlobalState.BattleState.Assets.Bullet.Patterns.*;
-import GlobalState.BattleState.BattleState;
-import GlobalState.BattleState.ReturnState;
-import GlobalState.GlobalState;
+import GlobalState.BattleState.*;
+import GlobalState.*;
 import Window.GameWindow;
 
 import java.awt.event.KeyEvent;
@@ -51,9 +50,7 @@ public class EnemyAttackState extends BattleState {
                         gw.PLAYER.toggleInvincible();
                         invincibleDuration = 0;
                     }
-                    if (gw.PLAYER.isVisible()) {
-                        gw.PLAYER.toggleVisible();
-                    }
+                    gw.PLAYER.setVisible(false);
                     gw.battleBox.transitionTo(33, 251, 574, 139);
                     for (Bullet bullet : bulletPattern.getBullets()) {
                         gw.removeComponent(bullet);
@@ -75,9 +72,7 @@ public class EnemyAttackState extends BattleState {
                         gw.PLAYER.toggleInvincible();
                         invincibleDuration = 0;
                     }
-                    if (gw.PLAYER.isVisible()) {
-                        gw.PLAYER.toggleVisible();
-                    }
+                    gw.PLAYER.setVisible(true);
                     return new ReturnState();
                 }
             }
@@ -144,6 +139,10 @@ public class EnemyAttackState extends BattleState {
                     gw.AUDIOPLAYER.playClip(7);
                     removedBullets.add(bullet);
                 }
+            }
+
+            if (gw.PLAYER.getHealth() < 1) {
+                return new GameOverState();
             }
 
             if (invincibleDuration > 0) {

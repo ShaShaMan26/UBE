@@ -15,7 +15,8 @@ public class Player extends Component {
     private int health, speed;
     public int atk, x, y;
     private boolean statsDisplayed = false, visible = true, slow = false, diagonal = false, invincible = false;
-    private BufferedImage sprite;
+    public boolean split = false;
+    private BufferedImage sprite, splitSprite;
     public Font font = null, font2 = null;
     public Player() {
         this.x = 0;
@@ -41,6 +42,7 @@ public class Player extends Component {
             font2 = Font.createFont(Font.TRUETYPE_FONT, stream).deriveFont(attributes);
 
             sprite = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/art/player_soul.png")));
+            splitSprite = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/art/soul_split.png")));
         } catch (Exception e) {
 
         }
@@ -117,7 +119,9 @@ public class Player extends Component {
     }
 
     public void paint(Graphics g) {
-        if (visible) {
+        if (split) {
+            g.drawImage(splitSprite, x-1, y, null);
+        } else if (visible) {
                 g.drawImage(sprite, x, y, null);
         } else if (invincible) {
             ((Graphics2D)g).setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5F));

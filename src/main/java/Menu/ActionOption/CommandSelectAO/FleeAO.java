@@ -18,6 +18,8 @@ public class FleeAO extends ActionOption {
         gw.removeComponent(this);
 
         // flee animation plz <3
+        gw.PLAYER.setVisible(false);
+        gw.AUDIOPLAYER.stopBGM();
         return new FancyTextBoxTime("Escaped...", 1, new SelectBattleState());
     }
 }

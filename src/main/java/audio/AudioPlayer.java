@@ -10,7 +10,7 @@ public class AudioPlayer {
     private Clip clip;
     private Clip bgm;
     private final ArrayList<Clip> clips = new ArrayList<>();
-    private final URL[] soundURL = new URL[10];
+    private final URL[] soundURL = new URL[12];
     private float volume;
     private FloatControl fc;
 
@@ -25,6 +25,8 @@ public class AudioPlayer {
         soundURL[7] = getClass().getResource("/audio/soul_hit.wav");
         soundURL[8] = getClass().getResource("/audio/over.wav");
         soundURL[9] = getClass().getResource("/audio/start_menu.wav");
+        soundURL[10] = getClass().getResource("/audio/soul_split.wav");
+        soundURL[11] = getClass().getResource("/audio/soul_shatter.wav");
     }
 
     public void setBGM (File audioFile) {
