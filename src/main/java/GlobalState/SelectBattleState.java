@@ -16,7 +16,9 @@ public class SelectBattleState extends GlobalState {
 
     @Override
     public void run(GameWindow gw) {
+        gw.AUDIOPLAYER.playClip(9);
         gw.PLAYER.damage(-20);
+        gw.PLAYER.setVisible(true);
 
         String[] battleNames = new File(System.getenv("APPDATA") + "\\UTB\\battles").list();
 
@@ -60,6 +62,7 @@ public class SelectBattleState extends GlobalState {
 
         if (gw.getPressedKeys().contains(KeyEvent.VK_Z)) {
             gw.invalidateKey(KeyEvent.VK_Z);
+            gw.AUDIOPLAYER.close();
             return battleSelectAOS.get(index).interact();
         }
 

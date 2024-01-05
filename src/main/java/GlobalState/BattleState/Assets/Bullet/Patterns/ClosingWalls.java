@@ -15,7 +15,6 @@ public class ClosingWalls extends BulletPattern {
         super.generateBullets(battleBox);
 
         int offset = (int) (Math.random()*(sprite.getHeight()*4))-sprite.getHeight()*2;
-        System.out.println(offset);
         switch (rotation) {
             case 1:
             case 3:

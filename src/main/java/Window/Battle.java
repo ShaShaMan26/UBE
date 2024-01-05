@@ -21,10 +21,11 @@ public class Battle extends Component {
     public ActSelectAO[] actionOptions;
     public BattleBox battleBox;
     public BufferedImage sprite, defaultSprite, hitSprite, attackingSprite, killedSprite, spareableSprite, talkingSprite;
-    private File battleData;
+    public File battleData, bgmFile;
     private Scanner battleDataReader;
 
     public Battle(String path) {
+        bgmFile = new File(path+"\\bgm.wav");
         // reading sprite data
         try {
             this.defaultSprite = ImageIO.read(new File(path+"\\enemy_sprites\\default.png"));

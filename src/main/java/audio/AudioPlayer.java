@@ -1,5 +1,6 @@
 package audio;
 import javax.sound.sampled.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ public class AudioPlayer {
     private Clip clip;
     private Clip bgm;
     private final ArrayList<Clip> clips = new ArrayList<>();
-    private final URL[] soundURL = new URL[8];
+    private final URL[] soundURL = new URL[10];
     private float volume;
     private FloatControl fc;
 
@@ -22,11 +23,14 @@ public class AudioPlayer {
         soundURL[5] = getClass().getResource("/audio/enemy_hit.wav");
         soundURL[6] = getClass().getResource("/audio/slash.wav");
         soundURL[7] = getClass().getResource("/audio/soul_hit.wav");
+        soundURL[8] = getClass().getResource("/audio/over.wav");
+        soundURL[9] = getClass().getResource("/audio/start_menu.wav");
     }
 
-    public void setBGM (int i) {
+    public void setBGM (File audioFile) {
         try {
-            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(soundURL[i]);
+            File file = audioFile.getAbsoluteFile();
+            AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(file);
             clip = AudioSystem.getClip();
             clip.open(audioInputStream);
             fc = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);

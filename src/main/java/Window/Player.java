@@ -86,6 +86,9 @@ public class Player extends Component {
     public void toggleVisible() {
         visible = !visible;
     }
+    public void setVisible(boolean visible) {
+        this.visible = visible;
+    }
 
     public void moveUp() {
         y -= speed;

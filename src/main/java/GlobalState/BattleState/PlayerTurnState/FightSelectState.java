@@ -24,8 +24,13 @@ public class FightSelectState extends BattleState {
         if (fightBox.isAttackCompleted()) {
             gw.removeComponent(fightBox);
             if (fightBox.slideIndex == -1 && gw.battle.HP == 0) {
-                gw.PLAYER.toggleVisible();
-                return new SelectBattleState();
+                gw.PLAYER.setVisible(false);
+                gw.inBattleState.battleBG.sprite = gw.battle.killedSprite;
+                gw.inBattleState.battleBG.fightOver = true;
+                gw.AUDIOPLAYER.stopBGM();
+                gw.AUDIOPLAYER.playClip(8);
+                return new FancyTextBoxTime("You won!*You earned "+gw.battle.XPReward+" EXP and "+gw.battle.goldReward+" gold.",
+                        1, new SelectBattleState());
             }
             return new FancyDialogueTime(gw.battle.getRandD(), 1, new EnemyAttackState());
         }

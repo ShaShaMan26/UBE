@@ -6,6 +6,7 @@ import java.awt.image.BufferedImage;
 public class BattleBG extends Component {
     public int x;
     public BufferedImage sprite;
+    public boolean fightOver = false;
 
     public BattleBG(int x, BufferedImage sprite) {
         this.x = x;
@@ -24,6 +25,12 @@ public class BattleBG extends Component {
         g.drawLine(13, 128, 625, 128);
 
         // draw character
-        g.drawImage(sprite, 102*x+14, 0, null);
+        if (fightOver) {
+            ((Graphics2D)g).setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5F));
+            g.drawImage(sprite, 102*x+14, 0, null);
+            ((Graphics2D)g).setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
+        } else {
+            g.drawImage(sprite, 102*x+14, 0, null);
+        }
     }
 }

@@ -2,6 +2,7 @@ package Menu.ActionOption.CommandSelectAO;
 
 import GlobalState.BattleState.EnemyTurnState.EnemyAttackState;
 import GlobalState.BattleState.EnemyTurnState.FancyDialogueTime;
+import GlobalState.BattleState.PlayerTurnState.FancyTextBoxTime;
 import Menu.ActionOption.ActionOption;
 import Window.GameWindow;
 import GlobalState.*;
@@ -21,12 +22,15 @@ public class SpareAO extends ActionOption {
 
         GameWindow gw = (GameWindow)this.getRootPane().getContentPane().getParent().getParent().getParent();
         gw.removeComponent(this);
+        gw.PLAYER.setVisible(false);
 
         if (active) {
-            return new SelectBattleState();
+            gw.AUDIOPLAYER.stopBGM();
+            gw.AUDIOPLAYER.playClip(8);
+            gw.inBattleState.battleBG.fightOver = true;
+            return new FancyTextBoxTime("You won!*You earned 0 EXP and "+gw.battle.goldReward+" gold.", 1, new SelectBattleState());
         }
 
-        gw.PLAYER.toggleVisible();
         return new FancyDialogueTime(gw.battle.getRandD(), 1,
                 new EnemyAttackState());
     }

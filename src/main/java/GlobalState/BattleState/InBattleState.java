@@ -29,6 +29,11 @@ public class InBattleState extends GlobalState {
 
     @Override
     public void run(GameWindow gw) {
+        gw.AUDIOPLAYER.setBGM(gw.battle.bgmFile);
+        gw.AUDIOPLAYER.playBGM();
+        gw.AUDIOPLAYER.stopBGM();
+        gw.AUDIOPLAYER.resetBGM();
+
         selectActionState.setText(gw.battle.enterTxt);
         battleState = selectActionState;
 
@@ -42,6 +47,7 @@ public class InBattleState extends GlobalState {
         }
         gw.PLAYER.toggleStatsDisplayed();
 
+        gw.AUDIOPLAYER.playBGM();
         battleState.run(gw);
     }
 
