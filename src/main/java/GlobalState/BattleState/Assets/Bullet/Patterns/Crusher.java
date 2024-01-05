@@ -20,13 +20,13 @@ public class Crusher extends BulletPattern {
             case 1:
             case 3:
                 x = (int) (Math.random() * sprite.getHeight() * 2);
-                y = (int) (Math.random() * ((battleBox.y + battleBox.height) / sprite.getWidth() - 1 - battleBox.y / sprite.getWidth() + 1) + battleBox.y / sprite.getWidth() + 2);
+                y = (int) (Math.random() * ((battleBox.y + battleBox.height) / sprite.getWidth() - 1 - battleBox.y / sprite.getWidth() + 1) + battleBox.y / sprite.getWidth() + 1);
                 bullets.add(new Bullet(damVal, battleBox.x + battleBox.width + x + sprite.getHeight(), y * sprite.getWidth(), bSpeed, fadeSpeed, 3, sprite));
                 x = (int) (Math.random() * sprite.getHeight() * 2);
                 bullets.add(new Bullet(damVal, battleBox.x - x - sprite.getHeight()*2, y * sprite.getWidth(), bSpeed, fadeSpeed, 1, sprite));
                 break;
             default:
-                x = (int) (Math.random() * ((battleBox.x + battleBox.width) / sprite.getWidth() - 1 - battleBox.x / sprite.getWidth() + 1) + battleBox.x / sprite.getWidth() + 2);
+                x = (int) (Math.random() * ((battleBox.x + battleBox.width) / sprite.getWidth() - 1 - battleBox.x / sprite.getWidth() + 1) + battleBox.x / sprite.getWidth() + 1);
                 y = (int) (Math.random() * sprite.getHeight() * 2);
                 bullets.add(new Bullet(damVal, x * sprite.getWidth(), battleBox.y + battleBox.height + y, bSpeed, fadeSpeed, 0, sprite));
                 y = (int) (Math.random() * sprite.getHeight() * 2);

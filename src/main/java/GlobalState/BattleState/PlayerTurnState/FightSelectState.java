@@ -11,6 +11,7 @@ import java.awt.event.KeyEvent;
 
 public class FightSelectState extends BattleState {
     private FightBox fightBox;
+    private int secretSHHHH = 0;
     @Override
     public void run(GameWindow gw) {
         fightBox = new FightBox(gw.battle.totalHP, gw.battle.HP, gw.battle.col);
@@ -22,20 +23,22 @@ public class FightSelectState extends BattleState {
     @Override
     public GlobalState update(GameWindow gw) {
         if (fightBox.isAttackCompleted()) {
-            gw.removeComponent(fightBox);
-            if (fightBox.slideIndex == -1 && gw.battle.HP == 0) {
-                gw.PLAYER.setVisible(false);
-                gw.inBattleState.battleBG.sprite = gw.battle.killedSprite;
-                gw.inBattleState.battleBG.fightOver = true;
-                gw.AUDIOPLAYER.stopBGM();
-                gw.AUDIOPLAYER.playClip(8);
-                return new FancyTextBoxTime("You won!*You earned "+gw.battle.XPReward+" EXP and "+gw.battle.goldReward+" gold.",
-                        1, new SelectBattleState());
+            if (secretSHHHH > 5) {
+                gw.removeComponent(fightBox);
+                if (fightBox.slideIndex == -1 && gw.battle.HP == 0) {
+                    gw.PLAYER.setVisible(false);
+                    gw.inBattleState.battleBG.sprite = gw.battle.killedSprite;
+                    gw.inBattleState.battleBG.fightOver = true;
+                    gw.AUDIOPLAYER.stopBGM();
+                    gw.AUDIOPLAYER.playClip(8);
+                    return new FancyTextBoxTime("You won!*You earned "+gw.battle.XPReward+" EXP and "+gw.battle.goldReward+" gold.",
+                            1, new SelectBattleState());
+                }
+                return new FancyDialogueTime(gw.battle.getRandD(), 1, new EnemyAttackState());
+            } else {
+                secretSHHHH++;
             }
-            return new FancyDialogueTime(gw.battle.getRandD(), 1, new EnemyAttackState());
-        }
-
-        if (fightBox.attackTriggered) {
+        } else if (fightBox.attackTriggered) {
             fightBox.progressAttack();
             if (fightBox.isSlashOver() && fightBox.slideIndex == fightBox.damage) {
                 gw.inBattleState.battleBG.sprite = gw.battle.hitSprite;

@@ -89,8 +89,10 @@ public class FightBox extends Component {
                 g.fillRect(spriteX+2, 115, 104, 17);
                 g.setColor(Color.DARK_GRAY);
                 g.fillRect(spriteX+4, 117, 102, 15);
-                g.setColor(new Color(0, 254, 12));
-                g.fillRect(spriteX+4, 117, (int) ((102F/totalHP) * (hp + slideIndex)), 15);
+                if (hp + slideIndex > -1) {
+                    g.setColor(new Color(0, 254, 12));
+                    g.fillRect(spriteX+4, 117, (int) ((102F/totalHP) * (hp + slideIndex)), 15);
+                }
                 g.setColor(new Color(244, 1, 5));
                 s = ""+damage;
             } else {
@@ -100,7 +102,7 @@ public class FightBox extends Component {
 
             g.drawString(s, 104/2 - (s.length()*28 / 2) + spriteX+2, 115);
 
-            if (ticks % 3 == 0) {
+            if (!isAttackCompleted() && ticks % 2 == 0) {
                 if (hp + slideIndex > 0) {
                     slideIndex--;
                 } else {
