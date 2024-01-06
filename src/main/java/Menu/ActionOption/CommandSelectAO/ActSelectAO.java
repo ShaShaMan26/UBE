@@ -33,7 +33,7 @@ public class ActSelectAO extends ActionOption {
 
         gw.PLAYER.toggleVisible();
 
-        if (gw.battle.mercyHP == mercyVal || fPostText == null || fPostText.equals("")) {
+        if (gw.battle.mercyHP <= mercyVal || fPostText == null || fPostText.equals("")) {
             if (mercyVal > 0 && gw.battle.mercyHP - mercyVal == 0) {
                 gw.battle.mercyHP--;
             }

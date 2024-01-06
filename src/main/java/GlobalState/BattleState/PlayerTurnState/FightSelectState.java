@@ -14,7 +14,7 @@ public class FightSelectState extends BattleState {
     private int secretSHHHH = 0;
     @Override
     public void run(GameWindow gw) {
-        fightBox = new FightBox(gw.battle.totalHP, gw.battle.HP, gw.battle.col);
+        fightBox = new FightBox(gw);
         gw.addComponent(fightBox);
         gw.PLAYER.toggleVisible();
         gw.inBattleState.toggleCommandSelect();

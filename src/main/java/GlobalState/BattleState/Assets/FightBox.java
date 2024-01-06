@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
+import Window.GameWindow;
 
 public class FightBox extends Component {
     private BufferedImage eye;
@@ -16,10 +17,10 @@ public class FightBox extends Component {
     public int damage, slideIndex, x = 47;
     public boolean attackTriggered = false, attackMissed = false;
     private Font font;
-    public FightBox(int totalHP, int hp, int spriteX) {
-        this.totalHP = totalHP;
-        this.hp = hp;
-        this.spriteX = 102*spriteX+14;
+    public FightBox(GameWindow gw) {
+        this.totalHP = gw.battle.totalHP;
+        this.hp = gw.battle.HP;
+        this.spriteX = (102*(gw.battle.col)+14)+gw.battle.sprite.getWidth()/2;
 
         InputStream stream = getClass().getResourceAsStream("/fonts/hachicro.ttf");
         try {
@@ -77,7 +78,7 @@ public class FightBox extends Component {
 
         // draw slash
         if (!isSlashOver() && ticks / 5 > 0 && ticks / 5 < 6) {
-            g.drawImage(slashFrames[ticks / 5], spriteX, 128, null);
+            g.drawImage(slashFrames[ticks / 5], spriteX-slashFrames[0].getWidth()/2, 128, null);
         }
 
         // draw damage fx
@@ -86,12 +87,12 @@ public class FightBox extends Component {
             String s;
             if (attackTriggered) {
                 g.setColor(Color.BLACK);
-                g.fillRect(spriteX+2, 115, 104, 17);
+                g.fillRect(spriteX+2-52, 115, 104, 17);
                 g.setColor(Color.DARK_GRAY);
-                g.fillRect(spriteX+4, 117, 102, 15);
+                g.fillRect(spriteX+3-51, 116, 102, 15);
                 if (hp + slideIndex > -1) {
                     g.setColor(new Color(0, 254, 12));
-                    g.fillRect(spriteX+4, 117, (int) ((102F/totalHP) * (hp + slideIndex)), 15);
+                    g.fillRect(spriteX+3-51, 116, (int) ((102F/totalHP) * (hp + slideIndex)), 15);
                 }
                 g.setColor(new Color(244, 1, 5));
                 s = ""+damage;
@@ -100,7 +101,7 @@ public class FightBox extends Component {
                 s = "MISS";
             }
 
-            g.drawString(s, 104/2 - (s.length()*28 / 2) + spriteX+2, 115);
+            g.drawString(s, 104/2 - (s.length()*28 / 2) + spriteX+2-52, 115);
 
             if (!isAttackCompleted() && ticks % 2 == 0) {
                 if (hp + slideIndex > 0) {
