@@ -12,7 +12,7 @@ import java.util.Objects;
 import Window.GameWindow;
 
 public class FancyDialouge extends FancyText {
-    private BufferedImage txtbox;
+    private BufferedImage txtbox, bigTxtBox;
     public FancyDialouge(String text, int speed) {
         super(text, speed, 0, 0, 7);
 
@@ -23,11 +23,11 @@ public class FancyDialouge extends FancyText {
             attributes.put(TextAttribute.TRACKING, 0);
             attributes.put(TextAttribute.SIZE, 12F);
             FONT = Font.createFont(Font.TRUETYPE_FONT, stream).deriveFont(attributes);
-
+            bigTxtBox = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/art/med_txtbox.png")));
             if (text.length() < 6*7) {
                 txtbox = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/art/sm_txtbox.png")));
             } else {
-                txtbox = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/art/med_txtbox.png")));
+                txtbox = bigTxtBox;
                 width = 21;
             }
         } catch (IOException | FontFormatException e) {
@@ -49,6 +49,10 @@ public class FancyDialouge extends FancyText {
         y = gw.battle.dioY;
         if (TEXT.equals("")) {
             this.TEXT = gw.battle.getRandD();
+            if (TEXT.length() >= 6*7) {
+                txtbox = bigTxtBox;
+                width = 21;
+            }
         }
 
         g.setFont(FONT);
