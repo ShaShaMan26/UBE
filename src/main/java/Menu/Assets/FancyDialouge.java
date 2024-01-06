@@ -24,7 +24,7 @@ public class FancyDialouge extends FancyText {
             attributes.put(TextAttribute.SIZE, 12F);
             FONT = Font.createFont(Font.TRUETYPE_FONT, stream).deriveFont(attributes);
 
-            if (TEXT.length() < 6*7) {
+            if (text.length() < 6*7) {
                 txtbox = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/art/sm_txtbox.png")));
             } else {
                 txtbox = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/art/med_txtbox.png")));

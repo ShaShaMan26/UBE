@@ -12,7 +12,7 @@ import java.util.Objects;
 public class FightBox extends Component {
     private BufferedImage eye;
     private BufferedImage[] slashFrames = new BufferedImage[6];
-    private int spriteX = 0, ticks = 0, hp, totalHP;
+    private int spriteX, ticks = 0, hp, totalHP;
     public int damage, slideIndex, x = 47;
     public boolean attackTriggered = false, attackMissed = false;
     private Font font;

@@ -35,6 +35,11 @@ public class Battle extends Component {
             this.spareableSprite = ImageIO.read(new File(path+"\\enemy_sprites\\spareable.png"));
             this.talkingSprite = ImageIO.read(new File(path+"\\enemy_sprites\\talking.png"));
         } catch (Exception e) {
+            this.hitSprite = defaultSprite;
+            this.attackingSprite = defaultSprite;
+            this.killedSprite = defaultSprite;
+            this.spareableSprite = defaultSprite;
+            this.talkingSprite = defaultSprite;
         }
         this.sprite = defaultSprite;
 
@@ -84,7 +89,7 @@ public class Battle extends Component {
         ArrayList<ActSelectAO> AOD = new ArrayList<>();
         AOD.add(new ActSelectAO("Check", 101, 295, 0,
                 name+" - ATK " + atk + " DEF " + (def) + "*"+checkTxt,
-                ""));
+                "", null, null));
 
         while (!battleDataReader.nextLine().trim().equals("<")) {
         }
@@ -94,6 +99,8 @@ public class Battle extends Component {
                     357,
                     295,
                     Integer.parseInt(battleDataReader.nextLine().trim()),
+                    battleDataReader.nextLine().trim(),
+                    battleDataReader.nextLine().trim(),
                     battleDataReader.nextLine().trim(),
                     battleDataReader.nextLine().trim()
                     ));
@@ -105,6 +112,8 @@ public class Battle extends Component {
                     327,
                     Integer.parseInt(battleDataReader.nextLine().trim()),
                     battleDataReader.nextLine().trim(),
+                    battleDataReader.nextLine().trim(),
+                    battleDataReader.nextLine().trim(),
                     battleDataReader.nextLine().trim()
             ));
         }
@@ -114,6 +123,8 @@ public class Battle extends Component {
                     357,
                     327,
                     Integer.parseInt(battleDataReader.nextLine().trim()),
+                    battleDataReader.nextLine().trim(),
+                    battleDataReader.nextLine().trim(),
                     battleDataReader.nextLine().trim(),
                     battleDataReader.nextLine().trim()
             ));

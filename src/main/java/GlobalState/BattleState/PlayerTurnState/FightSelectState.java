@@ -23,7 +23,7 @@ public class FightSelectState extends BattleState {
     @Override
     public GlobalState update(GameWindow gw) {
         if (fightBox.isAttackCompleted()) {
-            if (secretSHHHH > 5) {
+            if (secretSHHHH > 15) {
                 gw.removeComponent(fightBox);
                 if (fightBox.slideIndex == -1 && gw.battle.HP == 0) {
                     gw.PLAYER.setVisible(false);
@@ -57,6 +57,10 @@ public class FightSelectState extends BattleState {
                     b = (1 - (Math.abs(fightBox.getNeedlePos() - 272))/544F)*2;
                 }
                 int damage = (int) ((gw.PLAYER.atk - gw.battle.def + ((int) (Math.random()*3))) * b);
+                System.out.println(damage);
+                if (damage < 1) {
+                    damage = 0;
+                }
 
                 fightBox.startAttack(damage);
                 gw.battle.dealDamage(damage);
