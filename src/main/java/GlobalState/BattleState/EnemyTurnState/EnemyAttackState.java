@@ -40,16 +40,12 @@ public class EnemyAttackState extends BattleState {
     @Override
     public GlobalState update(GameWindow gw) {
         if (gw.battleBox.isTransitioning) {
-            gw.battleBox.progressTransition(18);
+            gw.battleBox.progressTransition(10);
         } else {
             battleTicks++;
 
             if (battleTicks > duration) {
                 if (battleTicks == duration+1) {
-                    if (gw.PLAYER.isInvincible()) {
-                        gw.PLAYER.toggleInvincible();
-                        invincibleDuration = 0;
-                    }
                     gw.PLAYER.setVisible(false);
                     gw.battleBox.transitionTo(33, 251, 574, 139);
                     for (Bullet bullet : bulletPattern.getBullets()) {
@@ -62,7 +58,7 @@ public class EnemyAttackState extends BattleState {
                     }
                 }
                 if (gw.battleBox.isTransitioning) {
-                    gw.battleBox.progressTransition(24);
+                    gw.battleBox.progressTransition(18);
                 } else {
                     for (Bullet bullet : bulletPattern.getBullets()) {
                         gw.removeComponent(bullet);

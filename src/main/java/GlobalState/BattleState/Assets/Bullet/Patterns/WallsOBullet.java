@@ -72,7 +72,7 @@ public class WallsOBullet extends BulletPattern {
                 }
                 break;
         }
-        int holeIndex = (int) (Math.random()*(bullets.size()-1-1)+1);
+        int holeIndex = (int) (Math.random()*bullets.size());
         bullets.remove(holeIndex);
     }
 

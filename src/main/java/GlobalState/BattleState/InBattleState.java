@@ -45,7 +45,6 @@ public class InBattleState extends GlobalState {
         for (ActionOption ao : actionOptions) {
             gw.addComponent(ao);
         }
-        gw.PLAYER.toggleStatsDisplayed();
 
         gw.AUDIOPLAYER.playBGM();
         battleState.run(gw);
@@ -69,7 +68,6 @@ public class InBattleState extends GlobalState {
             }
 
             if (tempBattleState instanceof SelectBattleState) {
-                gw.PLAYER.toggleStatsDisplayed();
                 return tempBattleState;
             }
 
