@@ -14,29 +14,57 @@ public class LadderDrill extends BulletPattern {
     public void generateBullets(Rectangle battleBox) {
         super.generateBullets(battleBox);
 
-        for (int i = 0; i < battleBox.width/2/sprite.getWidth(); i++) {
-            bullets.add(new Bullet(
-                            damVal,
-                            i*sprite.getWidth()+battleBox.x,
-                            battleBox.y-sprite.getHeight()*2,
-                            speed,
-                            fadeSpeed,
-                            2,
-                            sprite
-                    )
-            );
-        }
-        for (int i = battleBox.width/2/sprite.getWidth(); i < battleBox.width/sprite.getWidth(); i++) {
-            bullets.add(new Bullet(
-                            damVal,
-                            i*sprite.getWidth()+battleBox.x,
-                            battleBox.y + battleBox.height + sprite.getHeight(),
-                            speed,
-                            fadeSpeed,
-                            0,
-                            sprite
-                    )
-            );
+        int randNum = (int) (Math.random()*(2));
+        if (randNum == 0) {
+            for (int i = 0; i < battleBox.width/sprite.getWidth()/2; i++) {
+                bullets.add(new Bullet(
+                                damVal,
+                                i*sprite.getWidth()+battleBox.x,
+                                battleBox.y-sprite.getHeight()*2,
+                                speed,
+                                fadeSpeed,
+                                2,
+                                sprite
+                        )
+                );
+            }
+            for (int i = battleBox.width/sprite.getWidth()/2; i < battleBox.width/sprite.getWidth(); i++) {
+                bullets.add(new Bullet(
+                                damVal,
+                                i*sprite.getWidth()+battleBox.x,
+                                battleBox.y + battleBox.height + sprite.getHeight(),
+                                speed,
+                                fadeSpeed,
+                                0,
+                                sprite
+                        )
+                );
+            }
+        } else {
+            for (int i = battleBox.width/sprite.getWidth()/2; i < battleBox.width/sprite.getWidth(); i++) {
+                bullets.add(new Bullet(
+                                damVal,
+                                i*sprite.getWidth()+battleBox.x,
+                                battleBox.y-sprite.getHeight()*2,
+                                speed,
+                                fadeSpeed,
+                                2,
+                                sprite
+                        )
+                );
+            }
+            for (int i = 0; i < battleBox.width/sprite.getWidth()/2; i++) {
+                bullets.add(new Bullet(
+                                damVal,
+                                i*sprite.getWidth()+battleBox.x,
+                                battleBox.y + battleBox.height + sprite.getHeight(),
+                                speed,
+                                fadeSpeed,
+                                0,
+                                sprite
+                        )
+                );
+            }
         }
     }
 

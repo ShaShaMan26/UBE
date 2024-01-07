@@ -69,15 +69,10 @@ public class DoubleWallsOBullet extends BulletPattern {
                 }
                 break;
         }
-        int holeIndex = (int) (Math.random()*(bullets.size()/2-4-1)+1);
-        int holeOffset = (int) (Math.random()*3)-1;
-        Bullet[] rBullets = new Bullet[6];
+        int holeIndex = (int) (Math.random()*bullets.size()/2);
+        Bullet[] rBullets = new Bullet[2];
         rBullets[0] = bullets.get(holeIndex);
-        rBullets[1] = bullets.get(holeIndex-1);
-        rBullets[2] = bullets.get(holeIndex+1);
-        rBullets[3] = bullets.get(holeIndex+bullets.size()/2+holeOffset);
-        rBullets[4] = bullets.get(holeIndex-1+bullets.size()/2+holeOffset);
-        rBullets[5] = bullets.get(holeIndex+1+bullets.size()/2+holeOffset);
+        rBullets[1] = bullets.get(bullets.size()/2+holeIndex);
 
         for (Bullet bullet : rBullets) {
             bullets.remove(bullet);

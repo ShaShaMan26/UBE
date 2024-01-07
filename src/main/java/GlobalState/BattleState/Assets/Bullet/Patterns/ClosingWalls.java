@@ -14,7 +14,7 @@ public class ClosingWalls extends BulletPattern {
     public void generateBullets(Rectangle battleBox) {
         super.generateBullets(battleBox);
 
-        int offset = (int) (Math.random()*(sprite.getHeight()*4))-sprite.getHeight()*2;
+        int offset = (int) ((Math.random()*(sprite.getHeight()*2)-sprite.getHeight())+sprite.getHeight())-sprite.getHeight();
         switch (rotation) {
             case 1:
             case 3:
@@ -75,9 +75,9 @@ public class ClosingWalls extends BulletPattern {
     @Override
     public boolean isOver() {
         if (rotation == 0 || rotation == 2) {
-            return bullets.get(0).y <= bullets.get(bullets.size()/2+1).y+sprite.getHeight()*1.25;
+            return bullets.get(0).y <= bullets.get(bullets.size()/2+1).y+sprite.getHeight()*2;
         } else {
-            return bullets.get(0).x <= bullets.get(bullets.size()/2+1).x+sprite.getHeight()*1.25;
+            return bullets.get(0).x <= bullets.get(bullets.size()/2+1).x+sprite.getHeight()*2;
         }
     }
 }
