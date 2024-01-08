@@ -10,7 +10,7 @@ import java.util.Objects;
 public class Player extends Component {
     private int health, speed;
     public int atk, x, y;
-    private boolean visible = true, slow = false, diagonal = false, invincible = false;
+    private boolean visible = false, slow = false, diagonal = false, invincible = false;
     public boolean split = false;
     private BufferedImage sprite, splitSprite;
     public Player() {

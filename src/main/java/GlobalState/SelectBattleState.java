@@ -1,16 +1,14 @@
 package GlobalState;
 
-import Menu.ActionOption.BattleSelectAO;
 import Menu.ActionOption.ActionOption;
-import Window.Battle;
+import Menu.ActionOption.BattleSelectAO;
 import Window.GameWindow;
 
 import java.awt.event.KeyEvent;
-import java.io.File;
 import java.util.ArrayList;
 
 public class SelectBattleState extends GlobalState {
-    ArrayList<BattleSelectAO> battleSelectAOS = new ArrayList<>();
+    ArrayList<BattleSelectAO> battleSelectAOS;
     final int XOFFSET = 20, YOFFSET = 45;
     int index = 0;
 
@@ -18,23 +16,20 @@ public class SelectBattleState extends GlobalState {
     public void run(GameWindow gw) {
         gw.AUDIOPLAYER.playClip(9);
         gw.PLAYER.damage(-20);
-        gw.PLAYER.setVisible(true);
 
-        String[] battleNames = new File(System.getenv("APPDATA") + "\\UTB\\battles").list();
-
-        if (battleNames.length > 0) {
-            for (int i = 0; i < battleNames.length; i++) {
-                BattleSelectAO battleSelectAO = new BattleSelectAO(battleNames[i], XOFFSET, YOFFSET+(i*42), new Battle(System.getenv("APPDATA") + "\\UTB\\battles\\" + battleNames[i]));
+        battleSelectAOS = gw.battles;
+        if (gw.battles.size() > 0) {
+            for (BattleSelectAO battleSelectAO : battleSelectAOS) {
                 gw.addComponent(battleSelectAO);
-                battleSelectAOS.add(battleSelectAO);
             }
         } else {
             gw.addComponent(new ActionOption("No battle data found.", XOFFSET, YOFFSET));
             gw.repaint();
         }
 
-        if (battleSelectAOS.size() > 0) {
-            battleSelectAOS.get(index).toggleSelected();
+        gw.PLAYER.setVisible(true);
+        if (gw.battles.size() > 0) {
+            gw.battles.get(0).selected = true;
         }
     }
 
@@ -63,6 +58,7 @@ public class SelectBattleState extends GlobalState {
         if (gw.getPressedKeys().contains(KeyEvent.VK_Z)) {
             gw.invalidateKey(KeyEvent.VK_Z);
             gw.AUDIOPLAYER.close();
+            battleSelectAOS.get(index).toggleSelected();
             return battleSelectAOS.get(index).interact();
         }
 

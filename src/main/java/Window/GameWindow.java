@@ -2,6 +2,7 @@ package Window;
 
 import GlobalState.BattleState.Assets.BattleBox;
 import GlobalState.BattleState.InBattleState;
+import Menu.ActionOption.BattleSelectAO;
 import audio.AudioPlayer;
 
 import javax.swing.*;
@@ -19,6 +20,7 @@ public class GameWindow extends JFrame implements KeyListener {
     public InBattleState inBattleState = null;
     private final ArrayList<Integer> pressedKeys = new ArrayList<>();
     private final ArrayList<Integer> invalidKeys = new ArrayList<>();
+    public ArrayList<BattleSelectAO> battles = new ArrayList<>();
     public GameWindow() {
         this.PANEL = new BGPanel();
         this.AUDIOPLAYER = new AudioPlayer();

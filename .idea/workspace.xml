@@ -11,9 +11,15 @@
   <component name="ChangeListManager">
     <list default="true" id="e444d0b2-08f3-47ca-94cb-5d165045ca25" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GlobalState/BattleState/Assets/Bullet/Patterns/ClosingWalls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GlobalState/BattleState/Assets/Bullet/Patterns/ClosingWalls.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GlobalState/BattleState/Assets/Bullet/Patterns/DoubleWallsOBullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GlobalState/BattleState/Assets/Bullet/Patterns/DoubleWallsOBullet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GlobalState/BattleState/Assets/Bullet/Patterns/LadderDrill.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GlobalState/BattleState/Assets/Bullet/Patterns/LadderDrill.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/UndertaleBattle_jar/UndertaleBattle.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/UndertaleBattle_jar/UndertaleBattle.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GlobalState/InitializeGameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GlobalState/InitializeGameState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/GlobalState/SelectBattleState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GlobalState/SelectBattleState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Window/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Window/GameWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Window/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Window/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/GlobalState/InitializeGameState.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GlobalState/InitializeGameState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/GlobalState/SelectBattleState.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GlobalState/SelectBattleState.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Window/GameWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Window/GameWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/Window/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Window/Player.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,17 +53,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/shash/IdeaProjects/UndertaleBattle",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/shash/IdeaProjects/UndertaleBattle&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="Menu" />
