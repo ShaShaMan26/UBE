@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="UndertaleBattle:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/UndertaleBattle_jar</output-path>
-    <root id="archive" name="UndertaleBattle.jar">
-      <element id="module-output" name="UndertaleBattle" />
-    </root>
-  </artifact>
-</component>
