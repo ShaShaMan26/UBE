@@ -2,15 +2,18 @@ package GlobalState;
 
 import Menu.ActionOption.ActionOption;
 import Menu.ActionOption.BattleSelectAO;
+import Menu.Assets.Arrow;
 import Window.GameWindow;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 public class SelectBattleState extends GlobalState {
-    ArrayList<BattleSelectAO> battleSelectAOS;
-    final int XOFFSET = 20, YOFFSET = 45;
-    int index = 0;
+    private ArrayList<BattleSelectAO> battleSelectAOS;
+    private int XOFFSET = 20, YOFFSET = 40;
+    private int index = 0, pageNum = 0;
+    private final Arrow arrow = new Arrow();
+
 
     @Override
     public void run(GameWindow gw) {
@@ -31,6 +34,7 @@ public class SelectBattleState extends GlobalState {
         if (gw.battles.size() > 0) {
             gw.battles.get(0).selected = true;
         }
+        gw.addComponent(arrow);
     }
 
     @Override
@@ -40,8 +44,20 @@ public class SelectBattleState extends GlobalState {
             index--;
             if (index < 0) {
                 index = battleSelectAOS.size()-1;
+                pageNum = battleSelectAOS.size() / 11;
+                setPage(pageNum);
             }
+
             battleSelectAOS.get(index).toggleSelected();
+            int hotfixIntCuzLazy = 0;
+            if (index>11) {
+                hotfixIntCuzLazy = 1;
+            }
+            if (index != 0 && (index-hotfixIntCuzLazy) % 10F == 0) {
+                pageNum--;
+                setPage(pageNum);
+            }
+
             gw.invalidateKey(KeyEvent.VK_UP);
         }
 
@@ -50,8 +66,16 @@ public class SelectBattleState extends GlobalState {
             index++;
             if (index > battleSelectAOS.size()-1) {
                 index = 0;
+                pageNum = -1;
+                setPage(pageNum);
             }
+
             battleSelectAOS.get(index).toggleSelected();
+            if (index % 11 == 0) {
+                pageNum++;
+                setPage(pageNum);
+            }
+
             gw.invalidateKey(KeyEvent.VK_DOWN);
         }
 
@@ -65,5 +89,14 @@ public class SelectBattleState extends GlobalState {
         gw.PLAYER.setPos(XOFFSET, (index*42) + YOFFSET-16);
 
         return null;
+    }
+
+    public void setPage(int pageNum) {
+        YOFFSET = 40 - pageNum*42*11;
+        for (int i = 0; i < battleSelectAOS.size(); i++) {
+            battleSelectAOS.get(i).Y = YOFFSET+i*42;
+        }
+
+        arrow.visible = pageNum < (battleSelectAOS.size()+1)/12;
     }
 }

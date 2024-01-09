@@ -17,11 +17,16 @@ public class InitializeGameState extends GlobalState {
         new File(System.getenv("APPDATA")+"\\UTB").mkdir();
         new File(System.getenv("APPDATA")+"\\UTB\\battles").mkdir();
 
-        int XOFFSET = 20, YOFFSET = 45;
+        int XOFFSET = 20, YOFFSET = 40;
         String[] battleNames = new File(System.getenv("APPDATA") + "\\UTB\\battles").list();
 
         for (int i = 0; i < battleNames.length; i++) {
-            BattleSelectAO battleSelectAO = new BattleSelectAO(battleNames[i], XOFFSET, YOFFSET+(i*42), new Battle(System.getenv("APPDATA") + "\\UTB\\battles\\" + battleNames[i]));
+            String battleName = battleNames[i];
+            if (battleName.length() > 38) {
+                battleName = battleName.substring(0, 36);
+                battleName += "...";
+            }
+            BattleSelectAO battleSelectAO = new BattleSelectAO(battleName, XOFFSET, YOFFSET+(i*42), new Battle(System.getenv("APPDATA") + "\\UTB\\battles\\" + battleNames[i]));
             gw.battles.add(battleSelectAO);
         }
     }

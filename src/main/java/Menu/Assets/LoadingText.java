@@ -26,6 +26,6 @@ public class LoadingText extends Component {
     public void paint(Graphics g) {
         g.setColor(Color.WHITE);
         g.setFont(font);
-        g.drawString("Loading...", 200, 212);
+        g.drawString("Loading...", 210, 212);
     }
 }

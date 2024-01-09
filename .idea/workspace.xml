@@ -14,12 +14,7 @@
       <change beforePath="$PROJECT_DIR$/out/artifacts/UndertaleBattle_jar/UndertaleBattle.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/UndertaleBattle_jar/UndertaleBattle.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GlobalState/InitializeGameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GlobalState/InitializeGameState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GlobalState/SelectBattleState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GlobalState/SelectBattleState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Window/GameWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Window/GameWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Window/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Window/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GlobalState/InitializeGameState.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GlobalState/InitializeGameState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/GlobalState/SelectBattleState.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GlobalState/SelectBattleState.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Window/GameWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Window/GameWindow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Window/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Window/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Menu/Assets/LoadingText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Menu/Assets/LoadingText.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
