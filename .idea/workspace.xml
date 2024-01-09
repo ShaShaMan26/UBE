@@ -10,11 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e444d0b2-08f3-47ca-94cb-5d165045ca25" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/UndertaleBattle_jar/UndertaleBattle.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/UndertaleBattle_jar/UndertaleBattle.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/GlobalState/InitializeGameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GlobalState/InitializeGameState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/GlobalState/SelectBattleState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/GlobalState/SelectBattleState.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Menu/Assets/LoadingText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Menu/Assets/LoadingText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/GlobalState/SelectBattleState.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/GlobalState/SelectBattleState.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

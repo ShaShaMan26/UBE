@@ -25,16 +25,18 @@ public class SelectBattleState extends GlobalState {
             for (BattleSelectAO battleSelectAO : battleSelectAOS) {
                 gw.addComponent(battleSelectAO);
             }
+            gw.battles.get(0).selected = true;
         } else {
             gw.addComponent(new ActionOption("No battle data found.", XOFFSET, YOFFSET));
             gw.repaint();
         }
 
         gw.PLAYER.setVisible(true);
-        if (gw.battles.size() > 0) {
-            gw.battles.get(0).selected = true;
-        }
+
         gw.addComponent(arrow);
+        if (battleSelectAOS.size() < 10) {
+            arrow.visible = false;
+        }
     }
 
     @Override
