@@ -1,0 +1,16 @@
+# Ignore everything
+.idea/vcs.xml
+
+
+# But not these files...
+!src/main/java/*
+!src/main/resources/*
+
+src/main/resources/META-INF
+
+# ...even if they are in subdirectories
+!*/
+
+# if the files to be tracked are in subdirectories
+# !*/a/b/file1.txt
+# !*/a/b/c/*
