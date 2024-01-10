@@ -28,7 +28,7 @@ public class BattleBG extends JComponent {
             attributes.put(TextAttribute.SIZE, 15F);
             font = Font.createFont(Font.TRUETYPE_FONT, stream).deriveFont(attributes);
 
-            stream = getClass().getResourceAsStream("/fonts/8bit_wonder.ttf");
+            stream = getClass().getResourceAsStream("/fonts/8bit_wonder.TTF");
             attributes = new HashMap<>();
             attributes.put(TextAttribute.TRACKING, .05F);
             attributes.put(TextAttribute.SIZE, 12F);

@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Battle extends Component {
-    public int totalHP, HP, mercyHP, atk, playerAtk, def, XPReward, goldReward, col, dioX, dioY;
+    public int totalHP, HP, totalMercyHP, mercyHP, atk, playerAtk, def, XPReward, goldReward, col, dioX, dioY;
     public String name, checkTxt, enterTxt, spareableTxt;
     public ArrayList<String> dialogue = new ArrayList<>(), flavorTxt = new ArrayList<>();
     private ArrayList<Attack> attacks = new ArrayList<>();
@@ -59,6 +59,7 @@ public class Battle extends Component {
         this.totalHP = Integer.parseInt(battleDataReader.nextLine().trim());
         this.HP = totalHP;
         this.mercyHP = Integer.parseInt(battleDataReader.nextLine().trim());
+        this.totalMercyHP = mercyHP;
         this.atk = Integer.parseInt(battleDataReader.nextLine().trim());
         this.def = Integer.parseInt(battleDataReader.nextLine().trim());
         this.XPReward = Integer.parseInt(battleDataReader.nextLine().trim());
@@ -187,5 +188,10 @@ public class Battle extends Component {
         if (HP < 0) {
             HP = 0;
         }
+    }
+
+    public void reset() {
+        HP = totalHP;
+        mercyHP = totalMercyHP;
     }
 }

@@ -19,6 +19,7 @@ public class BattleSelectAO extends ActionOption {
         super.interact();
         GameWindow gw = (GameWindow)this.getRootPane().getContentPane().getParent().getParent().getParent();
         gw.PLAYER.atk = battle.playerAtk;
+        battle.reset();
         gw.battle = battle;
         gw.inBattleState = new InBattleState();
         return gw.inBattleState;

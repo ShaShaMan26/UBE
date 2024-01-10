@@ -22,7 +22,7 @@ public class FightBox extends Component {
         this.hp = gw.battle.HP;
         this.spriteX = (102*(gw.battle.col)+14)+gw.battle.sprite.getWidth()/2;
 
-        InputStream stream = getClass().getResourceAsStream("/fonts/hachicro.ttf");
+        InputStream stream = getClass().getResourceAsStream("/fonts/hachicro.TTF");
         try {
             assert stream != null;
             Map<TextAttribute, Object> attributes = new HashMap<>();
