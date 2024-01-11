@@ -32,7 +32,7 @@ public class GameWindow extends JFrame implements KeyListener {
         this.setResizable(false);
         this.setLayout(null);
         this.setLocationRelativeTo(null);
-        this.setTitle("UTB");
+        this.setTitle("Undertale Battle Engine");
         this.getContentPane().setBackground(Color.BLACK);
         this.addKeyListener(this);
 

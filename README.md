@@ -1,18 +1,14 @@
 # Undertale Battle Engine
 
-***
+![](https://cdn.shashack.org/UBE/promo/trailer.gif)
 
 A simple engine for making and playing custom [_Undertale_](https://undertale.com)-style RPG battles.
 
 ## Downloads
 
-***
-
 You can download UBE [here]() for Windows operating systems.
 
 ## Setup
-
-***
 
 Simply unzip the folder above and launch `UBE.jar` to play. If the game doesn't launch, ensure you have 
 [Java](https://download.oracle.com/java/19/archive/jdk-19.0.2_windows-x64_bin.exe) installed.  
@@ -23,8 +19,6 @@ and rename it to 'battles' (replacing the preexisting folder of the same name).
 
 ## What Is UBE?
 
-***
-
 _Undertale Battle Engine_, or _UBE_ is a game engine used to play custom-made _Undertale_ battles.
 
 ### Gameplay
@@ -34,6 +28,8 @@ The goal of each battle is to defeat a given enemy, either by skillfully dodging
 
 #### The Main Menu
 
+![](https://cdn.shashack.org/UBE/promo/battle_select_1.gif)
+
 Upon booting _UBE_, you will be greeted by a list of battles read from your `battles` folder.
 Once selected from this menu, you will be entered into a battle.
 
@@ -41,10 +37,15 @@ Once selected from this menu, you will be entered into a battle.
 
 Each battle is split into two major phases, the player's turn and enemy's turn.  
 During the player's turn, select one of the four action commands:  
+
+![](https://cdn.shashack.org/UBE/promo/fight.gif)
+
 > **Fight** - Attacks the enemy.  
 > *Once selected, the player must land the fight needle on the target. 
 > Landing closer to the center of the target will deal more damage.
 > After the enemy's health reaches 0, they will die.*
+
+![](https://cdn.shashack.org/UBE/promo/act.gif)
 
 > **Act** - Interacts with the enemy.  
 > *Once selected, the player must further select one of the available actions. 
@@ -52,10 +53,14 @@ During the player's turn, select one of the four action commands:
 > Some actions will fail until another action has been preformed. Once all required actions have been completed, 
 > the player can spare their foe.*
 
+![](https://cdn.shashack.org/UBE/promo/item.gif)
+
 > **Item** - Uses an item.  
 > *Once selected, the player must choose an item to use. In UBE there aren't actually any items 
 > as I am lazy. Due to this, when selecting an item to utilize, you're merely selecting the amount 
 > of health you wish to regain (each option an increment of 5). Think of it as a difficulty select! ;)*
+
+![](https://cdn.shashack.org/UBE/promo/spare.gif)
 
 > **Mercy** - Shows your adversary mercy.  
 > *Once selected, the player must elect to spare their enemy or to flee the battle. 
@@ -73,6 +78,9 @@ After the attack has concluded, the battle will return to the player's turn.
 
 Throughout _UBE_, the controls remain the same. This is because, from battles to menus, the player is always controlling
 their soul (the red heart you see everywhere). As such, actions are contextual, but unchanging in nature. Said actions are:  
+
+![](https://cdn.shashack.org/UBE/promo/movement.gif)
+
 > **Move Up** - moves the player upwards.  
 > *Press the `up-arrow` to preform.*
 
@@ -90,19 +98,22 @@ their soul (the red heart you see everywhere). As such, actions are contextual, 
 
 > **Deselect** - deselects the current option.  
 > *Press `X` to preform.*  
->> NOTE: deselection generally returns the player form a selected menu 
+>> NOTE: deselection generally returns the player from a selected menu 
 > (i.e. returning the player to action command selection from item selection), but will
 > slow the player's soul when being attacked if held (allowing for finer movement). Text can also be completed by 
 > pressing `X` while it is progressing.
 
 #### Misc Info
  * If player health reaches 0, they will die and be returned to the battle select menu. 
+ * After taking damage, the player will be invincible to further damage for a short time (denoted by sprite flashing).
  * Health is replenished between battles and is displayed above the row of action commands (denoted by the letters 'HP').
  * If a player wins a battle, they will be awarded 'EXP' and 'gold', this does not actually do anything in *UBE*.
  * If a battle present in your `battles` folder is incorrectly formatted, the game will crash upon launch.
 Furthermore, if specific data is incorrectly formatted, it can cause the game to crash in battle.
 
 ### Custom Battles
+
+![](https://cdn.shashack.org/UBE/promo/files.gif)
 
 Battles in *UBE* are simply folders of data that anyone can make and play. Battles are stored in a folder named `battles`
 found within a folder called `UTB` that is generated in the user's `appdata` folder upon booting *UBE* for the first time.  
@@ -125,7 +136,8 @@ Sprites can be any size as bullets will be sized to the sprite in-game.
 ##### enemy_sprites
 
 This folder houses all .png files used to display enemies in custom battles.
-Sprites can be any size, but I recommend working out of [this]() which spans two of the green tiles the sit 
+Sprites can be any size, but I recommend working out of [this](https://cdn.shashack.org/UBE/downloads/sample_sprite.png)
+which spans two of the green tiles that sit 
 behind the enemy in battle, along with extending from the top of the screen to the bottom of the tiles.
 There are 6 sprites that should be present here:
 * **attacking.png** - the sprite drawn while an enemy is attacking the player.
@@ -141,21 +153,35 @@ There are 6 sprites that should be present here:
 ##### battle_data.txt
 
 This is the trickiest part as the formatting is quite specific, but I assure you it isn't too hard to get a hang of.
-Instead of listing all the details here, you can download this [sample file]() for formatting info.
-It includes descriptions of what each value is, but you can also use [this]() if you just need an easy to reference list.  
+Instead of listing all the details here, you can download this 
+[sample file](https://cdn.shashack.org/UBE/downloads/battle_data_sample_with_desc.txt) for formatting info.
+It includes descriptions of what each value is, but you can also use [this](https://cdn.shashack.org/UBE/downloads/battle_data_sample.txt) 
+if you just need an easy to reference list.  
 These, however, are all the bullet patterns in the game:
 
 ###### Bullet Rain
 
+![](https://cdn.shashack.org/UBE/promo/bullet_rain.gif)
+
 ###### Closing Walls
+
+![](https://cdn.shashack.org/UBE/promo/closing_walls.gif)
 
 ###### Crusher
 
+![](https://cdn.shashack.org/UBE/promo/crusher.gif)
+
 ###### Double Walls o' Bullet
+
+![](https://cdn.shashack.org/UBE/promo/double_walls_o_bullet.gif)
 
 ###### Ladder Drill
 
+![](https://cdn.shashack.org/UBE/promo/ladder_drill.gif)
+
 ###### Walls o' Bullet
+
+![](https://cdn.shashack.org/UBE/promo/walls_o_bullet.gif)
 
 ##### bgm.wav
 
@@ -166,13 +192,15 @@ This .wav file is the track that will be played on loop throughout the duration 
 > [Sha's Battle Pack 1]() for examples. Best of luck!
 
 ## Known Issues
- * The game **will** crash if even just one battle's data is incorrectly formatted or missing.
+ * The game **will** crash if even just one battle's data is missing or incorrectly formatted.
  * Lack of UX polish such as volume adjustment or window resizing.
+ * Sometimes the player's soul is visible at incorrect times.
  * Really weird audio bug where a battle will take ages to load if you select it right after you enter the battle select
 menu. This can be remedied by waiting just a few second before selecting a battle. I wish I could fix it, but it's an 
 issue with the Java audio player (to my knowledge).
 
 ## Creator Corner
+
 Hey, this is Sha (the guy who made this thing)!  
 Firstly, thank you for checking out *UBE*. I had a lot of fun making it
 and hope that you can find some fun in creating and playing levels. I've decided to include this little section in all my 
