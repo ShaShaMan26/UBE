@@ -14,11 +14,11 @@ public class InitializeGameState extends GlobalState {
         gw.addComponent(loadingText);
         gw.repaint();
 
-        new File(System.getenv("APPDATA")+"\\UTB").mkdir();
-        new File(System.getenv("APPDATA")+"\\UTB\\battles").mkdir();
+        new File(System.getenv("APPDATA")+"\\Undertale Battle Engine").mkdir();
+        new File(System.getenv("APPDATA")+"\\Undertale Battle Engine\\battles").mkdir();
 
         int XOFFSET = 20, YOFFSET = 40;
-        String[] battleNames = new File(System.getenv("APPDATA") + "\\UTB\\battles").list();
+        String[] battleNames = new File(System.getenv("APPDATA") + "\\Undertale Battle Engine\\battles").list();
 
         for (int i = 0; i < battleNames.length; i++) {
             String battleName = battleNames[i];
@@ -26,7 +26,7 @@ public class InitializeGameState extends GlobalState {
                 battleName = battleName.substring(0, 36);
                 battleName += "...";
             }
-            BattleSelectAO battleSelectAO = new BattleSelectAO(battleName, XOFFSET, YOFFSET+(i*42), new Battle(System.getenv("APPDATA") + "\\UTB\\battles\\" + battleNames[i]));
+            BattleSelectAO battleSelectAO = new BattleSelectAO(battleName, XOFFSET, YOFFSET+(i*42), new Battle(System.getenv("APPDATA") + "\\Undertale Battle Engine\\battles\\" + battleNames[i]));
             gw.battles.add(battleSelectAO);
         }
     }

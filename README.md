@@ -6,7 +6,7 @@ A simple engine for making and playing custom [_Undertale_](https://undertale.co
 
 ## Downloads
 
-You can download UBE [here]() for Windows operating systems.
+You can download UBE [here](https://cdn.shashack.org/UBE/downlaods/Undertale-Battle-Engine.zip) for Windows operating systems.
 
 ## Setup
 
@@ -14,9 +14,8 @@ Simply unzip the folder above and launch `UBE.jar` to play. If the game doesn't 
 [Java](https://download.oracle.com/java/19/archive/jdk-19.0.2_windows-x64_bin.exe) installed.  
 Included with the game is [Sha's Battle Pack 1](https://cdn.shashack.org/UBE/downloads/Sha's-Battle-Pack-1.zip),
 a few custom battles of mine made to show off and test *UBE*.
-To add the battles to your game, take the folder titled `Sha's-Battle-Pack-1`, navigate to your `appdata`
-folder, find the folder titled `UTB` (will only appear after booting *UBE* at least once), place the folder in `UTB`,
-and rename it to 'battles' (replacing the preexisting folder of the same name).
+To add the battles to your game, go to `appdata`>`Undertale Battle Engine` and replace the `battles` folder with the one
+found in `Sha's-Battle-Pack-1`.
 
 ## What Is UBE?
 
@@ -70,6 +69,8 @@ During the player's turn, select one of the four action commands:
 >>NOTE: sparing is only effective if the enemy does not wish to, or is unable to, continue the battle.
 > In order to achieve this, use of the Act option may be necessary.
 
+![](https://cdn.shashack.org/UBE/promo/enemy_turn.gif)
+
 Once the player has concluded their turn, the enemy will speak a piece of dialogue 
 and then attack the player with a barrage of bullets. In order to avoid the damaging bullets,
 the player must maneuver their soul around (and sometimes in between) the enemy's onslaught.
@@ -117,7 +118,7 @@ Furthermore, if specific data is incorrectly formatted, it can cause the game to
 ![](https://cdn.shashack.org/UBE/promo/files.gif)
 
 Battles in *UBE* are simply folders of data that anyone can make and play. Battles are stored in a folder named `battles`
-found within a folder called `UTB` that is generated in the user's `appdata` folder upon booting *UBE* for the first time.  
+found within a folder called `Undertale Battle Engine` that is generated in the user's `appdata` folder upon booting *UBE* for the first time.  
 This section will detail how to make your own battles.
 
 #### Setting up your battle folder.
@@ -231,4 +232,12 @@ to fruition, but it just gave me bad vibes at that point lol.
 
 ## Screenshots
 
-![]()
+![](https://cdn.shashack.org/UBE/promo/screenshot-9.png)
+![](https://cdn.shashack.org/UBE/promo/screenshot-2.png)
+![](https://cdn.shashack.org/UBE/promo/screenshot-10.png)
+![](https://cdn.shashack.org/UBE/promo/screenshot-13.png)
+![](https://cdn.shashack.org/UBE/promo/screenshot-1.png)
+![](https://cdn.shashack.org/UBE/promo/screenshot-7.png)
+![](https://cdn.shashack.org/UBE/promo/screenshot-12.png)
+![](https://cdn.shashack.org/UBE/promo/screenshot-8.png)
+![](https://cdn.shashack.org/UBE/promo/screenshot-3.png)
