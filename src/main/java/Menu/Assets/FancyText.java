@@ -69,7 +69,7 @@ public abstract class FancyText extends JComponent {
                         DISPLAYEDTEXT.deleteCharAt(index+1);
                         DISPLAYEDTEXT.append("/r");
                     } else {
-                        for (int i = 1; i < DISPLAYEDTEXT.length(); i++) {
+                        for (int i = 1; i < DISPLAYEDTEXT.length()-1; i++) {
                             if (DISPLAYEDTEXT.charAt(index-i) == ' ') {
                                 DISPLAYEDTEXT.replace(index-i, index-i+1, "/r");
                                 break;

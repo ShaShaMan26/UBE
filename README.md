@@ -12,8 +12,9 @@ You can download UBE [here]() for Windows operating systems.
 
 Simply unzip the folder above and launch `UBE.jar` to play. If the game doesn't launch, ensure you have 
 [Java](https://download.oracle.com/java/19/archive/jdk-19.0.2_windows-x64_bin.exe) installed.  
-Included with the game is [Sha's Battle Pack 1](), a few custom battles of mine made to show off and test *UBE*.
-To add the battles to your game, take the folder titled `Shas-Battle-Pack-1`, navigate to your `appdata`
+Included with the game is [Sha's Battle Pack 1](https://cdn.shashack.org/UBE/downloads/Sha's-Battle-Pack-1.zip),
+a few custom battles of mine made to show off and test *UBE*.
+To add the battles to your game, take the folder titled `Sha's-Battle-Pack-1`, navigate to your `appdata`
 folder, find the folder titled `UTB` (will only appear after booting *UBE* at least once), place the folder in `UTB`,
 and rename it to 'battles' (replacing the preexisting folder of the same name).
 
@@ -189,9 +190,10 @@ This .wav file is the track that will be played on loop throughout the duration 
 `bgm.wav` in order to be recognised by the game.
 
 > If you have any questions regarding creating your own battles, please refer to the battles included in 
-> [Sha's Battle Pack 1]() for examples. Best of luck!
+> [Sha's Battle Pack 1](https://cdn.shashack.org/UBE/downloads/Sha's-Battle-Pack-1.zip) for examples. Best of luck!
 
 ## Known Issues
+ * Dialogue can cause crashes so test your strings heavily.
  * The game **will** crash if even just one battle's data is missing or incorrectly formatted.
  * Lack of UX polish such as volume adjustment or window resizing.
  * Sometimes the player's soul is visible at incorrect times.
@@ -226,3 +228,7 @@ mirroring the destination as seen in *Undertale*.
 * A bullet pattern called 'Bullet Tunnel' was cut because, at the time, the code for bullets was a mess, and I was
 losing my mind trying to work with it. After I fixed up the code, I probably could have brought 'Bullet Tunnel'
 to fruition, but it just gave me bad vibes at that point lol.
+
+## Screenshots
+
+![]()

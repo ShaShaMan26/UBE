@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class GameWindow extends JFrame implements KeyListener {
     private final BGPanel PANEL;
@@ -37,6 +38,9 @@ public class GameWindow extends JFrame implements KeyListener {
         this.addKeyListener(this);
 
         this.setVisible(true);
+
+        ImageIcon icon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/art/icon.png")));
+        this.setIconImage(icon.getImage());
 
         this.PLAYER = new Player();
         this.addComponent(PLAYER);
