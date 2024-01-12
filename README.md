@@ -6,7 +6,7 @@ A simple engine for making and playing custom [_Undertale_](https://undertale.co
 
 ## Downloads
 
-You can download UBE [here](https://cdn.shashack.org/UBE/downlaods/Undertale-Battle-Engine.zip) for Windows operating systems.
+You can download UBE [here](https://cdn.shashack.org/UBE/downloads/Undertale-Battle-Engine.zip) for Windows operating systems.
 
 ## Setup
 
