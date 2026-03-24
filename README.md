@@ -138,7 +138,7 @@ Sprites can be any size as bullets will be sized to the sprite in-game.
 ##### enemy_sprites
 
 This folder houses all .png files used to display enemies in custom battles.
-Sprites can be any size, but I recommend working out of [this](https://cdn.shashack.org/UBE/downloads/sample_sprite.png)
+Sprites can be any size, but I recommend working out of [this](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/sample_sprite.png)
 which spans two of the green tiles that sit 
 behind the enemy in battle, along with extending from the top of the screen to the bottom of the tiles.
 There are 6 sprites that should be present here:
@@ -156,8 +156,8 @@ There are 6 sprites that should be present here:
 
 This is the trickiest part as the formatting is quite specific, but I assure you it isn't too hard to get a hang of.
 Instead of listing all the details here, you can download this 
-[sample file](https://cdn.shashack.org/UBE/downloads/battle_data_sample_with_desc.txt) for formatting info.
-It includes descriptions of what each value is, but you can also use [this](https://cdn.shashack.org/UBE/downloads/battle_data_sample.txt) 
+[sample file](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/battle_data_sample_with_desc.txt) for formatting info.
+It includes descriptions of what each value is, but you can also use [this](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/battle_data_sample.txt) 
 if you just need an easy to reference list.  
 These, however, are all the bullet patterns in the game:
 
@@ -232,12 +232,12 @@ to fruition, but it just gave me bad vibes at that point lol.
 
 ## Screenshots
 
-![](https://cdn.shashack.org/UBE/promo/screenshot-9.png)
-![](https://cdn.shashack.org/UBE/promo/screenshot-2.png)
-![](https://cdn.shashack.org/UBE/promo/screenshot-10.png)
-![](https://cdn.shashack.org/UBE/promo/screenshot-13.png)
-![](https://cdn.shashack.org/UBE/promo/screenshot-1.png)
-![](https://cdn.shashack.org/UBE/promo/screenshot-7.png)
-![](https://cdn.shashack.org/UBE/promo/screenshot-12.png)
-![](https://cdn.shashack.org/UBE/promo/screenshot-8.png)
-![](https://cdn.shashack.org/UBE/promo/screenshot-3.png)
+![](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/screenshot-9.png)
+![](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/screenshot-2.png)
+![](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/screenshot-10.png)
+![](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/screenshot-13.png)
+![](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/screenshot-1.png)
+![](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/screenshot-7.png)
+![](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/screenshot-12.png)
+![](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/screenshot-8.png)
+![](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/screenshot-3.png)
