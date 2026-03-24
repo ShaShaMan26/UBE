@@ -1,6 +1,6 @@
 # Undertale Battle Engine
 
-![](https://github.com/ShaShaMan26/UBE/tree/main/readme-files/UBE_promo/gif/trailer.gif)
+![](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/gif/trailer.gif)
 
 A simple engine for making and playing custom [_Undertale_](https://undertale.com)-style RPG battles.
 
@@ -28,7 +28,7 @@ The goal of each battle is to defeat a given enemy, either by skillfully dodging
 
 #### The Main Menu
 
-![](https://github.com/ShaShaMan26/UBE/tree/main/readme-files/UBE_promo/gif/battle_select_1.gif)
+![](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/gif/battle_select_1.gif)
 
 Upon booting _UBE_, you will be greeted by a list of battles read from your `battles` folder.
 Once selected from this menu, you will be entered into a battle.
@@ -38,14 +38,14 @@ Once selected from this menu, you will be entered into a battle.
 Each battle is split into two major phases, the player's turn and enemy's turn.  
 During the player's turn, select one of the four action commands:  
 
-![](https://github.com/ShaShaMan26/UBE/tree/main/readme-files/UBE_promo/gif/fight.gif)
+![](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/gif/fight.gif)
 
 > **Fight** - Attacks the enemy.  
 > *Once selected, the player must land the fight needle on the target. 
 > Landing closer to the center of the target will deal more damage.
 > After the enemy's health reaches 0, they will die.*
 
-![](https://cdn.shashack.org/UBE/promo/act.gif)
+![](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/gif/act.gif)
 
 > **Act** - Interacts with the enemy.  
 > *Once selected, the player must further select one of the available actions. 
@@ -53,14 +53,14 @@ During the player's turn, select one of the four action commands:
 > Some actions will fail until another action has been preformed. Once all required actions have been completed, 
 > the player can spare their foe.*
 
-![](https://cdn.shashack.org/UBE/promo/item.gif)
+![](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/gif/item.gif)
 
 > **Item** - Uses an item.  
 > *Once selected, the player must choose an item to use. In UBE there aren't actually any items 
 > as I am lazy. Due to this, when selecting an item to utilize, you're merely selecting the amount 
 > of health you wish to regain (each option an increment of 5). Think of it as a difficulty select! ;)*
 
-![](https://cdn.shashack.org/UBE/promo/spare.gif)
+![](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/gif/spare.gif)
 
 > **Mercy** - Shows your adversary mercy.  
 > *Once selected, the player must elect to spare their enemy or to flee the battle. 
@@ -69,7 +69,7 @@ During the player's turn, select one of the four action commands:
 >>NOTE: sparing is only effective if the enemy does not wish to, or is unable to, continue the battle.
 > In order to achieve this, use of the Act option may be necessary.
 
-![](https://cdn.shashack.org/UBE/promo/enemy_turn.gif)
+![](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/gif/enemy_turn.gif)
 
 Once the player has concluded their turn, the enemy will speak a piece of dialogue 
 and then attack the player with a barrage of bullets. In order to avoid the damaging bullets,
@@ -81,7 +81,7 @@ After the attack has concluded, the battle will return to the player's turn.
 Throughout _UBE_, the controls remain the same. This is because, from battles to menus, the player is always controlling
 their soul (the red heart you see everywhere). As such, actions are contextual, but unchanging in nature. Said actions are:  
 
-![](https://cdn.shashack.org/UBE/promo/movement.gif)
+![](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/gif/movement.gif)
 
 > **Move Up** - moves the player upwards.  
 > *Press the `up-arrow` to preform.*
@@ -115,7 +115,7 @@ Furthermore, if specific data is incorrectly formatted, it can cause the game to
 
 ### Custom Battles
 
-![](https://cdn.shashack.org/UBE/promo/files.gif)
+![](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/gif/files.gif)
 
 Battles in *UBE* are simply folders of data that anyone can make and play. Battles are stored in a folder named `battles`
 found within a folder called `Undertale Battle Engine` that is generated in the user's `appdata` folder upon booting *UBE* for the first time.  
@@ -163,27 +163,27 @@ These, however, are all the bullet patterns in the game:
 
 ###### Bullet Rain
 
-![](https://cdn.shashack.org/UBE/promo/bullet_rain.gif)
+![](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/gif/bullet_rain.gif)
 
 ###### Closing Walls
 
-![](https://cdn.shashack.org/UBE/promo/closing_walls.gif)
+![](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/gif/closing_walls.gif)
 
 ###### Crusher
 
-![](https://cdn.shashack.org/UBE/promo/crusher.gif)
+![](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/gif/crusher.gif)
 
 ###### Double Walls o' Bullet
 
-![](https://cdn.shashack.org/UBE/promo/double_walls_o_bullet.gif)
+![](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/gif/double_walls_o_bullet.gif)
 
 ###### Ladder Drill
 
-![](https://cdn.shashack.org/UBE/promo/ladder_drill.gif)
+![](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/gif/ladder_drill.gif)
 
 ###### Walls o' Bullet
 
-![](https://cdn.shashack.org/UBE/promo/walls_o_bullet.gif)
+![](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/gif/walls_o_bullet.gif)
 
 ##### bgm.wav
 
