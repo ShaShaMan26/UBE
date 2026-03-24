@@ -6,13 +6,13 @@ A simple engine for making and playing custom [_Undertale_](https://undertale.co
 
 ## Downloads
 
-You can download UBE [here](https://cdn.shashack.org/UBE/downloads/Undertale-Battle-Engine.zip) for Windows operating systems.
+You can download UBE [here](https://www.mediafire.com/file/owp4tl6bndxcak7/Undertale_Battle_Engine.zip/file) for Windows operating systems.
 
 ## Setup
 
 Simply unzip the folder above and launch `UBE.jar` to play. If the game doesn't launch, ensure you have 
 [Java](https://download.oracle.com/java/19/archive/jdk-19.0.2_windows-x64_bin.exe) installed.  
-Included with the game is [Sha's Battle Pack 1](https://cdn.shashack.org/UBE/downloads/Sha's-Battle-Pack-1.zip),
+Included with the game is [Sha's Battle Pack 1](https://www.mediafire.com/file/3b9yzo0sq1evhxv/Sha%2527s-Battle-Pack-1.zip/file),
 a few custom battles of mine made to show off and test *UBE*.
 To add the battles to your game, go to `appdata`>`Undertale Battle Engine` and replace the `battles` folder with the one
 found in `Sha's-Battle-Pack-1`.
@@ -191,7 +191,7 @@ This .wav file is the track that will be played on loop throughout the duration 
 `bgm.wav` in order to be recognised by the game.
 
 > If you have any questions regarding creating your own battles, please refer to the battles included in 
-> [Sha's Battle Pack 1](https://cdn.shashack.org/UBE/downloads/Sha's-Battle-Pack-1.zip) for examples. Best of luck!
+> [Sha's Battle Pack 1](https://www.mediafire.com/file/3b9yzo0sq1evhxv/Sha%2527s-Battle-Pack-1.zip/file) for examples. Best of luck!
 
 ## Known Issues
  * Dialogue can cause crashes so test your strings heavily.
@@ -237,6 +237,7 @@ to fruition, but it just gave me bad vibes at that point lol.
 ![](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/screenshot-10.png)
 ![](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/screenshot-13.png)
 ![](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/screenshot-1.png)
+[What the QR code originally pointed to](https://www.mediafire.com/file/bl2slslk2yqskc7/Sha%2527s-Battle-Pack-2.zip/file);
 ![](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/screenshot-7.png)
 ![](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/screenshot-12.png)
 ![](https://raw.githubusercontent.com/ShaShaMan26/UBE/refs/heads/main/readme-files/UBE_promo/screenshot-8.png)
