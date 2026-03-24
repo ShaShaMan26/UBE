@@ -1,6 +1,6 @@
 # Undertale Battle Engine
 
-![](https://cdn.shashack.org/UBE/promo/trailer.gif)
+![](https://github.com/ShaShaMan26/UBE/tree/main/readme-files/UBE_promo/gif/trailer.gif)
 
 A simple engine for making and playing custom [_Undertale_](https://undertale.com)-style RPG battles.
 
@@ -28,7 +28,7 @@ The goal of each battle is to defeat a given enemy, either by skillfully dodging
 
 #### The Main Menu
 
-![](https://cdn.shashack.org/UBE/promo/battle_select_1.gif)
+![](https://github.com/ShaShaMan26/UBE/tree/main/readme-files/UBE_promo/gif/battle_select_1.gif)
 
 Upon booting _UBE_, you will be greeted by a list of battles read from your `battles` folder.
 Once selected from this menu, you will be entered into a battle.
@@ -38,7 +38,7 @@ Once selected from this menu, you will be entered into a battle.
 Each battle is split into two major phases, the player's turn and enemy's turn.  
 During the player's turn, select one of the four action commands:  
 
-![](https://cdn.shashack.org/UBE/promo/fight.gif)
+![](https://github.com/ShaShaMan26/UBE/tree/main/readme-files/UBE_promo/gif/fight.gif)
 
 > **Fight** - Attacks the enemy.  
 > *Once selected, the player must land the fight needle on the target. 
