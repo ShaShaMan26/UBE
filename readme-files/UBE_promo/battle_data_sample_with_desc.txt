@@ -1,0 +1,106 @@
+Enemy Name (Name of the enemy)
+Enemy col (The first square of the battle screen where the enemy sprite will be drawn.
+Starts at 0 and maxes out at 5)
+Enemy text buddle col (The horizontal square in which enemy dialogue will be drawn)
+Enemy text buddle row (The virtical square in which enemy dialogue will be drawn.
+Starts at 0 and maxes out at 1)
+Enemy HP (Health of the enemy)
+Mercy HP (The number of action options required for enemy to become spareable.
+Starts at 0 where it is always sparable and maxes out at 3)
+Enemy Attack (The number representing an enemy's attack power. 
+ONLY USED FOR DISPLAYED STATS)
+Enemy Defence (The number representing an enemy's defence power.
+AFFECTS THE DAMAGE TAKEN BY PLAYER ATTACKS)
+XP Reward (The amount of EXP rewarded to the player upon killing the enemy)
+Gold Reward (The amount of gold rewarded to the player upon killing or sparing the enemy)
+Player Attack (The attack power of the player. 
+DETERMINES THE DAMAGE THAT PLAYER ATTACKS DO)
+Enter Text (The text displayed upon first entering a battle)
+CheckText (The little blirb displayed when checking an enemy)
+Spareable Text (The text displayed when an enemy is spareable)
+
+< (The text that randomly is displayed in the text box every turn.
+You can have as many as you want.)
+Flavor Text
+Flavor Text
+Flavor Text
+Flavor Text
+>
+
+< (The dialogue that randomly is spoken by the enemy every turn.
+You can have as many as you want.)
+Dialogue
+Dialogue
+Dialogue
+Dialogue
+>
+
+< Act options (max of 3)
+Option name (Name of the action)
+option mercy val (Kinda hard to explain, but you're basically numbering the action
+to only be effective at a curtain mercy hp value.
+EX: a value of 0 would be successful all the time, but a value of 2 would only
+be successful when the enemy's mercy hp is at 2.)
+option post-text (The text displayed after an action is successfully preformed)
+option react text (The dialogue spoken after an action is successfully preformed)
+option fail post-text (The text displayed after an action is unsuccessfully preformed)
+option fail react text (The dialogue spoken after an action is unsuccessfully preformed)
+Option name
+option mercy val
+option post-text
+option react text
+option fail post-text
+option fail react text
+Option name
+option mercy val
+option post-text
+option react text
+option fail post-text
+option fail react text
+>
+
+< Attacks (as many as you want)
+bullet speed (The speed at which bullets will travel)
+bullet damage value (The damage bullets will do to the player)
+bullet rotation (The rotation of the bullets' direction
+0 is up, 1 is right, 2 is down, 3 is left)
+bullet fade speed (The speed at which a bullet will fade in/spawn
+THIS MUST BE A DECIMAL VALUE)
+bullet sprite name (The name of the bullet sprite you wish to use.
+Must be in bullet_sprites and should not include .png)
+bullet pattern name (The name of the type of bullet pattern you want this attack to use
+Here are the types as they should be writen:
+ - bulletrain
+ - closingwalls
+ - crusher
+ - doublewallsobullet
+ - ladderdrill
+ - wallsobullet)
+bullet pattern duration (The length of time that an attack lasts for)
+battle box x (The x value of the battle box. Starts at 238)
+battle box y (The y value of the battle box. Starts at 251)
+battle box width (The width of the battle box. Starts at 165)
+battle box height (The height of the battle box. Starts at 140)
+bullet speed
+bullet damage value
+bullet rotation
+bullet fade speed
+bullet sprite name
+bullet pattern name
+bullet pattern duration
+battle box x
+battle box y
+battle box width
+battle box height
+bullet speed
+bullet damage value
+bullet rotation
+bullet fade speed
+bullet sprite name
+bullet pattern name
+bullet pattern duration
+battle box x
+battle box y
+battle box width
+battle box height
+>

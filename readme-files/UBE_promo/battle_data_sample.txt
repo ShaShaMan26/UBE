@@ -1,0 +1,85 @@
+Enemy Name
+Enemy col
+Enemy text buddle col
+Enemy text buddle row
+Enemy HP
+Mercy HP
+Enemy Attack
+Enemy Defence
+XP Reward
+Gold Reward
+Player Attack
+Enter Text
+CheckText
+Spareable Text
+
+<
+Flavor Text
+Flavor Text
+Flavor Text
+Flavor Text
+>
+
+<
+Dialogue
+Dialogue
+Dialogue
+Dialogue
+>
+
+< Act options (max of 3)
+Option name
+option mercy val
+option post-text
+option react text
+option fail post-text
+option fail react text
+Option name
+option mercy val
+option post-text
+option react text
+option fail post-text
+option fail react text
+Option name
+option mercy val
+option post-text
+option react text
+option fail post-text
+option fail react text
+>
+
+< Attacks (as many as you want)
+bullet speed
+bullet damage value
+bullet rotation
+bullet fade speed
+bullet sprite name
+bullet pattern name
+bullet pattern duration
+battle box x (starts at 238)
+battle box y (starts at 251)
+battle box width (starts at 165)
+battle box height (starts at 140)
+bullet speed
+bullet damage value
+bullet rotation
+bullet fade speed
+bullet sprite name
+bullet pattern name
+bullet pattern duration
+battle box x
+battle box y
+battle box width
+battle box height
+bullet speed
+bullet damage value
+bullet rotation
+bullet fade speed
+bullet sprite name
+bullet pattern name
+bullet pattern duration
+battle box x
+battle box y
+battle box width
+battle box height
+>
